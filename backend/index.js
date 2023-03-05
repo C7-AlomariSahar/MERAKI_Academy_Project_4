@@ -17,11 +17,15 @@ const roleRouter = require("./routes/roleRoute")
 const mealRouter = require("./routes/mealsRoute")
 const resturantsRouter = require("./routes/resturantsRoute")
 const cuisineRouter =require("./routes/cuisineRoute")
+const meunTypeRouter =require("./routes/meunTypeRoute")
+
+
 app.use("/user",userRouter)
 app.use("/role",roleRouter)
 app.use("/meal",mealRouter)
 app.use("/restaurant",resturantsRouter)
 app.use("/cuisine",cuisineRouter)
+app.use("/menueType",meunTypeRouter)
 
 
 

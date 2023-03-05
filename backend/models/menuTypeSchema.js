@@ -3,7 +3,7 @@ const mongoose =require ("mongoose")
 const menuTypeSchema = new mongoose.Schema({
 
     
-    foodTypeName: {type: String, required:true},
+    meunTypeName: {type: String, required:true},
    
 
     })
