@@ -18,6 +18,7 @@ const createNewRole = (req, res) => {
       res.status(500).json({
         success: false,
         message: `Server Error`,
+        error:err
       });
     });
 };
@@ -34,9 +35,10 @@ const updateNewRole =(req,res)=>{
             role: result,
         });
     }).catch((err)=>{
-        res.status(404).json({
+        res.status(500).json({
             success: false,
             message: `Server Error`,
+            error:err
           });
     })
     }else{
