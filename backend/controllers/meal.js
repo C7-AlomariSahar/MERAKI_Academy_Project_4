@@ -130,13 +130,13 @@ const getOneMealbyId =(req,res)=>{
 const  getAllMeals =( req,res)=>{
 
    
-    resturantModel.find().populate("cuisine","cuisineName -_id").exec()
+    mealModel.find().populate("mealType","meunTypeName -_id").populate("resturantId","resturantName -_id").exec()
        .then((data) => {
        
          res.status(200).json({
            success: true,
            message: `found`,
-           resturant: data,
+           Meals: data,
          });
        })
        .catch((err) => {
