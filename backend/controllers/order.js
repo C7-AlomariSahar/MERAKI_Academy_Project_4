@@ -29,8 +29,44 @@ const orderModel =require("../models/ordersSchema")
 
  }
 
+ const updateOrder =(req,res)=>{
+const orderId =req.params.id ;
+    const {totalPrice,
+        orderItems,
+        orderStatus}=req.body
  
- module.exports ={createNewOrder}
+        orderModel.findById({_id:orderId}).then((data)=>{
+
+            orderModel.findOneAndUpdate({_id:orderId},{ totalPrice:totalPrice||data.totalPrice ,    orderItems:orderItems||data.orderItems ,    orderStatus:orderStatus||data.orderStatus 
+            },{new:true}).then((result)=>{
+                res.status(201).json({
+                    success: true,
+                    message: `Order updated`,
+                    user: result,
+                });
+            }).catch((err)=>{
+                res.status(500).json({
+                    success: false,
+                    message: `Server Error`,
+                   Error:err
+                  });
+            })
+        
+    
+        }).catch((err)=>{
+            res.status(500).json({
+                success: false,
+                message: `Server Error`,
+               Error:err
+              });
+        })
+    
+      
+    
+
+ }
+
+ module.exports ={createNewOrder ,updateOrder}
 
 
 
