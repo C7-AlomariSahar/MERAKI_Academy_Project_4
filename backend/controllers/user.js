@@ -1,11 +1,27 @@
 const userModel = require("../models/usersSchema");
 
 const createNewUser = (req, res) => {
-  const {   firstName,    LastName,    UserName,    email,    password,    phoneNumber,    city,    building,    street,    flatNumber,    role,
+  const {
+    firstName,
+    LastName,
+    UserName,
+    email,
+    password,
+    phoneNumber,
+    city,
+    building,
+    street,
+    flatNumber,
+    role,
   } = req.body;
 
   const newUserInstanse = new userModel({
-    firstName,    LastName,    UserName,    email,    password,    phoneNumber,
+    firstName,
+    LastName,
+    UserName,
+    email,
+    password,
+    phoneNumber,
     address: { city, building, street, flatNumber },
     role,
   });
@@ -29,54 +45,79 @@ const createNewUser = (req, res) => {
 };
 
 const updateNewUser = (req, res) => {
-const userId =req.params.id
-    const {   firstName ,    LastName,    UserName,    email,    password,    phoneNumber,    city,    building,    street,    flatNumber,    role,
-    } = req.body;
+  const userId = req.params.id;
+  const {
+    firstName,
+    LastName,
+    UserName,
+    email,
+    password,
+    phoneNumber,
+    city,
+    building,
+    street,
+    flatNumber,
+    role,
+  } = req.body;
 
-    userModel.findById({_id:userId}).then((data)=>{
 
-
-
-
-        userModel.findOneAndUpdate({_id:userId},{ firstName:firstName||data.firstName ,    LastName:LastName||data.LastName ,    UserName:UserName||data.UserName ,  email:  email||data.email,    password :password|| data.password ,    phoneNumber : phoneNumber||data.phoneNumber,    city:city||data.city,    building :building||data.building,    street:street||data.street,    flatNumber:flatNumber||data.flatNumber,    role:role||data.role,
-        },{new:true}).then((result)=>{
-            res.status(201).json({
-                success: true,
-                message: `user updated`,
-                user: result,
-            });
-        }).catch((err)=>{
-            res.status(500).json({
-                success: false,
-                message: `Server Error`,
-               Error:err
-              });
-        })
+userModel.findById({_id:userId}).then((data)=>{
+ 
+  let newcity;
+   city ?  newcity= city : newcity= data.address.city
     
+    const newbuilding = building||data.address.building
+    const newstreet  = street||data.address.street
+    const newflatNumber = flatNumber||data.address.flatNumber
+    
+   
 
-    }).catch((err)=>{
-        res.status(500).json({
-            success: false,
-            message: `Server Error`,
-           Error:err
-          });
+
+  userModel
+    .findOneAndUpdate({ _id: userId },  { firstName:firstName||data.firstName ,    LastName:LastName||data.LastName ,    UserName:UserName||data.UserName ,  email:  email||data.email,    password :password|| data.password ,  phoneNumber : phoneNumber||data.phoneNumber,   address:{city:newcity,building:newbuilding,street:newstreet,flatNumber:newflatNumber} ,    role:role||data.role,
+    }, { new: true })
+    .then((result) => {
+      res.status(201).json({
+        success: true,
+        message: `user updated`,
+        user: result,
+      });
     })
+    .catch((err) => {
+      res.status(500).json({
+        success: false,
+        message: `Server Error`,
+        Error: err.message,
+      });
+    });
 
-  
-
-
+  }).catch((err)=>{
+      res.status(500).json({
+          success: false,
+          message: `this user is not found`,
+         Error:err
+        });
+  })
 };
 
 module.exports = { createNewUser, updateNewUser };
 
-
 /**
  * 
- * const filter = req.body;
-Object.keys(filter).forEach((key) => {
-  filter[key] == "" && delete filter[key];
-//   if(key == "address" &&  filter[key] != "" ){
-//     Object.keys(filter[key]).forEach((key2) => {
-//         filter.address[key2] == "" && delete  filter.address[key2];
-//   })}
+ *   const filter = req.body;
+  Object.keys(filter).forEach((key) => {
+    filter[key] == "" && delete filter[key];
+    if (key == "address" && filter[key] != "") {
+      Object.keys(filter[key]).forEach((key2) => {
+        if (filter.address[key2] == "") {
+          delete filter.address[key2];
+        }
+      });
+    }
+  });
+ { $set: filter }
+    filter.address = { $set: { ...filter.address } };
+  console.log("______________________",filter)
  */
+
+

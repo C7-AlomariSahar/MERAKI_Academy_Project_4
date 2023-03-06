@@ -2,12 +2,12 @@ const express =require("express")
 
 const resturantsRouter = express.Router();
 
-const {createNewResturant }=require("../controllers/resturants")
-// updateResturant ,getOneResturant ,getAllResturant
+const {createNewResturant ,updateResturant}=require("../controllers/resturants")
+//  ,getOneResturant ,getAllResturant
 // ,getAllResturantByCuisineType
 
 resturantsRouter.post("/",createNewResturant)
-// resturantsRouter.put("/update/:id",updateResturant)
+ resturantsRouter.put("/update/:id",updateResturant)
 // resturantsRouter.get("/:id",getOneResturant)
 // resturantsRouter.get("/allResturant",getAllResturant)
 // resturantsRouter.get("/allResturant/:cuisineType",getAllResturantByCuisineType)
