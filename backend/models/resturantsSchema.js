@@ -4,25 +4,19 @@ const resturantSchema = new mongoose.Schema({
 
     
         resturantName: {type: String, required:true},
+        image:{type: String, required:true}, 
         restaurant_id:{type: String, required:true},
         address: {
-          building: String,
-          coord: [Number],
-          street: String,
-          zipcode: Number,
+          building: {type: String, required:true},
+          coord: [ {type: Number, required:true},],
+          street: {type: String, required:true},
+          zipcode: {type: Number, required:true}
         },
-        borough: {type: String, required:true},
+        city: {type: String, required:true},
         cuisine: {type: mongoose.Schema.Types.ObjectId ,ref :"cuisine", required:true},
         
         rate:Number ,
-        // grades: [
-        //   {
-        //     date: {$date: Number},
-        //     grade: String,
-        //     score: Number,
-    
-        //   }
-        // ]
+      
     })
     
 

@@ -3,10 +3,10 @@ const orderModel =require("../models/ordersSchema")
 
 
  const createNewOrder =(req,res)=>{
-    const {userId,totalPrice,deleviredTo,paymentMethod,        
+    const {userId,totalPrice,deleviredTo,paymentMethod,orderfrom ,       
         orderItems,orderStatus}=req.body
   const orderModelInstance = new orderModel({
-            userId,totalPrice,deleviredTo,paymentMethod,        
+            userId,totalPrice,deleviredTo,paymentMethod, orderfrom  ,     
             orderItems,orderStatus
         })
 
@@ -68,7 +68,7 @@ const orderId =req.params.id ;
 
 const getAllOrders=(req,res)=>{
 
-    orderModel.find({})
+    orderModel.find({}).populate("deleviredTo","resturantName -_id").exec()
     .then((orders) => {
      
       res.status(200).json({
@@ -91,7 +91,7 @@ const getAllOrders=(req,res)=>{
 const getAllOrdersForOneUser=(req,res)=>{
  let userId = req.params.id;
 
- orderModel.find({ userId: userId })
+ orderModel.find({ userId: userId }).populate("deleviredTo","resturantName -_id").exec()
     .then((orders) => {
       if (!orders.length) {
         return res.status(404).json({
