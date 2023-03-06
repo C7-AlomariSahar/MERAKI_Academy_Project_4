@@ -66,7 +66,40 @@ const orderId =req.params.id ;
 
  }
 
- module.exports ={createNewOrder ,updateOrder}
+const getAllOrders=(req,res)=>{
+
+
+
+
+}
+
+const getAllOrdersForOneUser=(req,res)=>{
+ let userId = req.params.id;
+
+ orderModel.find({ userId: userId })
+    .then((orders) => {
+      if (!orders.length) {
+        return res.status(404).json({
+          success: false,
+          message: `The user: ${userId} has no orders`,
+        });
+      }
+      res.status(200).json({
+        success: true,
+        message: `All the orders for the user: ${userId}`,
+        orders: orders,
+      });
+    })
+    .catch((err) => {
+      res.status(500).json({
+        success: false,
+        message: `Server Error`,
+        err: err.message,
+      });
+    });
+}
+
+ module.exports ={createNewOrder ,updateOrder ,getAllOrders,getAllOrdersForOneUser}
 
 
 
