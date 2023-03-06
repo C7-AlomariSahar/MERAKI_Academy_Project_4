@@ -1,23 +1,20 @@
-const express =require("express")
+const express = require("express");
 
 const resturantsRouter = express.Router();
 
-const {createNewResturant ,updateResturant , getOneResturant}=require("../controllers/resturants")
-//  ,getOneResturant ,getAllResturant
-// ,getAllResturantByCuisineType
-
-resturantsRouter.post("/",createNewResturant)
- resturantsRouter.put("/update/:id",updateResturant)
- resturantsRouter.get("/:id",getOneResturant)
-// resturantsRouter.get("/allResturant",getAllResturant)
-// resturantsRouter.get("/allResturant/:cuisineType",getAllResturantByCuisineType)
+const {
+  createNewResturant,
+  updateResturant,
+  getOneResturant,
+  getAllResturant,
+  getAllResturantByCuisineType,
+} = require("../controllers/resturants");
 
 
-module.exports = resturantsRouter ;
+resturantsRouter.post("/", createNewResturant);
+resturantsRouter.put("/update/:id", updateResturant);
+resturantsRouter.get("/:id", getOneResturant);
+resturantsRouter.get("/allResturant/Resturants", getAllResturant);
+resturantsRouter.get("/ResturantbyCuisine/:cuisineType", getAllResturantByCuisineType);
 
-
-
-
-
-
- 
+module.exports = resturantsRouter;

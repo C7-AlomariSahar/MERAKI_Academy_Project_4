@@ -124,10 +124,71 @@ const getOneResturant =(req,res)=>{
 
 }
 
+
+const  getAllResturant =( req,res)=>{
+
+   
+    resturantModel.find().populate("cuisine","cuisineName -_id").exec()
+       .then((data) => {
+       
+         res.status(200).json({
+           success: true,
+           message: `found`,
+           resturant: data,
+         });
+       })
+       .catch((err) => {
+         res.status(500).json({
+           success: false,
+           message: `Server Error`,
+           err: err.message,
+         });
+       });
+  
+   
+
+
+}
+
+
+const getAllResturantByCuisineType=( req,res)=>{
+
+
+  
+    let CuisineId = req.params.cuisineType;
+   
+    resturantModel.find({ cuisine: CuisineId }).populate("cuisine","cuisineName -_id").exec()
+       .then((data) => {
+         if (!data.length) {
+           return res.status(404).json({
+             success: false,
+             message: `No Resturant in  ${CuisineId} kitchen`,
+           });
+         }
+         res.status(200).json({
+           success: true,
+           message: `found`,
+           resturant: data,
+         });
+       })
+       .catch((err) => {
+         res.status(500).json({
+           success: false,
+           message: `No Resturant in  ${CuisineId} kitchen`,
+           err: err.message,
+         });
+       });
+  
+   
+
+
+
+}
+
 module.exports = {
   createNewResturant,
   updateResturant,
   getOneResturant,
-//   getAllResturant,
-//   getAllResturantByCuisineType,
+  getAllResturant,
+ getAllResturantByCuisineType,
 };
