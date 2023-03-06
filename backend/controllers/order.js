@@ -3,10 +3,10 @@ const orderModel =require("../models/ordersSchema")
 
 
  const createNewOrder =(req,res)=>{
-    const {userId,totalPrice,date,deleviredTo,paymentMethod,        
+    const {userId,totalPrice,deleviredTo,paymentMethod,        
         orderItems,orderStatus}=req.body
   const orderModelInstance = new orderModel({
-            userId,totalPrice,date,deleviredTo,paymentMethod,        
+            userId,totalPrice,deleviredTo,paymentMethod,        
             orderItems,orderStatus
         })
 
@@ -29,6 +29,7 @@ const orderModel =require("../models/ordersSchema")
 
  }
 
+ 
  module.exports ={createNewOrder}
 
 
