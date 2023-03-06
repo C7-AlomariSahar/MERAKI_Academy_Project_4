@@ -68,7 +68,22 @@ const orderId =req.params.id ;
 
 const getAllOrders=(req,res)=>{
 
-
+    orderModel.find({})
+    .then((orders) => {
+     
+      res.status(200).json({
+        success: true,
+        message: `All the orders `,
+        orders: orders,
+      });
+    })
+    .catch((err) => {
+      res.status(500).json({
+        success: false,
+        message: `Server Error`,
+        err: err.message,
+      });
+    });
 
 
 }
