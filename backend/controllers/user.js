@@ -1,5 +1,7 @@
 const userModel = require("../models/usersSchema");
-
+const role = require("../models/roleSchema");
+const bcrypt=require("bcrypt")
+const jwt = require("jsonwebtoken");
 const createNewUser = (req, res) => {
   const {
     firstName,
@@ -100,7 +102,71 @@ userModel.findById({_id:userId}).then((data)=>{
   })
 };
 
-module.exports = { createNewUser, updateNewUser };
+const login =(req,res)=>{
+ 
+  const password = req.body.password;
+  const email = req.body.email.toLowerCase();
+
+  userModel
+    .find({ email: email })
+    .then((data) => {
+      console.log("dataa", data);
+      if (data.length > 0) {
+        bcrypt.compare(password, data[0].password, (err, result) => {
+          if (err) {
+            throw err;
+          }
+          if  (result) {
+            // token
+            role.find({_id:data[0].role}).then((roleInfo)=>{
+              console.log("roleeeeeeeeeee",roleInfo)
+              const payload = { userId: data[0]._id
+                 ,role: {
+                role:roleInfo[0].role,
+                permissions: roleInfo[0].permissions
+              } };
+              const options = { expiresIn: "600m"};
+             const token = jwt.sign(payload, process.env.SECRET,options)
+  
+              res
+                .status(200)
+                .json({
+                  success: true,
+                  message: "Valid login credentials",
+                  token: token,
+                });
+             }).catch((err)=>{
+              throw err
+             })
+         
+      
+          } else {
+            res
+              .status(401)
+              .json({
+                success: false,
+                message:
+                  "The email doesn’t exist or the password you’ve entered is incorrect",
+              });
+          }
+        });
+      } else {
+        res
+          .status(401)
+          .json({
+            success: false,
+            message:
+              "The email doesn’t exist or the password you’ve entered is incorrect",
+          });
+      }
+    })
+    .catch((err) => {
+      throw err;
+    });
+
+}
+
+module.exports = { createNewUser, updateNewUser ,login};
 
 /**
  * 
