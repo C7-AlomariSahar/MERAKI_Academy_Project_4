@@ -20,7 +20,7 @@ const createNewMeal = (req, res) => {
     ingrediantsToAdd,
     ingrediantsToRemove ,  
      mealType,
-    resturantId
+    resturantId 
   });
 
  
@@ -43,41 +43,36 @@ const createNewMeal = (req, res) => {
 
 const updateMeal = (req, res) => {
 
-  const resturantId = req.params.id;
+  const mealId = req.params.id;
   const { 
-    resturantName,
-    image, 
-    restaurant_id,
-    building,
-    coord,
-    street,
-    zipcode,
-    city,
-    cuisine,
-    rate,
+    mealName ,
+    image,
+    description,
+    price,
+    ingrediantsToAdd,
+    ingrediantsToRemove ,  
+     mealType,
+    resturantId
   } = req.body;
 
 
-  mealModel.findById({_id:resturantId}).then((data)=>{
+  mealModel.findById({_id:mealId}).then((data)=>{
  
- 
-
     mealModel
-      .findOneAndUpdate({ _id: resturantId },  {resturantName : resturantName|| data.resturantName ,
+      .findByIdAndUpdate ({ _id: mealId }, 
+         {mealName : mealName|| data.mealName ,
         image :  image ||  data.image, 
-        restaurant_id :restaurant_id || data.restaurant_id,
-       address:{ building :building  || data.address.building ,
-        coord : coord|| data.address.coord ,
-        street :street || data.address.street ,
-        zipcode :zipcode || data.address.zipcode} ,
-        city :city|| data.city,
-        cuisine :cuisine || data.cuisine,
-        rate :rate|| data.rate }, { new: true })
+        resturantId :resturantId || data.resturantId,
+        description :description  || data.description ,
+        price : price|| data.price ,
+        ingrediantsToAdd :ingrediantsToAdd ,
+        ingrediantsToRemove :ingrediantsToRemove ,
+        mealType :mealType || data.mealType }, { new: true })
       .then((result) => {
         res.status(201).json({
           success: true,
-          message: `resturant updated`,
-          resturant: result,
+          message: `meal updated`,
+          meal: result,
         });
       })
       .catch((err) => {
@@ -90,7 +85,7 @@ const updateMeal = (req, res) => {
     }).catch((err)=>{
       res.status(500).json({
           success: false,
-          message: `this Resturant is not found`,
+          message: `this meal is not found`,
          Error:err
         });
   })
