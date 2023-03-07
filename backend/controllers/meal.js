@@ -58,11 +58,11 @@ const updateMeal = (req, res) => {
   } = req.body;
 
 
-  resturantModel.findById({_id:resturantId}).then((data)=>{
+  mealModel.findById({_id:resturantId}).then((data)=>{
  
  
 
-  resturantModel
+    mealModel
       .findOneAndUpdate({ _id: resturantId },  {resturantName : resturantName|| data.resturantName ,
         image :  image ||  data.image, 
         restaurant_id :restaurant_id || data.restaurant_id,
@@ -98,20 +98,20 @@ const updateMeal = (req, res) => {
 
 const getOneMealbyId =(req,res)=>{
   
-    let ResturantId = req.params.id;
+    let mealId = req.params.id;
    
-    resturantModel.find({ _id: ResturantId }).populate("cuisine","cuisineName -_id").exec()
+    mealModel.find({ _id: mealId }).populate("mealType","meunTypeName -_id").populate("resturantId","resturantName -_id").exec()
        .then((data) => {
          if (!data.length) {
            return res.status(404).json({
              success: false,
-             message: `this Resturant: ${ResturantId} not found`,
+             message: `this meal not found`,
            });
          }
          res.status(200).json({
            success: true,
            message: `found`,
-           resturant: data,
+           meal: data,
          });
        })
        .catch((err) => {
@@ -159,7 +159,7 @@ const   getAllMealsForOneResturant = ( req,res)=>{
   
     let CuisineId = req.params.cuisineType;
    
-    resturantModel.find({ cuisine: CuisineId }).populate("cuisine","cuisineName -_id").exec()
+    mealModel.find({ cuisine: CuisineId }).populate("cuisine","cuisineName -_id").exec()
        .then((data) => {
          if (!data.length) {
            return res.status(404).json({
@@ -192,7 +192,7 @@ const   getAllMealsWithSameeMenueTypeforOneResturant = ( req,res)=>{
   
     let CuisineId = req.params.cuisineType;
    
-    resturantModel.find({ cuisine: CuisineId }).populate("cuisine","cuisineName -_id").exec()
+    mealModel.find({ cuisine: CuisineId }).populate("cuisine","cuisineName -_id").exec()
        .then((data) => {
          if (!data.length) {
            return res.status(404).json({
