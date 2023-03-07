@@ -18,7 +18,7 @@ mealRouter.put("/update/:id", updateMeal);
 mealRouter.get("/:id", getOneMealbyId);
 mealRouter.get("/allmeals/meals", getAllMeals);
 mealRouter.get("/Resturant/:resturantId", getAllMealsForOneResturant);
-mealRouter.get("/Resturant/:resturantId/Cuisine/:cuisineType", getAllMealsWithSameeMenueTypeforOneResturant);
+mealRouter.get("/Resturant/:resturantId/menu/:mealType", getAllMealsWithSameeMenueTypeforOneResturant);
 
 
 module.exports = mealRouter ;

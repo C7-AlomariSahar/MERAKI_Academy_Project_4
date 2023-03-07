@@ -157,26 +157,21 @@ const   getAllMealsForOneResturant = ( req,res)=>{
 
 
   
-    let CuisineId = req.params.cuisineType;
+    let resturantId = req.params.resturantId;
    
-    mealModel.find({ cuisine: CuisineId }).populate("cuisine","cuisineName -_id").exec()
+    mealModel.find({ resturantId: resturantId }).populate("mealType","meunTypeName -_id").populate("resturantId","resturantName -_id").exec()
        .then((data) => {
-         if (!data.length) {
-           return res.status(404).json({
-             success: false,
-             message: `No Resturant in  ${CuisineId} kitchen`,
-           });
-         }
+       
          res.status(200).json({
            success: true,
            message: `found`,
-           resturant: data,
+           meals: data,
          });
        })
        .catch((err) => {
          res.status(500).json({
            success: false,
-           message: `No Resturant in  ${CuisineId} kitchen`,
+           message: `No meals for this resturant`,
            err: err.message,
          });
        });
@@ -189,27 +184,23 @@ const   getAllMealsForOneResturant = ( req,res)=>{
 const   getAllMealsWithSameeMenueTypeforOneResturant = ( req,res)=>{
 
 
-  
-    let CuisineId = req.params.cuisineType;
+    
+    let resturantId = req.params.resturantId;
+    let mealType = req.params.mealType;
    
-    mealModel.find({ cuisine: CuisineId }).populate("cuisine","cuisineName -_id").exec()
+    mealModel.find({ mealType: mealType , resturantId: resturantId }).populate("mealType","meunTypeName -_id").populate("resturantId","resturantName -_id").exec()
        .then((data) => {
-         if (!data.length) {
-           return res.status(404).json({
-             success: false,
-             message: `No Resturant in  ${CuisineId} kitchen`,
-           });
-         }
+        
          res.status(200).json({
            success: true,
            message: `found`,
-           resturant: data,
+           meals: data,
          });
        })
        .catch((err) => {
          res.status(500).json({
            success: false,
-           message: `No Resturant in  ${CuisineId} kitchen`,
+           message: `No meals in  ${CuisineId} kitchen`,
            err: err.message,
          });
        });
