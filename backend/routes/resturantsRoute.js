@@ -10,8 +10,11 @@ const {
   getAllResturantByCuisineType,
 } = require("../controllers/resturants");
 
+const authentication = require("../middleware/authentication");
+const authorization = require("../middleware/authorization");
 
-resturantsRouter.post("/", createNewResturant);
+resturantsRouter.post("/", authentication,
+authorization("CREATE"),createNewResturant);
 resturantsRouter.put("/update/:id", updateResturant);
 resturantsRouter.get("/:id", getOneResturant);
 resturantsRouter.get("/allResturant/Resturants", getAllResturant);

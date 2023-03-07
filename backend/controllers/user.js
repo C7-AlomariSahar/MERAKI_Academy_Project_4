@@ -40,7 +40,7 @@ const createNewUser = (req, res) => {
     .catch((err) => {
       res.status(500).json({
         seccess: false,
-        message: "Server Error",
+        message: "Server save Error",
         errer: err,
       });
     });

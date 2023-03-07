@@ -12,8 +12,11 @@ getAllMealsWithSameeMenueTypeforOneResturant
 
 } = require("../controllers/meal");
 
+const authentication = require("../middleware/authentication");
+const authorization = require("../middleware/authorization");
 
-mealRouter.post("/", createNewMeal);
+mealRouter.post("/",authentication,
+authorization("CREATE"), createNewMeal);
 mealRouter.put("/update/:id", updateMeal);
 mealRouter.get("/:id", getOneMealbyId);
 mealRouter.get("/allmeals/meals", getAllMeals);
