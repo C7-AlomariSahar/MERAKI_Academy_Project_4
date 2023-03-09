@@ -6,13 +6,14 @@ import { Routes, Route, Link, useParams, useNavigate } from "react-router-dom";
 import axios from "axios";
 import Cuisine from "../cuisines/Cuisine";
 import "./menu.css"
+import Popup from "../popup/Popup";
 
 
 const Menu = () => {
    const [menu, setmenu] = useState([])
 
     const navigate =useNavigate();
-    const {token , settoken ,isLoggedIn, setisLoggedIn ,loggedInUserName, setloggedInUserName ,selectedResturant, setselectedResturant ,selectedmeal, setselectedmeal} =useContext(AppContext)
+    const {token , settoken ,isLoggedIn, setisLoggedIn ,loggedInUserName, setloggedInUserName ,selectedResturant, setselectedResturant ,selectedmeal, setselectedmeal ,setPopuptrigger ,Popuptrigger} =useContext(AppContext)
 
 useEffect(() => {
     console.log("menu-----selectedResturant-------------",selectedResturant)
@@ -37,8 +38,10 @@ const allmenu = menu.map((meal,i)=>{
         <div key={meal._id} className="menu"style={{
           background:`linear-gradient(to bottom ,rgba(0,255,255,0),rgba(0,0,0,0.8)) ,url(${meal.image} ) no-repeat bottom` ,backgroundSize:"cover" 
         }} onClick={()=>{
+            console.log("_navigate _____",meal._id)
           setselectedmeal(meal._id)
         //    navigate("/meal") 
+        setPopuptrigger(true)
             
         }}>
           
@@ -58,6 +61,7 @@ const allmenu = menu.map((meal,i)=>{
   })
 
   return (
+    <>
     <div className="meals-main-div">
   
     <div className="cuisine-div-inrestaurants">
@@ -75,6 +79,8 @@ const allmenu = menu.map((meal,i)=>{
    
  
      </div>
+     {Popuptrigger && <Popup/>}
+     </>
   )
 }
 

@@ -1,0 +1,44 @@
+/* .meals-main-div{
+
+    display: flex;
+    flex-direction: column;
+} */
+
+
+.meal{
+border: 1px solid;
+background-color:    rgb(248, 202, 219); 
+display: flex;
+width: 350px;
+height:300px;
+border-radius: 10px;
+
+
+justify-content: center;
+align-items:flex-end;
+align-content:end;
+background-position: center;
+background-size: cover;
+
+
+
+font-size:medium;
+
+font-family: Cursive;
+color: green;
+
+}
+
+
+.mealinfo{
+    width: 350px;
+   height: 100px;
+   
+   background-color:rgba(0,0,0,0.8) ;
+   }
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}

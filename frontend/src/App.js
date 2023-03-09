@@ -11,6 +11,8 @@ import Register from "./components/register/Register";
 import Navbar from "./components/navbar/Navbar";
 import Home from "./components/home/Home"
 import Menu from "./components/menu/Menu";
+import Meal from "./components/Meal/Meal";
+
 
 export const AppContext = createContext()
 
@@ -24,6 +26,7 @@ function App() {
 const [isLoggedIn, setisLoggedIn] = useState(false)
 const [selectedResturant, setselectedResturant] = useState("")
 const [selectedmeal, setselectedmeal] = useState([])
+const [Popuptrigger, setPopuptrigger] = useState(false)
 useEffect(() => {
   
 navigate("/home")
@@ -33,7 +36,7 @@ navigate("/home")
 
   return (
     <div className="App">
-      <AppContext.Provider value={{token , settoken ,isLoggedIn, setisLoggedIn , loggedInUserName, setloggedInUserName , selectedResturant, setselectedResturant ,selectedmeal, setselectedmeal}}>
+      <AppContext.Provider value={{token , settoken ,isLoggedIn, setisLoggedIn , loggedInUserName, setloggedInUserName , selectedResturant, setselectedResturant ,selectedmeal, setselectedmeal ,setPopuptrigger ,Popuptrigger}}>
     <div className="navbar">
 
     <Navbar />
@@ -47,13 +50,12 @@ navigate("/home")
       
       
         <Route  path="/home" element={<Home /> }></Route>
-     
-        <Route  path="/restaurants" element={  <Restaurants/> }></Route>
-      
-        <Route  path="/login" element={  <Login /> }></Route>
+             <Route  path="/restaurants" element={  <Restaurants/> }></Route>
+              <Route  path="/login" element={  <Login /> }></Route>
        <Route  path="/register" element={  <Register /> }></Route>
        <Route  path="/restaurants" element={  <Restaurants /> }></Route>
        <Route path="/menu" element={<Menu />}></Route>
+       {/* <Route path="/meal" element={<Meal/>}></Route> */}
        
       </Routes>
  </div>
