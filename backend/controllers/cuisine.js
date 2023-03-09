@@ -21,4 +21,24 @@ const createNewCuisine=(req,res)=>{
       });
 }
 
-module.exports = {createNewCuisine}
+const getAllCuisine=(req,res)=>{
+
+  cuisineModel.find({}).then((cuisine) => {
+   
+    res.status(200).json({
+      success: true,
+      message: `All the cuisines `,
+      cuisine: cuisine,
+    });
+  })
+  .catch((err) => {
+    res.status(500).json({
+      success: false,
+      message: `Server Error`,
+      err: err.message,
+    });
+
+  })
+
+}
+module.exports = {createNewCuisine , getAllCuisine}

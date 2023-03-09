@@ -7,8 +7,7 @@ const authorization = require("../middleware/authorization");
 
 const {createNewUser,updateNewUser,login}=require("../controllers/user")
 
-userRoute.post("/register",authentication,
-authorization("CREATE_USERS"),createNewUser)
+userRoute.post("/register",createNewUser)
 userRoute.put("/update/:id",updateNewUser)
 userRoute.post("/login", login)
 

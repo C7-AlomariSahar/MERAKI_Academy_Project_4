@@ -134,6 +134,7 @@ const login =(req,res)=>{
                   success: true,
                   message: "Valid login credentials",
                   token: token,
+                  user:data
                 });
              }).catch((err)=>{
               throw err
