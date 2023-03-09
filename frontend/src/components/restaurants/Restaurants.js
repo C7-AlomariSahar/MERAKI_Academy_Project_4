@@ -9,8 +9,15 @@ import "./Restaurant.css"
 
 
 const Restaurants = () => {
+
+  const navigate =useNavigate();
+  const {token , settoken ,isLoggedIn, setisLoggedIn ,loggedInUserName, setloggedInUserName ,selectedResturant, setselectedResturant} =useContext(AppContext)
+
+
     const [allRestaurants, setallRestaurants] = useState([])
     const [filtername, setfiltername] = useState("")
+
+
 useEffect(() => {
 
 
@@ -35,7 +42,11 @@ const allrestaurants = allRestaurants.map((restaurant,i)=>{
 
       <div key={restaurant._id} className="restaurant"style={{
         background:`linear-gradient(to bottom ,rgba(0,255,255,0),rgba(0,0,0,0.8)) ,url(${restaurant.image} ) no-repeat bottom` ,backgroundSize:"cover" 
-      }} >
+      }} onClick={()=>{
+        setselectedResturant(restaurant._id)
+         navigate("/menu") 
+          
+      }}>
         
         
         

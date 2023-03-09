@@ -86,7 +86,7 @@ const [password, setpassword] = useState("")
    <input type="number" placeholder='PhoneNumber' onChange={(e)=>{setphoneNumber(e.target.value)}}/><br/>
    <br/>
     <input  type="email" placeholder='Email'onChange={(e)=>{ setemail(e.target.value)}} /><br/><br/>
-    <input type="password" placeholder='password'onChange={(e)=>{setpassword(e.target.value)}} /><br/><br/><br/>
+    <input type="password" placeholder='password'onChange={(e)=>{setpassword(e.target.value)}} /><br/><br/>
   
     <input type="text" placeholder='City' onChange={(e)=>{setcity(e.target.value)}}/><br/><br/>
     <input  type="text" placeholder='building' onChange={(e)=>{setbuilding(e.target.value)}}/><br/><br/>
