@@ -5,12 +5,15 @@ import { Routes, Route, Link, useParams, useNavigate } from "react-router-dom";
 
 import axios from "axios";
 import Cuisine from "../cuisines/Cuisine";
-
+import "./Restaurant.css"
 
 
 const Restaurants = () => {
     const [allRestaurants, setallRestaurants] = useState([])
+    const [filtername, setfiltername] = useState("")
 useEffect(() => {
+
+
    axios.get("http://localhost:5000/restaurant/allResturant/Resturants").then((response)=>{
     console.log("dataResturantsAll******************",response.data.resturant)
     setallRestaurants(response.data.resturant)
@@ -22,35 +25,44 @@ useEffect(() => {
    })
 
  
-}, [])
+}, [filtername])
 
 
 const allrestaurants = allRestaurants.map((restaurant,i)=>{
-  return( <>
-  
-      <div key={restaurant._id} className="resturant">
+  console.log("restaurant._id_____________________________",restaurant._id)
+  return( 
+ 
+      <div key={restaurant._id} className="restaurant"style={{backgroundColor: "rgb(212, 237, 249)",
+    backgroundImage: `url(${restaurant.image})`}} >
         
         
-        <h3>restaurant.resturantName</h3>
-        <p>restaurant.cuisine </p>
-        <span>resturant.rate</span>
+        <h3>{restaurant.resturantName}</h3>
+        <p>{restaurant.cuisine.cuisineName} </p>
+        <span>{restaurant.rate}</span>
         
         
         
       </div>
   
-  </>)
+  )
 })
 
   return (
-    <div>
 
-      <Cuisine />
-<div>
-allrestaurants
-</div>
+    <div className="restaurant-main-div">
 
-     
+   <div className="cuisine-div-inrestaurants">
+     <Cuisine /> 
+    </div>
+
+   
+   <div className="restaurants-div-for-all">
+       {allrestaurants}
+    
+     </div>
+
+
+  
 
     </div>
   )

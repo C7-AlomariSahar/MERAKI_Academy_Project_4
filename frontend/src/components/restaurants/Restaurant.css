@@ -1,0 +1,32 @@
+.restaurant-main-div{
+
+    display: flex;
+    flex-direction: column;
+}
+
+
+.restaurant{
+border: 1px solid;
+background-color:    rgb(248, 202, 219); 
+display: flexbox;
+width: 300px;
+height: 200px;
+border-radius: 10px;
+
+}
+
+.cuisine-div-inrestaurants{
+    display: flex;
+    justify-content: space-around;
+    width: 100vw;
+    height: 100px;
+   
+   }
+
+   .restaurants-div-for-all{
+
+    display: grid;    
+    row-gap: 20px;
+    grid-template-columns: repeat(auto-fit ,minmax(300px,1fr)) ;
+    padding:2rem 5rem;
+   }

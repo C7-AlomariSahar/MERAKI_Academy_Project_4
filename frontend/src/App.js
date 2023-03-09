@@ -56,7 +56,8 @@ navigate("/home")
  </div>
 
       <div className="footer">
-<Restaurants />
+
+
       </div>
       </AppContext.Provider>
     </div>
