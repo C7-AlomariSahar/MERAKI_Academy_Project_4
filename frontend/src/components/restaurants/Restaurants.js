@@ -27,20 +27,25 @@ useEffect(() => {
  
 }, [filtername])
 
-
+// {backgroundColor: "rgb(212, 237, 249)",
+//     backgroundImage: `url(${restaurant.image})`}
 const allrestaurants = allRestaurants.map((restaurant,i)=>{
   console.log("restaurant._id_____________________________",restaurant._id)
   return( 
- 
-      <div key={restaurant._id} className="restaurant"style={{backgroundColor: "rgb(212, 237, 249)",
-    backgroundImage: `url(${restaurant.image})`}} >
+
+      <div key={restaurant._id} className="restaurant"style={{
+        background:`linear-gradient(to bottom ,rgba(0,255,255,0),rgba(0,0,0,0.8)) ,url(${restaurant.image} ) no-repeat bottom` ,backgroundSize:"cover" 
+      }} >
         
         
+        
+        <div className="info">
+          
         <h3>{restaurant.resturantName}</h3>
-        <p>{restaurant.cuisine.cuisineName} </p>
-        <span>{restaurant.rate}</span>
+        <p>{restaurant.cuisine.cuisineName} <span>{restaurant.rate}</span>  </p>
         
-        
+          
+        </div>
         
       </div>
   

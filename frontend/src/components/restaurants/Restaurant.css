@@ -8,13 +8,32 @@
 .restaurant{
 border: 1px solid;
 background-color:    rgb(248, 202, 219); 
-display: flexbox;
-width: 300px;
-height: 200px;
+display: flex;
+width: 350px;
+height:250px;
 border-radius: 10px;
 
-}
 
+justify-content: center;
+align-items:flex-end;
+align-content:end;
+background-position: center;
+background-size: cover;
+
+
+
+font-size:medium;
+
+font-family: Cursive;
+color: green;
+
+}
+.info{
+ width: 350px;
+height: 90px;
+
+background-color:rgba(0,0,0,0.8) ;
+}
 .cuisine-div-inrestaurants{
     display: flex;
     justify-content: space-around;
@@ -27,6 +46,6 @@ border-radius: 10px;
 
     display: grid;    
     row-gap: 20px;
-    grid-template-columns: repeat(auto-fit ,minmax(300px,1fr)) ;
+    grid-template-columns: repeat(auto-fit ,minmax(350px,1fr)) ;
     padding:2rem 5rem;
    }
