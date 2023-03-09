@@ -4,6 +4,7 @@ import { AppContext } from "../../App";
 import { Routes, Route, Link, useParams, useNavigate } from "react-router-dom";
 
 import axios from "axios";
+import Cuisine from "../cuisines/Cuisine";
 
 
 
@@ -24,8 +25,8 @@ useEffect(() => {
 }, [])
 
 
-allRestaurants.map((restaurant,i)=>{
-  return <>
+const allrestaurants = allRestaurants.map((restaurant,i)=>{
+  return( <>
   
       <div key={restaurant._id} className="resturant">
         
@@ -38,11 +39,20 @@ allRestaurants.map((restaurant,i)=>{
         
       </div>
   
-  </>
+  </>)
 })
 
   return (
-    <div></div>
+    <div>
+
+      <Cuisine />
+<div>
+allrestaurants
+</div>
+
+     
+
+    </div>
   )
 
 }

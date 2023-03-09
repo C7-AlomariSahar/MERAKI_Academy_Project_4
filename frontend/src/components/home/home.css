@@ -1,0 +1,36 @@
+
+.home{
+ 
+    /* grid-template-columns: 1fr ;
+    grid-template-rows: 3f 3fr 1fr;
+    grid-template-areas: "imgdiv"
+    "datadiv"
+    "data2div" */
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    
+    width: 100vw;
+ 
+   
+}
+.start-home-img{
+
+    background-image: url("../../images/background.jpg");
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    width: 100vw;
+    height: 400px;
+  
+    text-align: center;
+    
+}
+
+.cuisine-div-inhome{
+ display: flex;
+ justify-content: space-around;
+ width: 100vw;
+ height: 100px;
+
+}

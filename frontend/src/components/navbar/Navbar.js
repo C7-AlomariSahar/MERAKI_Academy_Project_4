@@ -8,8 +8,8 @@ import "./navbar.css"
  import { AppContext } from "../../App";
 
 const Navbar = () => {
-  const {token , settoken ,isLoggedIn, setisLoggedIn} =useContext(AppContext)
 
+  const {token , settoken ,isLoggedIn, setisLoggedIn ,loggedInUserName, setloggedInUserName} =useContext(AppContext)
   return (
   <div className='navbar'>
 <div className='applogo'>
@@ -17,13 +17,18 @@ const Navbar = () => {
 <span>Speedy Fork</span>
 </div>
 <div className='navbar_links'>
-{isLoggedIn ? "": <NavLink className={"navlink"} to="/login"  style={({ isActive }) => ({ color: isActive ? "red" : "white" })}>
-    <div><BsFillCartFill  className='icons' /><br/>Login</div></NavLink>  }
-{isLoggedIn ? "":<NavLink to="/register" className={"navlink"}   style={({ isActive }) => ({ color: isActive ? "red" : "white" })} >
-<div> <VscAccount  className='icons' /><br/> 
-Join Us </div> </NavLink> }
- 
- <NavLink to="/Home" className={"navlink"}  style={({ isActive }) => ({ color: isActive ? "red" : "white" })}> <BiHomeSmile className='icons' /><br/> Home</NavLink>  
+  
+{/* {isLoggedIn ? "": <NavLink className={"navlink"} to="/cart"  style={({ isActive }) => ({ color: isActive ? "red" : "white" })}>
+    <BsFillCartFill  className='icons' />
+    </NavLink>  } */}
+{isLoggedIn ? "":<NavLink to="/login" className={"navlink"}   style={({ isActive }) => ({ color: isActive ? "red" : "white" })} >
+ <VscAccount  className='icons' />
+ </NavLink> }
+
+ {isLoggedIn ? <button> Welcom {loggedInUserName} </button> :""}
+
+ <NavLink to="/Home" className={"navlink"}  style={({ isActive }) => ({ color: isActive ? "red" : "white" })}><BiHomeSmile className='icons' /> </NavLink>  
+
 
 
 </div>

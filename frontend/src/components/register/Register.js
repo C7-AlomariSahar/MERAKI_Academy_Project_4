@@ -1,11 +1,19 @@
 import React ,{useState ,useEffect,useContext} from 'react'
 import axios from 'axios'
+import { useNavigate } from 'react-router-dom'
 import '../../App'
 import { AppContext } from '../../App'
+
+
+
 const Register = () => {
-const {token , settoken ,isLoggedIn, setisLoggedIn} =useContext(AppContext)
+
+const {token , settoken ,isLoggedIn, setisLoggedIn ,loggedInUserName, setloggedInUserName} =useContext(AppContext)
+
 const [color, setcolor] = useState("grey")
 const role ="6404c1347a1a16e002d52192"
+
+   const navigate = useNavigate();
 
     const RegisterFun =()=>{
    
@@ -25,8 +33,27 @@ const role ="6404c1347a1a16e002d52192"
         role,}).then((dataRes)=>{
             // setresult()
             setresult(dataRes.data.message)
-          console.log("!!!!!!!!!!!!!!!!!",dataRes)
+           console.log("!!!!!!!!!!!!!!!!!",dataRes)
             setcolor("blue")
+            
+            axios
+            .post("http://localhost:5000/user/login", { email ,password  })
+            .then((resultdata) => {
+                console.log("login_________________", resultdata.data.message);
+                settoken( resultdata.data.token)
+                setloggedInUserName(resultdata.data.user[0].UserName)
+                setisLoggedIn(true)
+                setresult(resultdata.data.message)
+                
+            }).then(()=>{navigate("/home")})
+            .catch((err) => {
+                console.log("error", err.response.data.message);
+                setresult(err.response.data.message)
+            });
+
+
+
+          
         }).catch((error)=>{
             
             setresult(error.response.data.message)})
@@ -35,6 +62,7 @@ const role ="6404c1347a1a16e002d52192"
 
 
     }
+   
 const [result, setresult] = useState("")
 const [firstName, setfirstName] = useState("")
 const [LastName, setLastName] = useState("")
@@ -48,6 +76,7 @@ const [city, setcity] = useState("")
 const [password, setpassword] = useState("")
 
   return (
+    <div className="loginregister">
     <div className='register'>
     <h1>Register</h1>
    <input  type="text" placeholder='First Name' onChange={(e)=>{setfirstName(e.target.value)}}/><br/><br/>
@@ -69,6 +98,18 @@ const [password, setpassword] = useState("")
 <input style={{"color": color  }}className='message' type="text" value={result} disabled /><br/>
 
 
+    </div>
+
+
+    <div className="changeLoginRegister">
+        <div>   
+        <span> Already An Account Holder</span>             
+        <button onClick={()=>{
+            navigate("/login")
+        }} > Login  </button>
+      </div>
+       
+    </div>
     </div>
   )
 }

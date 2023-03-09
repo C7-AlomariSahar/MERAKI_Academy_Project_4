@@ -6,8 +6,8 @@ import { Routes, Route, Link, useParams, useNavigate } from "react-router-dom";
 import axios from "axios";
 
 const Login = () => {
-
-    const {token , settoken ,isLoggedIn, setisLoggedIn} =useContext(AppContext)
+    const navigate =useNavigate();
+    const {token , settoken ,isLoggedIn, setisLoggedIn ,loggedInUserName, setloggedInUserName} =useContext(AppContext)
     const [password, setpassword] = useState("");
     const [email, setemail] = useState("");
     const [result, setresult] = useState("");
@@ -18,9 +18,11 @@ const Login = () => {
             .then((resultdata) => {
                 console.log("login_________________", resultdata.data.message);
                 settoken( resultdata.data.token)
+                setloggedInUserName(resultdata.data.user[0].UserName)
+                console.log(".user.UserName_________________",resultdata.data.user[0].UserName);
                 setisLoggedIn(true)
                 setresult(resultdata.data.message)
-            })
+            }).then(()=>{navigate("/home")})
             .catch((err) => {
                 console.log("error", err.response.data.message);
                 setresult(err.response.data.message)
@@ -28,6 +30,7 @@ const Login = () => {
     };
 
     return (
+      <div  className="loginregister">     
         <div className="login-div">
             <input
                 type="email"
@@ -63,6 +66,17 @@ const Login = () => {
                 disabled
             />
             <br />
+        </div>
+
+ <div className="changeLoginRegister">
+           
+    <div>   
+        <span>Don't have an account? </span>             
+        <button onClick={()=>{
+            navigate("/register")
+        }}> Register With Us  </button>
+      </div>     
+    </div>
         </div>
     );
 };

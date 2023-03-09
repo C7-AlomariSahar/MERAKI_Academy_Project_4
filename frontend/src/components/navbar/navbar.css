@@ -1,21 +1,25 @@
 .navbar{
 
 
-    width: 100%;
+    width: 100vw;
     height: 50px;
     display: flex;
     justify-content: space-between;
     align-items: center;
     background-color: black;
-    padding: 1rem 2rem;
+    padding-top: 1rem ;
+    padding-bottom: 1rem ;
+
     color : white ;
     font-size: 30px;
+   
 }
 .applogo{
 
     display: flex;
     justify-content: flex-start;
     align-items: center;
+    padding-left: 1rem;
 }
 applogo img {
     width: 60px;
@@ -25,16 +29,47 @@ applogo img {
 display: flex;
 justify-content: center;
 align-items: center;
+padding-right: 1rem;
 }
 .navlink {
     font-size: 20px;
+   
  margin: 1rem;
+ margin-top: 2rem ;
  text-decoration: none;
- 
+ width: 40px;
+ height:40px;
+
 }
+.navlink :hover{
+    width: 40px;
+    height:40px;
+    
+}
+
+
 .icons{
     width: 30px;
     height: 30px;
-    
+    background: none;
+    border: none;
 
 }
+/* .try{
+    width: 50px;
+    height: 50px;
+    background: none;
+    border: none;
+    transition: transform .5s;
+}
+.try{
+    transform: scale(1.1,1.1); 
+} */
+
+.navbar-one-link{
+    transition: transform .5s;
+}
+.navbar-one-link  :hover {
+    transform: scale(1.1,1.1);
+}
+/* <div className='navbar-one-link'> */
