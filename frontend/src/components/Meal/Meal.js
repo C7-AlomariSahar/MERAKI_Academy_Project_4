@@ -12,9 +12,18 @@ import "./meal.css"
 const Meal = () => {
 
     const navigate =useNavigate();
-    const {token , settoken ,isLoggedIn, setisLoggedIn ,loggedInUserName, setloggedInUserName ,selectedResturant, setselectedResturant ,selectedmeal, setselectedmeal} =useContext(AppContext)
+   
+    const {token , settoken ,isLoggedIn, setisLoggedIn ,loggedInUserName, setloggedInUserName ,selectedResturant, setselectedResturant ,selectedmeal, setselectedmeal ,setPopuptrigger ,Popuptrigger ,orderitems, setorderitems} =useContext(AppContext)
+
+
  const [theMeal, settheMeal] = useState("")
+ const [orderQuntiti, setorderQuntiti] = useState(0)
+
+
+
     useEffect(() => {
+
+       
         console.log("one meal-------------",selectedmeal)
     
       axios.get(`http://localhost:5000/meal/${selectedmeal}`).then((response)=>{
@@ -26,34 +35,49 @@ const Meal = () => {
         console.log("dataResturantsAllerrXXXXXXX",err.response.data.message)
     
        })
-      
+    
     }, [])
 
 
 
   return (
 
-    <div>
-        <div>
+    <div className="outer-meal-container">
+     <div className="inner-meal-container">
 
-    <div className="meal"style={{
+        <div className="meal"style={{
         background:`linear-gradient(to bottom ,rgba(0,255,255,0),rgba(0,0,0,0.8)) ,url(${theMeal.image} ) no-repeat bottom` ,backgroundSize:"cover" 
           }}>
         
-      <div className="mealinfo"> 
+         <div className="mealinfo"> 
         <h2>{theMeal.mealName}</h2>
        
+          </div>
      </div>
-         </div>
    
-  <div>
+  <div className="mealinfoextra">
   <p>{theMeal.description}</p>
-      <div><span>{theMeal.price} AED</span> <span><input type={"number"}/></span> </div>
+      <div><span>{theMeal.price} AED</span></div>
   </div>
    
    
     
-         <div> <button>ADD TO CART</button>  </div>
+     <div> <span><input min={0} max={10} onChange={(e)=>{setorderQuntiti(e.target.value)}} type={"number"}/></span> 
+        <button
+         onClick={()=>{
+           console.log("----------orderQuntit------------",orderQuntiti)
+           setPopuptrigger(false)
+           setorderitems([...orderitems ,{
+            itemName:theMeal.mealName,            
+           _id:selectedmeal ,
+            quntiti:orderQuntiti,
+            price :theMeal.price
+            }])
+          
+     
+         }} >ADD TO CART</button> 
+         
+     </div>
      
       </div>
       

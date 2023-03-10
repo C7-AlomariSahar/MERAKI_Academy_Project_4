@@ -17,13 +17,29 @@ align-content: center;
 }
 .inner-popup{
 
-    background-color: rgb(0, 0, 0);
-    width:  400px;
-   height:  500px;
+    background-color: #fff;
+    width: 500px;
+    height:   450px;
    /* position: relative; */
-   
-   text-align: center;
-   display: flex;
-   justify-content: center;
-   align-content: center;
+   border-radius: 20px;
+   margin: 20px auto;
+    padding: 20px;
+/* overflow: auto; */
 }
+.close{
+
+ height: 20px;
+ width: 20px;
+border: none ;
+    font-size: large;
+   background: none;
+
+   
+}
+/* .button{
+  display: flex;
+  justify-content:flex-end;
+  width: 350px;
+  border: 2px solid black ;
+ 
+} */

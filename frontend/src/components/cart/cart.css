@@ -1,0 +1,22 @@
+table {
+    border-collapse: collapse;
+    width: 100%;
+  }
+  
+  th, td {
+    padding:20px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+  }
+  /* tr:nth-child(even) {background-color: #fbc4e6;}
+  th {background-color: #d389b7;
+font-size: larger;} */
+.parint{
+    position: relative;
+}
+.child{
+
+    position: absolute;
+ right: 0;
+margin-top: 10px;
+}

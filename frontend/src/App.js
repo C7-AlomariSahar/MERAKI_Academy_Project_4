@@ -12,6 +12,7 @@ import Navbar from "./components/navbar/Navbar";
 import Home from "./components/home/Home"
 import Menu from "./components/menu/Menu";
 import Meal from "./components/Meal/Meal";
+import Cart from "./components/cart/Cart";
 
 
 export const AppContext = createContext()
@@ -27,6 +28,22 @@ const [isLoggedIn, setisLoggedIn] = useState(false)
 const [selectedResturant, setselectedResturant] = useState("")
 const [selectedmeal, setselectedmeal] = useState([])
 const [Popuptrigger, setPopuptrigger] = useState(false)
+const [orderitems, setorderitems] = useState([])
+
+const add =(i,x)=>{
+  setorderitems(orderitems.map((order,index)=>{
+     return index == i ?  {...order , quntiti:Number(order.quntiti)+1} : order
+
+  }) )
+ 
+}
+const sub= (i,x)=>{
+  setorderitems(orderitems.map((order,index)=>{
+    return index == i ?  {...order , quntiti:Number(order.quntiti)-1} : order
+
+ }) )
+ 
+}
 useEffect(() => {
   
 navigate("/home")
@@ -36,7 +53,7 @@ navigate("/home")
 
   return (
     <div className="App">
-      <AppContext.Provider value={{token , settoken ,isLoggedIn, setisLoggedIn , loggedInUserName, setloggedInUserName , selectedResturant, setselectedResturant ,selectedmeal, setselectedmeal ,setPopuptrigger ,Popuptrigger}}>
+      <AppContext.Provider value={{token , settoken ,isLoggedIn, setisLoggedIn , loggedInUserName, setloggedInUserName , selectedResturant, setselectedResturant ,selectedmeal, setselectedmeal ,setPopuptrigger ,Popuptrigger,orderitems, setorderitems ,add, sub}}>
     <div className="navbar">
 
     <Navbar />
@@ -55,7 +72,7 @@ navigate("/home")
        <Route  path="/register" element={  <Register /> }></Route>
        <Route  path="/restaurants" element={  <Restaurants /> }></Route>
        <Route path="/menu" element={<Menu />}></Route>
-       {/* <Route path="/meal" element={<Meal/>}></Route> */}
+       <Route path="/cart" element={<Cart />}></Route>
        
       </Routes>
  </div>

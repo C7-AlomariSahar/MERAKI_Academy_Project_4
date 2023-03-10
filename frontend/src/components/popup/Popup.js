@@ -10,9 +10,9 @@ const Popup = () => {
   return (
     <div className='outer-popup'>
     <div className='inner-popup'>
-      <button onClick={()=>{
+      <div className='button'><button className='close' onClick={()=>{
         setPopuptrigger(false)
-      }}>X</button>
+      }}>X</button></div>
        <Meal/>       
  
    </div>

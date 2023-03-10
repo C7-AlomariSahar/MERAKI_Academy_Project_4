@@ -11,9 +11,10 @@ import Popup from "../popup/Popup";
 
 const Menu = () => {
    const [menu, setmenu] = useState([])
+  
 
     const navigate =useNavigate();
-    const {token , settoken ,isLoggedIn, setisLoggedIn ,loggedInUserName, setloggedInUserName ,selectedResturant, setselectedResturant ,selectedmeal, setselectedmeal ,setPopuptrigger ,Popuptrigger} =useContext(AppContext)
+    const {token , settoken ,isLoggedIn, setisLoggedIn ,loggedInUserName, setloggedInUserName ,selectedResturant, setselectedResturant ,selectedmeal, setselectedmeal ,setPopuptrigger ,Popuptrigger ,orderitems, setorderitems} =useContext(AppContext)
 
 useEffect(() => {
     console.log("menu-----selectedResturant-------------",selectedResturant)
