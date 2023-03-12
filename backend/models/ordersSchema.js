@@ -9,6 +9,7 @@ const orderSchema =new mongoose.Schema({
     paymentMethod:{type :String ,required: true},
     orderfrom:{type:mongoose.Schema.Types.ObjectId ,ref:"restaurant", required:true },
             orderItems:	[{ itemName :{type :String ,required: true }
+                ,itemId:{  type:mongoose.Schema.Types.ObjectId ,ref:"meal", required:true   }
         ,quntiti: {type :Number ,required: true }
         ,price:{type :Number ,required: true}}],
 

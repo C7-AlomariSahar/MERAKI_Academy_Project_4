@@ -23,7 +23,7 @@ const orderModel =require("../models/ordersSchema")
             res.status(500).json({
               success: false,
               message: `Server Error`,
-              error:err
+              error:err.message
             });
           })
 

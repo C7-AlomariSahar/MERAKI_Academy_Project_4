@@ -23,6 +23,7 @@ const createNewCuisine=(req,res)=>{
 
 const getAllCuisine=(req,res)=>{
 
+
   cuisineModel.find({}).then((cuisine) => {
    
     res.status(200).json({
@@ -41,4 +42,29 @@ const getAllCuisine=(req,res)=>{
   })
 
 }
-module.exports = {createNewCuisine , getAllCuisine}
+
+
+const getlimitedCuisine=(req,res)=>{
+  const skipnumber =req.query.skipnumber
+  const limitnumber =req.query.limitnumber
+  
+  
+    cuisineModel.find({}).skip(skipnumber).limit(limitnumber).then((cuisine) => {
+     
+      res.status(200).json({
+        success: true,
+        message: `All the cuisines `,
+        cuisine: cuisine,
+      });
+    })
+    .catch((err) => {
+      res.status(500).json({
+        success: false,
+        message: `Server Error`,
+        err: err.message,
+      });
+  
+    })
+  
+  }
+module.exports = {createNewCuisine , getAllCuisine ,getlimitedCuisine}
