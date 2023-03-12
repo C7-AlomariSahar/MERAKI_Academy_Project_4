@@ -3,18 +3,26 @@ import Meal from '../Meal/Meal'
 import "./Popup.css"
 import { AppContext } from '../../App'
 import { useNavigate } from 'react-router-dom'
-
+import {BsFillCartCheckFill} from "react-icons/bs"
+import CheckOut from '../checkout/CheckOut'
 const Popup = () => {
- const{setPopuptrigger} =useContext(AppContext)
+ const{setPopuptrigger , isCheckOut, setisCheckOut ,setloggedInUserName,  setorderitems } =useContext(AppContext)
     const navigate  = useNavigate();
   return (
     <div className='outer-popup'>
     <div className='inner-popup'>
       <div className='button'><button className='close' onClick={()=>{
+       if(isCheckOut){
         setPopuptrigger(false)
+        navigate("/home")
+        setorderitems([])
+       } else{
+        setPopuptrigger(false)
+       }
+
       }}>X</button></div>
-       <Meal/>       
- 
+     { !isCheckOut  && <Meal/>       }
+     { isCheckOut  &&  <CheckOut/>}
    </div>
 
     </div>

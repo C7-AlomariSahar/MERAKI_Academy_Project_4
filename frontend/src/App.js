@@ -29,6 +29,9 @@ const [selectedResturant, setselectedResturant] = useState("")
 const [selectedmeal, setselectedmeal] = useState([])
 const [Popuptrigger, setPopuptrigger] = useState(false)
 const [orderitems, setorderitems] = useState([])
+const [isCheckOut, setisCheckOut] = useState(false)
+const [loggedInUserID, setloggedInUserID] = useState("")
+const [finalOrdarData, setfinalOrdarData] = useState({})
 
 const add =(i,x)=>{
   setorderitems(orderitems.map((order,index)=>{
@@ -38,10 +41,15 @@ const add =(i,x)=>{
  
 }
 const sub= (i,x)=>{
+ 
+  if( orderitems[i].quntiti == 1 ){
+    setorderitems( orderitems.filter((order,index)=>{
+      return index != i  }))
+  }else{
   setorderitems(orderitems.map((order,index)=>{
-    return index == i ?  {...order , quntiti:Number(order.quntiti)-1} : order
-
- }) )
+    return index == i  ?  {...order , quntiti:Number(order.quntiti)-1} : order
+   
+ }))}
  
 }
 useEffect(() => {
@@ -53,7 +61,7 @@ navigate("/home")
 
   return (
     <div className="App">
-      <AppContext.Provider value={{token , settoken ,isLoggedIn, setisLoggedIn , loggedInUserName, setloggedInUserName , selectedResturant, setselectedResturant ,selectedmeal, setselectedmeal ,setPopuptrigger ,Popuptrigger,orderitems, setorderitems ,add, sub}}>
+      <AppContext.Provider value={{token , settoken ,isLoggedIn, setisLoggedIn , loggedInUserName, setloggedInUserName , selectedResturant, setselectedResturant ,selectedmeal, setselectedmeal ,setPopuptrigger ,Popuptrigger,orderitems, setorderitems ,add, sub , isCheckOut, setisCheckOut ,loggedInUserID ,setloggedInUserID , finalOrdarData, setfinalOrdarData}}>
     <div className="navbar">
 
     <Navbar />

@@ -18,7 +18,7 @@ const Navbar = () => {
 </div>
 <div className='navbar_links'>
   
-{isLoggedIn ? "": <NavLink className={"navlink"} to="/cart"  style={({ isActive }) => ({ color: isActive ? "red" : "white" })}>
+{ <NavLink className={"navlink"} to="/cart"  style={({ isActive }) => ({ color: isActive ? "red" : "white" })}>
     <BsFillCartFill  className='icons' />
     </NavLink>  }
 {isLoggedIn ? "":<NavLink to="/login" className={"navlink"}   style={({ isActive }) => ({ color: isActive ? "red" : "white" })} >

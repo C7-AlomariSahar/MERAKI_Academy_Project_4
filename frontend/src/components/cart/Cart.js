@@ -6,30 +6,48 @@ import { Routes, Route, Link, useParams, useNavigate } from "react-router-dom";
 import axios from "axios";
 
 import "./cart.css"
+import Popup from "../popup/Popup";
+import {MdOutlineDeleteForever} from "react-icons/md"
+import {IoMdArrowDropdown} from "react-icons/io"
+import {IoMdArrowDropup} from "react-icons/io"
 
 
 const Cart = () => {
-
-
+    
     const navigate =useNavigate();
    
-    const {token , settoken ,isLoggedIn, setisLoggedIn ,loggedInUserName, setloggedInUserName ,selectedResturant, setselectedResturant ,selectedmeal, setselectedmeal ,setPopuptrigger ,Popuptrigger ,orderitems, setorderitems, add ,sub} =useContext(AppContext)
+    const {token , settoken ,isLoggedIn, setisLoggedIn ,loggedInUserName, setloggedInUserName ,selectedResturant, setselectedResturant ,selectedmeal, setselectedmeal ,setPopuptrigger ,Popuptrigger ,orderitems, setorderitems, add ,sub , isCheckOut, setisCheckOut ,loggedInUserID  } =useContext(AppContext)
 
-     console.log("------------orderitems-----------",orderitems)
-     let quntitichange;
  const [totalPrice, settotalPrice] = useState(0)
  const [Quintitynew, setQuintitynew] = useState(0)
  const [sumorsub, setsumorsub] = useState(0)
-    //  itemName:theMeal.mealName,            
-    //  _id:selectedmeal ,
-    //   quntiti:orderQuntiti,
-    //   price :theMeal.price
 const [cart, setcart] = useState([orderitems])
 const [totalquntity, settotalquntity] = useState(0)
 const [totalpricetopay, settotalpricetopay] = useState(0)
+const [paymentMethod, setpaymentMethod] = useState("")
+
+   
+let totalquntiti =  orderitems.reduce((acc,orderitem,i)=>{
+        return acc+ Number(orderitem.quntiti) },0)
+let finalPrice =orderitems.reduce((acc,orderitem,i)=>{
+    return acc+(Number(orderitem.quntiti) * Number(orderitem.price) )
+},0) 
 
 
-    let total;
+const CheckOutFun =()=>{
+
+console.log("final Data_______________" ,{userId:loggedInUserID ,totalPrice:finalPrice ,paymentMethod  :  paymentMethod   ,  orderfrom: selectedResturant , orderItems:   orderitems ,     orderStatus:"Pending" ,deleviredTo:"JVC"  } )
+    axios.post("http://localhost:5000/order/",{userId:loggedInUserID ,totalPrice:finalPrice ,paymentMethod  :  paymentMethod   ,  orderfrom: selectedResturant , orderItems:   orderitems ,     orderStatus:"Pending" ,deleviredTo:"JVC "  }).then((result)=>{
+        console.log("OK Order Saved")
+        setisCheckOut(true)
+        setPopuptrigger(true)
+    }).catch((err)=>{ throw err})
+    
+    
+   
+
+
+}
 
 
 
@@ -57,13 +75,14 @@ const [totalpricetopay, settotalpricetopay] = useState(0)
                   <td>{orderitem.price} AED </td>
                  
                   <td>
-                   <span> <button onClick={()=>{
+                   <span> < button   disabled={orderitem.quntiti == 10 } onClick={()=>{
                      add(i, orderitem);
-                   }}>+</button></span> 
+                   }}><IoMdArrowDropup /> </button></span> 
                    <span> { orderitem.quntiti}</span> 
                    <span>  <button onClick={()=>{
                      sub(i,orderitem)
-                   }} >-</button></span> 
+                   }} > {  orderitem.quntiti != 1 ?  < IoMdArrowDropdown/> : <MdOutlineDeleteForever /> } </button> </span> 
+                
                     
                     </td>
                   <td>      {orderitem.quntiti * orderitem.price}  AED </td>
@@ -79,22 +98,26 @@ const [totalpricetopay, settotalpricetopay] = useState(0)
               
              
 
-             <div> Number Of Items in Your Cart :{orderitems.reduce((acc,orderitem,i)=>{
-           return acc+ Number(orderitem.quntiti) 
-       },0)} </div>
-               <div> Total Amount to pay :{orderitems.reduce((acc,orderitem,i)=>{
-           return acc+(Number(orderitem.quntiti) * Number(orderitem.price) )
-       },0) } AED</div>
+             <div> Number Of Items in Your Cart :{ totalquntiti
+      } </div>
+               <div> Total Amount to pay :{ finalPrice  } AED</div>
               <div>
                    <div>Payment Method : </div>
-              
-                <input type="checkbox" id="label1" name="label1" value="Cash On Delivery"/>
+              <br/>
+                <input type="radio"  onChange={(e)=>{setpaymentMethod(e.target.value) }} id="label1" name="label1" value="Cash On Delivery"/>
                  <label for="label1"> Cash On Delivery</label>
+                 <br/>
+                 <button on onClick={()=>{
+                         CheckOutFun();
+
+                 }}> Check Out </button>
              <div>
              </div>
     </div>
           </div>
            </div>
+           <button onClick={()=>{   navigate(-1)}}>Back to the Menu</button>
+           {Popuptrigger && <Popup/>}
     </div>
   )
 }

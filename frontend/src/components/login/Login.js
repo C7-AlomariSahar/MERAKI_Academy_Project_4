@@ -7,7 +7,7 @@ import axios from "axios";
 
 const Login = () => {
     const navigate =useNavigate();
-    const {token , settoken ,isLoggedIn, setisLoggedIn ,loggedInUserName, setloggedInUserName} =useContext(AppContext)
+    const {token , settoken ,isLoggedIn, setisLoggedIn ,loggedInUserName, setloggedInUserName  ,loggedInUserID ,setloggedInUserID } =useContext(AppContext)
     const [password, setpassword] = useState("");
     const [email, setemail] = useState("");
     const [result, setresult] = useState("");
@@ -19,6 +19,7 @@ const Login = () => {
                 console.log("login_________________", resultdata.data.message);
                 settoken( resultdata.data.token)
                 setloggedInUserName(resultdata.data.user[0].UserName)
+                setloggedInUserID(resultdata.data.user[0]._id )
                 console.log(".user.UserName_________________",resultdata.data.user[0].UserName);
                 setisLoggedIn(true)
                 setresult(resultdata.data.message)

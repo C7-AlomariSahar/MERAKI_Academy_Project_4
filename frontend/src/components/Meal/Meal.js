@@ -17,7 +17,7 @@ const Meal = () => {
 
 
  const [theMeal, settheMeal] = useState("")
- const [orderQuntiti, setorderQuntiti] = useState(0)
+ const [orderQuntiti, setorderQuntiti] = useState(1)
 
 
 
@@ -60,19 +60,44 @@ const Meal = () => {
       <div><span>{theMeal.price} AED</span></div>
   </div>
    
-   
+  {/* _id:selectedmeal , */}
     
-     <div> <span><input min={0} max={10} onChange={(e)=>{setorderQuntiti(e.target.value)}} type={"number"}/></span> 
+     <div> <span><input min={1} max={10} defaultValue={1} onChange={(e)=>{setorderQuntiti(e.target.value)}} type={"number"}/></span> 
         <button
          onClick={()=>{
            console.log("----------orderQuntit------------",orderQuntiti)
+          
+          const found =orderitems.find((elem,i)=>{
+            return elem.itemId == theMeal._id
+          })
+         
+
+           if(found){
+
+         
+            setorderitems(orderitems.map((order,index)=>{
+                console.log("?????????????????",order.quntiti,"??????????????????",found.quntiti)
+                if(order.itemId == theMeal._id && ( Number(order.quntiti)+
+                Number(orderQuntiti) >10 ) ){
+                    return  order
+                }
+                return order.itemId == theMeal._id ?  Number(order.quntiti)+
+                Number(orderQuntiti) >10 ? {...order , quntiti: 10 } :{...order , quntiti:(Number(order.quntiti)+
+                Number(orderQuntiti))} : order
+           
+             }) )
+              
+        
+        }else{
+            
+            setorderitems([...orderitems ,{
+             itemName:theMeal.mealName,            
+             itemId :theMeal._id,
+             quntiti:orderQuntiti,
+             price :theMeal.price
+             }])
+           }
            setPopuptrigger(false)
-           setorderitems([...orderitems ,{
-            itemName:theMeal.mealName,            
-           _id:selectedmeal ,
-            quntiti:orderQuntiti,
-            price :theMeal.price
-            }])
           
      
          }} >ADD TO CART</button> 
