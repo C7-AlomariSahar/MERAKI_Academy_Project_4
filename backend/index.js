@@ -25,7 +25,7 @@ app.use("/role",roleRouter)
 app.use("/meal",mealRouter)
 app.use("/restaurant",resturantsRouter)
 app.use("/cuisine",cuisineRouter)
-app.use("/menueType",meunTypeRouter)
+app.use("/menuType",meunTypeRouter)
 app.use("/order",orderRouter)
 
 

@@ -22,4 +22,50 @@ const createNewMeunType=(req,res)=>{
       });
 }
 
-module.exports = {createNewMeunType}
+const getAllMeunType=(req,res)=>{
+
+
+  meunTypeModel.find({}).then((meunType) => {
+   
+    res.status(200).json({
+      success: true,
+      message: `All the meunType `,
+      meunType: meunType,
+    });
+  })
+  .catch((err) => {
+    res.status(500).json({
+      success: false,
+      message: `Server Error`,
+      err: err.message,
+    });
+
+  })
+
+}
+
+
+const getlimitedMeunType=(req,res)=>{
+  const skipnumber =req.query.skipnumber
+  const limitnumber =req.query.limitnumber
+  
+  
+  meunTypeModel.find({}).skip(skipnumber).limit(limitnumber).then((meunType) => {
+     
+      res.status(200).json({
+        success: true,
+        message: `All the meunType `,
+        meunType: meunType,
+      });
+    })
+    .catch((err) => {
+      res.status(500).json({
+        success: false,
+        message: `Server Error`,
+        err: err.message,
+      });
+  
+    })
+  
+  }
+module.exports = {createNewMeunType ,getlimitedMeunType ,getAllMeunType}

@@ -128,7 +128,7 @@ const getOneResturant =(req,res)=>{
 const  getAllResturant =( req,res)=>{
 
    
-    resturantModel.find().populate("cuisine","cuisineName -_id").exec()
+    resturantModel.find().populate("cuisine","cuisineName -_id").sort({cuisine:1}).exec()
        .then((data) => {
        
          res.status(200).json({
@@ -185,10 +185,52 @@ const getAllResturantByCuisineType=( req,res)=>{
 
 }
 
+const  getAllResturantforFillData =( req,res)=>{
+
+   
+    resturantModel.find({},{_id:1}).exec()
+       .then((data) => {
+       
+
+      const newdata =  data.map((elem)=>{
+                   return({
+                    "mealName":"Tabbouleh",
+                    "image":"https://media.istockphoto.com/id/171247688/photo/tabbouleh-salad.jpg?s=612x612&w=0&k=20&c=XJBZKXHM7YqjxTNkHPSc9oCvEMUlzEDIM7WncL8cSjs=", 
+                   "description":"Chopped Parsley, Tomato, Onions, Cracked Wheat, Lemon Juice, Olive Oil.",
+                 "price":"25.00",
+                  "ingrediantsToRemove": [ ],
+                    "ingrediantsToAdd":[],
+                   "mealType":"6404e97b1080354f11a3f8d3",
+                   "resturantId":`${elem}`
+
+                   }
+                   )
+
+        })
+        
+         res.status(200).json({
+           success: true,
+           message: `found`,
+           resturant: newdata,
+         });
+       })
+       .catch((err) => {
+         res.status(500).json({
+           success: false,
+           message: `Server Error`,
+           err: err.message,
+         });
+       });
+  
+   
+
+
+}
+
 module.exports = {
   createNewResturant,
   updateResturant,
   getOneResturant,
   getAllResturant,
- getAllResturantByCuisineType,
+ getAllResturantByCuisineType,getAllResturantforFillData
 };

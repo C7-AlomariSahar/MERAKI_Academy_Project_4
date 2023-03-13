@@ -7,7 +7,7 @@ const {
   updateResturant,
   getOneResturant,
   getAllResturant,
-  getAllResturantByCuisineType,
+  getAllResturantByCuisineType,getAllResturantforFillData
 } = require("../controllers/resturants");
 
 const authentication = require("../middleware/authentication");
@@ -19,5 +19,6 @@ resturantsRouter.put("/update/:id", updateResturant);
 resturantsRouter.get("/:id", getOneResturant);
 resturantsRouter.get("/allResturant/Resturants", getAllResturant);
 resturantsRouter.get("/ResturantbyCuisine/:cuisineType", getAllResturantByCuisineType);
+resturantsRouter.get("/data/filldata", getAllResturantforFillData);
 
 module.exports = resturantsRouter;

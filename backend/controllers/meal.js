@@ -154,8 +154,7 @@ const   getAllMealsForOneResturant = ( req,res)=>{
   
     let resturantId = req.params.resturantId;
    
-    mealModel.find({ resturantId: resturantId }).populate("mealType","meunTypeName -_id").populate("resturantId","resturantName -_id").exec()
-       .then((data) => {
+    mealModel.find({ resturantId: resturantId }).populate("mealType","meunTypeName -_id").populate("resturantId","resturantName -_id").sort({mealType:1}).exec().then((data) => {
        
          res.status(200).json({
            success: true,
@@ -195,7 +194,7 @@ const   getAllMealsWithSameeMenueTypeforOneResturant = ( req,res)=>{
        .catch((err) => {
          res.status(500).json({
            success: false,
-           message: `No meals in  ${CuisineId} kitchen`,
+           message: `No meals in  ${mealType} kitchen`,
            err: err.message,
          });
        });
