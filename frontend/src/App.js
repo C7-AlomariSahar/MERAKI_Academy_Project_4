@@ -13,6 +13,17 @@ import Home from "./components/home/Home"
 import Menu from "./components/menu/Menu";
 import Meal from "./components/Meal/Meal";
 import Cart from "./components/cart/Cart";
+import {BsWhatsapp} from "react-icons/bs"
+import {BsFacebook} from "react-icons/bs"
+import {BsYoutube} from "react-icons/bs"
+import {BsTwitter} from "react-icons/bs"
+import {BsInstagram} from "react-icons/bs"
+import {BsPinterest} from "react-icons/bs"
+
+
+
+
+
 
 
 export const AppContext = createContext()
@@ -89,9 +100,42 @@ navigate("/home")
  </div>
 
       <div className="footer">
+         <div>
+               <div></div>
+               <div></div>
+               <div></div>
+        </div>
+                <div  className="footer-navbar"> 
+ <div className="social-icon">
+ <div><a href="https://www.whatsapp.com"><BsWhatsapp className="icon"/></a></div>       
+    
+ <div><a href="https://web.facebook.com"><BsFacebook className="icon"/></a></div>       
+       
+ <div><a href="https://twitter.com"><BsTwitter className="icon" /></a></div>       
+  
+   <div><a href="https://www.instagram.com"><BsInstagram className="icon"/></a></div>       
+    
+ <div><a href="https://pinterest.com"><BsPinterest className="icon"/></a></div>       
+    
+ <div><a href="https://www.youtube.com"><BsYoutube className="icon" /></a></div>         
+</div>
+                  
+                  
+                  
+                  </div> 
 
 
-      </div>
+
+     </div>
+
+ 
+        
+    
+   
+    
+
+     
+       
       </AppContext.Provider>
     </div>
   );

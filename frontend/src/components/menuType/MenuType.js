@@ -42,7 +42,7 @@ useEffect(() => {
 axios.get(`http://localhost:5000/meal/Resturant/${selectedResturant}/allMenuType?skipnumber=${skipnumber}&&limitnumber=${limitnumber}`).then((result)=>{
 
 console.log("^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^",result.data)
-setmenuTypes(result.data.meals)
+setmenuTypes(result.data.menutype)
 }).catch((err) => {
     console.log("error", err.response.data.message);
     setresult(err.response.data.message)
