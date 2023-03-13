@@ -34,7 +34,7 @@ const Login = () => {
       <div  className="loginregister">     
         <div className="login-div">
            
-            <h2>Please Enter login detail</h2>
+            <h2> login your detail</h2>
             <br />
             <input
                 type="email"

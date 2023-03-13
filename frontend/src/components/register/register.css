@@ -1,0 +1,63 @@
+.loginregister{
+    width: 100vw;
+        display : flex ;
+       justify-content: center;
+       align-items: center;
+     /* background-image: url("../../images/background.jpg"); */
+    }
+    .register{
+   
+    padding-right: 10px;
+    border-right: 1px solid black;
+    width:340px;
+    height: 600px;
+    }
+    
+    .changeLoginRegister{
+        width:300px;
+        height: 300px;
+      
+        padding-left: 5px;
+        display : flex ;
+        flex-direction: column;
+       justify-content: center;
+       align-items: center;
+    
+    }
+    
+    .changeLoginRegister button {
+        font-size: large;
+        width:250px;
+        height: 30px;
+    }
+    .register input {
+        border: none;
+        border-bottom: 1px solid black;
+        width :300px;
+        height: 25px;
+    }
+    .register button {
+     font-size: large;
+        width:250px;
+        height: 30px;
+    }
+    
+    @media  (max-width : 900px) {
+        
+        .loginregister{
+    
+            display : flex ;
+            flex-direction: column;
+           justify-content: center;
+           align-items: center;
+        
+        }
+        .register{
+    
+            padding-bottom: 5px;
+            border-bottom: 1px solid black;
+            border-right: none;
+            width:300px;
+            height: 400px;
+            }
+    }

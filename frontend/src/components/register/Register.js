@@ -4,7 +4,7 @@ import { useNavigate } from 'react-router-dom'
 import '../../App'
 import { AppContext } from '../../App'
 
-
+import "./register.css"
 
 const Register = () => {
 
@@ -93,9 +93,9 @@ const [password, setpassword] = useState("")
    <input  type="text" placeholder='Street' onChange={(e)=>{setstreet(e.target.value)}}/><br/><br/>
    <input type="number" placeholder='flat Number' onChange={(e)=>{setflatNumber(e.target.value)}}/><br/>
    
-    
-<button className='register-button' onClick={RegisterFun}>Register</button><br/><br/><br/>
-<input style={{"color": color  }}className='message' type="text" value={result} disabled /><br/>
+   <br/>
+<button className='register-button' onClick={RegisterFun}>Register</button><br/>
+
 
 
     </div>
@@ -103,10 +103,13 @@ const [password, setpassword] = useState("")
 
     <div className="changeLoginRegister">
         <div>   
-        <span> Already An Account Holder</span>             
+        <h3> Already An Account Holder</h3>             
         <button onClick={()=>{
             navigate("/login")
-        }} > Login  </button>
+        }} > Login  </button> 
+        <p><span>*
+Terms & conditions.</span>
+Your privacy and security are important to us. For more information on how we use your data read ourprivacy policy</p>
       </div>
        
     </div>
