@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useContext } from "react";
 import { AppContext } from "../../App";
-
+import "./login.css"
 import { Routes, Route, Link, useParams, useNavigate } from "react-router-dom";
 
 import axios from "axios";
@@ -33,6 +33,9 @@ const Login = () => {
     return (
       <div  className="loginregister">     
         <div className="login-div">
+           
+            <h2>Please Enter login detail</h2>
+            <br />
             <input
                 type="email"
                 placeholder="email"
@@ -59,23 +62,21 @@ const Login = () => {
                 Login
             </button> <br />
             <br />
-            <input
-                style={{ color: "red" }}
-                className="message"
-                type="text"
-                value={result}
-                disabled
-            />
+            <div>Forgot your password?</div>
+         
             <br />
         </div>
 
  <div className="changeLoginRegister">
            
     <div>   
-        <span>Don't have an account? </span>             
+        <h3>Don't have an account? </h3>             
         <button onClick={()=>{
             navigate("/register")
-        }}> Register With Us  </button>
+        }}> Creat Account </button><br/>
+        <p><span>*
+Terms & conditions.</span>
+Your privacy and security are important to us. For more information on how we use your data read ourprivacy policy</p>
       </div>     
     </div>
         </div>

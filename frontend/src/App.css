@@ -4,7 +4,9 @@ body{
     padding: 0;
     font-family: Cursive;
 }
-
+button{
+    font-family: Cursive;
+}
 .App{
     width: 100vw;
 
@@ -22,6 +24,8 @@ grid-template-areas: "navbar"
  height: 50px;
     grid-area:navbar ;
     margin-bottom: 10px;
+    /* position: fixed; */
+  
 }
 .main{
     grid-area:main ;

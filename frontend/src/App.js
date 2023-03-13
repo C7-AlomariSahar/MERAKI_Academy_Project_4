@@ -32,6 +32,9 @@ const [orderitems, setorderitems] = useState([])
 const [isCheckOut, setisCheckOut] = useState(false)
 const [loggedInUserID, setloggedInUserID] = useState("")
 const [finalOrdarData, setfinalOrdarData] = useState({})
+const [filtername, setfiltername] = useState("all")
+const [allmenutypesID, setallmenutypesID] = useState([])
+const [filterFunparam, setfilterFunparam] = useState("")
 
 const add =(i,x)=>{
   setorderitems(orderitems.map((order,index)=>{
@@ -61,7 +64,7 @@ navigate("/home")
 
   return (
     <div className="App">
-      <AppContext.Provider value={{token , settoken ,isLoggedIn, setisLoggedIn , loggedInUserName, setloggedInUserName , selectedResturant, setselectedResturant ,selectedmeal, setselectedmeal ,setPopuptrigger ,Popuptrigger,orderitems, setorderitems ,add, sub , isCheckOut, setisCheckOut ,loggedInUserID ,setloggedInUserID , finalOrdarData, setfinalOrdarData}}>
+      <AppContext.Provider value={{token , settoken ,isLoggedIn, setisLoggedIn , loggedInUserName, setloggedInUserName , selectedResturant, setselectedResturant ,selectedmeal, setselectedmeal ,setPopuptrigger ,Popuptrigger,orderitems, setorderitems ,add, sub , isCheckOut, setisCheckOut ,loggedInUserID ,setloggedInUserID , finalOrdarData, setfinalOrdarData ,filtername, setfiltername,allmenutypesID, setallmenutypesID , filterFunparam, setfilterFunparam}}>
     <div className="navbar">
 
     <Navbar />

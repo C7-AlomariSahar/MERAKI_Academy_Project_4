@@ -1,8 +1,15 @@
 .meals-main-div{
 
     display: flex;
-    flex-direction: column;
+    flex-direction: column; 
+justify-content: center;
+padding: 0;
+margin: 0;
+width: 100vw;
+
 }
+
+
 
 
 .menu{
@@ -39,13 +46,41 @@ background-color:rgba(0,0,0,0.8) ;
     justify-content: space-around;
     width: 100vw;
     height: 100px;
+  
    
    }
 
    .meal-div-for-all{
-
+ 
     display: grid;    
     row-gap: 20px;
     grid-template-columns: repeat(auto-fit ,minmax(350px,1fr)) ;
     padding:2rem 5rem;
    }
+   .div{
+
+    display: flex;
+    flex-direction: column;
+    margin: 20px;
+   }
+.divContaner{
+    display: grid;
+    gap:10px;
+    grid-template-columns: repeat(3,1fr);
+   margin:50px;
+   
+}
+@media screen and (max-width : 600px) {
+    .divContaner{
+        display: grid;
+        grid-template-columns: repeat(1,1fr);
+       
+    }
+}
+@media screen and (max-width : 900px) and (min-width :600px){
+    .divContaner{
+        display: grid;
+        grid-template-columns: repeat(2,1fr);
+       
+    }
+}

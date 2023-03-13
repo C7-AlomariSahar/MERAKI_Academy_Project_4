@@ -11,16 +11,16 @@ import "./Restaurant.css"
 const Restaurants = () => {
 
   const navigate =useNavigate();
-  const {token , settoken ,isLoggedIn, setisLoggedIn ,loggedInUserName, setloggedInUserName ,selectedResturant, setselectedResturant} =useContext(AppContext)
+  const {token , settoken ,isLoggedIn, setisLoggedIn ,loggedInUserName, setloggedInUserName ,selectedResturant, setselectedResturant ,filtername, setfiltername} =useContext(AppContext)
 
 
     const [allRestaurants, setallRestaurants] = useState([])
-    const [filtername, setfiltername] = useState("")
+    
 
 
 useEffect(() => {
-
-
+console.log("************************************************",filtername)
+  if(filtername == "All Restaurants"){
    axios.get("http://localhost:5000/restaurant/allResturant/Resturants").then((response)=>{
     console.log("dataResturantsAll******************",response.data.resturant)
     setallRestaurants(response.data.resturant)
@@ -30,6 +30,18 @@ useEffect(() => {
     console.log("dataResturantsAllerrXXXXXXX",err.response.data.message)
 
    })
+  }else{
+    axios.get(`http://localhost:5000/restaurant/ResturantbyCuisine/${filtername}`).then((response)=>{
+      console.log("dataResturantsAll******************",response.data.resturant)
+      setallRestaurants(response.data.resturant)
+  
+  
+     }).catch((err)=>{
+      console.log("dataResturantsAllerrXXXXXXX",err.response.data.message)
+      setallRestaurants([])
+     })
+
+  }
 
  
 }, [filtername])
@@ -73,8 +85,9 @@ const allrestaurants = allRestaurants.map((restaurant,i)=>{
 
    
    <div className="restaurants-div-for-all">
-       {allrestaurants}
-    
+       {allRestaurants.length !=0 ? allrestaurants : "No Resturants in this Kitchen"
+       }
+     
      </div>
 
 
