@@ -1,4 +1,5 @@
 const mealModel = require("../models/mealsSchema");
+const menutype =require("../models/menuTypeSchema")
 
 const createNewMeal = (req, res) => {
   const {
@@ -120,6 +121,35 @@ const getOneMealbyId =(req,res)=>{
    
 
 }
+const getOneMealbymealType =(req,res)=>{
+  
+  let mealType = req.params.mealType;
+ 
+  mealModel.find({ mealType: mealType }).populate("mealType","meunTypeName -_id").populate("resturantId","resturantName -_id").exec()
+     .then((data) => {
+       if (!data.length) {
+         return res.status(404).json({
+           success: false,
+           message: `this meal not found`,
+         });
+       }
+       res.status(200).json({
+         success: true,
+         message: `found`,
+         meal: data,
+       });
+     })
+     .catch((err) => {
+       res.status(500).json({
+         success: false,
+         message: `Server Error`,
+         err: err.message,
+       });
+     });
+
+ 
+
+}
 
 
 const  getAllMeals =( req,res)=>{
@@ -175,8 +205,45 @@ const   getAllMealsForOneResturant = ( req,res)=>{
 
 
 }
-const   getAllMealsWithSameeMenueTypeforOneResturant = ( req,res)=>{
+const   getAllmenuTypeMealsForOneResturant = ( req,res)=>{
 
+
+  
+  const skipnumber =req.query.skipnumber
+  const limitnumber =req.query.limitnumber
+ 
+  let resturantId = req.params.resturantId;
+ 
+  mealModel.find({ resturantId: resturantId },{mealType:1}).distinct("mealType").exec().then((data) => {
+    // .sort({mealType:1}).skip(skipnumber).limit(limitnumber)populate("mealType","meunTypeName")
+
+    menutype.find({_id :{ $in: data }}).skip(skipnumber).limit(limitnumber).then((result)=>{
+      res.status(200).json({
+        success: true,
+        message: `found`,
+        menutype: result,
+      });
+      
+
+    })
+    
+   
+      
+     })
+     .catch((err) => {
+       res.status(500).json({
+         success: false,
+         message: `No meals for this resturant`,
+         err: err.message,
+       });
+     });
+
+ 
+
+
+
+}
+const   getAllMealsWithSameeMenueTypeforOneResturant = ( req,res)=>{
 
     
     let resturantId = req.params.resturantId;
@@ -210,5 +277,6 @@ module.exports = {
   getOneMealbyId,
   getAllMeals,
   getAllMealsForOneResturant,
-  getAllMealsWithSameeMenueTypeforOneResturant,
+  getAllMealsWithSameeMenueTypeforOneResturant,getAllmenuTypeMealsForOneResturant
+  ,getOneMealbymealType
 };

@@ -151,6 +151,7 @@ const  getAllResturant =( req,res)=>{
 }
 
 
+
 const getAllResturantByCuisineType=( req,res)=>{
 
 
