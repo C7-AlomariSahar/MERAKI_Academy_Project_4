@@ -3,63 +3,27 @@ body{
      margin: 0;
     padding: 0;
     font-family: Cursive;
-    overflow: hidden;
+   overflow-x: hidden;
+
 }
 button{
     font-family: Cursive;
+    background-image: linear-gradient(24deg ,#309d0c 0% ,
+  #4de252 100% );
+  border: none;
+  border-radius: 8%;
+  font-size: 1rem;
+  transition: transform.4s;
+  cursor: pointer;
 }
-/* .App{
-    width: 100vw;
-
-display: grid;
-
-height: 100%;
-display: grid;
-grid-template-columns: 1fr ;
-grid-template-rows: 1fr 7fr 1fr;
-grid-template-areas: "navbar"
-"main"
-"footer"} */
-
-.navbar{
- height: 50px;
-    grid-area:navbar ;
-    margin-bottom: 10px;
-
-position: sticky;
-  top:0;
-  z-index: 99;
+button:active{
+    transform: translate(4px);
+    box-shadow: 0px 0px 1px rgba(0,0,0,.2);
+    border-bottom:none;
 }
-/* .main{
-    grid-area:main ;
-
-    display: flex;
-    justify-content: center;
-
-} */
-.footer{
-    grid-area:footer ;
-}
-.social-icon{
- color: white;
- display: flex;
-    justify-content:space-around;
-
+button:hover{
+    transform:scale(1.1,1.1)
 
 }
-.footer-navbar{
-    width:100vw;
-    height: 60px;
-    background-color: black;
-    display: flex;
-    justify-content:center;
-    position: sticky;
-  bottom:0;
 
-}
-.icon{
 
-    color:white;
-    width: 30px;
-    height: 30px;
-}

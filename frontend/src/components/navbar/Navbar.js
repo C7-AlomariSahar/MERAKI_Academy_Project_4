@@ -4,75 +4,45 @@ import {Routes,Route,Link,NavLink} from "react-router-dom"
 import {BsFillCartFill} from "react-icons/bs"
 import {VscAccount} from "react-icons/vsc"
 import {BiHomeSmile} from "react-icons/bi"
+import {GiKnifeFork} from "react-icons/gi"
+import {AiOutlineMenu} from "react-icons/ai"
+import{FaRegWindowClose} from "react-icons/fa"
 import "./navbar.css"
+
  import { AppContext } from "../../App";
 
 const Navbar = () => {
-
+ const [click, setclick] = useState(false)
+ const clickfun =()=>setclick(!click)
   const {token , settoken ,isLoggedIn, setisLoggedIn ,loggedInUserName, setloggedInUserName} =useContext(AppContext)
   return (
   <div className='navbar'>
 <div className='applogo'>
 
-<span>Speedy Fork</span>
+ <span ><GiKnifeFork className='forklogo'/></span><span  className='fork'>Speedy</span><span>Fork</span>
 </div>
-<div className='navbar_links'>
+<div className='navbar_links-outer' > 
+<div  className={click ?' navbar_links active':'navbar_links'}>
   
-{ <NavLink className={"navlink"} to="/cart"  style={({ isActive }) => ({ color: isActive ? "red" : "white" })}>
+{ <NavLink className={"navlink"} to="/cart" onClick= {clickfun} style={({ isActive }) => ({ color: isActive ? "green" : "white" })}>
     <BsFillCartFill  className='icons' />
     </NavLink>  }
-{isLoggedIn ? "":<NavLink to="/login" className={"navlink"}   style={({ isActive }) => ({ color: isActive ? "red" : "white" })} >
+{isLoggedIn ? "":<NavLink to="/login" className={"navlink"}  onClick= {clickfun}  style={({ isActive }) => ({ color: isActive ? "green" : "white" })} >
  <VscAccount  className='icons' />
  </NavLink> }
 
- {isLoggedIn ? <button> Welcom {loggedInUserName} </button> :""}
+ {isLoggedIn ? <button onClick= {clickfun}  > Welcom {loggedInUserName} </button> :""}
 
- <NavLink to="/Home" className={"navlink"}  style={({ isActive }) => ({ color: isActive ? "red" : "white" })}><BiHomeSmile className='icons' /> </NavLink>  
-
-
+ <NavLink to="/Home" className={"navlink"}  onClick= {clickfun}  style={({ isActive }) => ({ color: isActive ? "green" : "white" })}><BiHomeSmile className='icons' /> </NavLink>  
 
 </div>
-
+<div onClick= {clickfun}  className='nav-bar-small-screen'>{ !click ?<  AiOutlineMenu  /> :< FaRegWindowClose/>} </div>
+</div>
     </div>
   )
 }
 
 export default Navbar
-
-
-// import React ,{useContext}from 'react'
-// import {Link, useNavigate ,NavLink} from "react-router-dom"
-// import { AppContext } from '../../App'
-// import "../App"
-
-
-
-
-
-//   const {isLoggedIn , settoken ,setisLoggedIn} = useContext(AppContext)
-//   const navigate =useNavigate()
-//   return (
-//     <div className='navbar'>
-//       {isLoggedIn ? "":<NavLink to="/register"   style={({ isActive }) => ({ color: isActive ? "red" : "black" })} >Register</NavLink> }
-//       {isLoggedIn ? "": <NavLink to="/login"  style={({ isActive }) => ({ color: isActive ? "red" : "black" })}>Login</NavLink>  }
-//       {isLoggedIn ?  <Link to="/dashboard">Dashboard</Link> :"" }
-//       {isLoggedIn ?  <Link to="/newArticle">Add New Article</Link> :"" }
-//       {isLoggedIn ?  <button className='logout' onClick={()=>{ setisLoggedIn(false)
-//          settoken("")
-
-//          localStorage.setItem("token", JSON.stringify("") );
-        
-//          localStorage.setItem("isLoggedIn", JSON.stringify(false) );
-//          navigate("/login")
-//       }}><a href="">logout</a></button> :"" }
-
-      
-// {console.log("logg",isLoggedIn)}
-
-//     </div>
-//   )
-// }
-
 
 
 
