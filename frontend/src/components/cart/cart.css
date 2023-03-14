@@ -1,5 +1,11 @@
+.cart-container{
+  width: 70vw;
+  
+  height: 70vh;
+}
+
 table {
-    border-collapse: collapse;
+    border-collapse:collapse;
     width: 100%;
   }
   
@@ -16,7 +22,28 @@ font-size: larger;} */
 }
 .child{
 
-    position: absolute;
+position: absolute;
  right: 0;
-margin-top: 20px;
+margin-top: 30px;
+display: flex;
+flex-direction: column;
+
+
+
+
+}
+.backbut{
+  position: absolute;
+  left: 15vw ;
+ margin-top: 100px;
+}
+
+.finaldata{
+color: green;
+font-size: large;
+}
+.check-out-final-data-divs{
+display: flex;
+border-bottom: 1px solid black;
+
 }

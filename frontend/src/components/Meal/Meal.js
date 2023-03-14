@@ -46,8 +46,10 @@ const Meal = () => {
      <div className="inner-meal-container">
 
         <div className="meal"style={{
-        background:`linear-gradient(to bottom ,rgba(0,255,255,0),rgba(0,0,0,0.8)) ,url(${theMeal.image} ) no-repeat bottom` ,backgroundSize:"cover" 
-          }}>
+        // background:`linear-gradient(to bottom ,rgba(0,255,255,0),rgba(0,0,0,0.8)) ,url(${theMeal.image} ) no-repeat bottom` ,backgroundSize:"cover" 
+        background:`url(${theMeal.image} ) no-repeat center  ` 
+
+         }}>
         
          <div className="mealinfo"> 
         <h2>{theMeal.mealName}</h2>
@@ -115,46 +117,4 @@ export default Meal
 
 
 
-/***
- * 
- * 
- * 
-//  const ingrediantsToAdd = theMeal.ingrediantsToAdd.map((add ,i)=>{
-
-//     return (
-//       <>
-      
-//       <input key={i} type={"checkbox"} id={i}  value={add}/>
-//        <label for={i}> {add} </label><br/>
-
-//        </>
-//       )
-
-//  } )
-
-//  const ingrediantsToRemove = theMeal.ingrediantsToRemove.map((add ,i)=>{
- 
-//     consol.log("adddddddddddddddddd",add)
-//     return (
-//       <>
-      
-//       <input key={i} type={"checkbox"} id={i}  value={add}/>
-//        <label for={i}> {add} </label><br/>
-
-//        </>
-//       )
-
-//  } )
- * 
- *   {/* <div> 
-        <h2>ingrediantsToAdd</h2>
-     { ingrediantsToAdd}
-      </div> 
-    
-     <div> 
-        <h2>ingrediantsToRemove</h2>
-     {ingrediantsToRemove}
-      </div> 
-     */
-  
  

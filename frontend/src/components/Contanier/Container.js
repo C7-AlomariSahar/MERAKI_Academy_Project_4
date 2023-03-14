@@ -44,11 +44,11 @@ const Container = () => {
           </div>
 
           <div className="footer">
-            <div>
+            {/* <div>
               <div></div>
               <div></div>
               <div></div>
-            </div>
+            </div> */}
             <div className="footer-navbar">
               <div className="social-icon">
                 <div>

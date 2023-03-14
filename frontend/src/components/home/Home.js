@@ -11,6 +11,9 @@ import axios from "axios";
 
  const Home = () => {
 
+
+  const {token , settoken ,isLoggedIn, setisLoggedIn ,loggedInUserName, setloggedInUserName  ,loggedInUserID ,setloggedInUserID ,setfiltername } =useContext(AppContext)
+
   const navigate =useNavigate();
    const [top, settop] = useState([])
 
@@ -41,15 +44,24 @@ useEffect(() => {
    
        <h4>Your Favourite Restaurant At Your Home</h4>
 
-          <button>Order Now</button>
+          <button onClick={()=>{
+           if( isLoggedIn ){ 
+            setfiltername("All Restaurants")
+            navigate("/restaurants")
+          }else{
+            navigate("/login") 
+      
+         
+        }
+          }}>Order Now</button>
       </div>
 
 
-      <div className='cuisine-div-inhome'> 
+      {/* <div className='cuisine-div-inhome'>  */}
  
        <Cuisine />
 
-      </div>
+      {/* </div> */}
 
 {/* .limit( 5 )
  */}
@@ -66,6 +78,7 @@ useEffect(() => {
         background:`url(${topone.image} ) no-repeat bottom` ,backgroundSize:"cover" 
       }} onClick={()=>{
         settop(topone._id)
+        setfiltername("All Restaurants")
          navigate("/restaurants") 
           
       }}>

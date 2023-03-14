@@ -21,6 +21,12 @@
 
  
 }
+.asda{
+    width: 100vw;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
 .slider{
     /* display: flex;
 
@@ -30,7 +36,7 @@
     border:none;
     border-radius: 10px;*/
     height: 100px;
-      width: 90vw; 
+      width: 100vw; 
     display: grid;
     grid-template-columns: repeat(11,1fr);
   

@@ -24,6 +24,9 @@ const Navbar = () => {
 <div className='navbar_links-outer' > 
 <div  className={click ?' navbar_links active':'navbar_links'}>
   
+
+<NavLink to="/Home" className={"navlink"}  onClick= {clickfun}  style={({ isActive }) => ({ color: isActive ? "green" : "white" })}><BiHomeSmile className='icons' /> </NavLink>  
+
 { <NavLink className={"navlink"} to="/cart" onClick= {clickfun} style={({ isActive }) => ({ color: isActive ? "green" : "white" })}>
     <BsFillCartFill  className='icons' />
     </NavLink>  }
@@ -33,7 +36,7 @@ const Navbar = () => {
 
  {isLoggedIn ? <button onClick= {clickfun}  > Welcom {loggedInUserName} </button> :""}
 
- <NavLink to="/Home" className={"navlink"}  onClick= {clickfun}  style={({ isActive }) => ({ color: isActive ? "green" : "white" })}><BiHomeSmile className='icons' /> </NavLink>  
+
 
 </div>
 <div onClick= {clickfun}  className='nav-bar-small-screen'>{ !click ?<  AiOutlineMenu  /> :< FaRegWindowClose/>} </div>

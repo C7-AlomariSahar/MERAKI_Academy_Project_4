@@ -22,22 +22,26 @@ const Cuisine = () => {
     const navigate =useNavigate();
     const {  filtername, setfiltername  } =useContext(AppContext)
 
-    
+    window.addEventListener("resize",(e)=>{
+        setlimitnumber( window.innerWidth <= 600 ? 2: 10 )
+        
+    })
+
 useEffect(() => {
 console.log("@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@",windowSize)
-    if(start == 0){
-    axios.get(`http://localhost:5000/cuisine/cuisines/all`).then((result)=>{
+//     if(start == 0){
+//     axios.get(`http://localhost:5000/cuisine/cuisines/all`).then((result)=>{
 
-console.log("%%%%%%",result)
-const resltArray = result.data.cuisine
-setcisuinNumber(resltArray.length) 
-setstart(1)
-}).catch((err) => {
-    console.log("error", err.response.data.message);
-    setresult(err.response.data.message)
-})
+// console.log("%%%%%%",result)
+// const resltArray = result.data.cuisine
+// setcisuinNumber(resltArray.length) 
+// setstart(1)
+// }).catch((err) => {
+//     console.log("error", err.response.data.message);
+//     setresult(err.response.data.message)
+// })
   
-    }
+//     }
 
 
 axios.get(`http://localhost:5000/cuisine/cuisines?skipnumber=${skipnumber}&&limitnumber=${limitnumber}`).then((result)=>{
@@ -50,7 +54,7 @@ setcuisinetnames(result.data.cuisine)
 })
   
 
-}, [skipnumber])
+}, [skipnumber,limitnumber])
 
 const Cuisinetype = cuisinetnames.map((cuisinetName,i)=>{
     return (   <div key={cuisinetName._id}  className=  {`cuisine-same ${cuisinetName.cuisineName}`}  onClick={()=>{
@@ -73,10 +77,10 @@ const Cuisinetype = cuisinetnames.map((cuisinetName,i)=>{
     })
 
   return (
-    <>
+    <div className='asda'>
       <button className='arrow' disabled={skipnumber == 0} onClick={()=>{
         
-        setskipnumber(skipnumber-10)
+        setskipnumber(skipnumber-limitnumber)
 
       }}><SlArrowLeft  size={60}/></button>
      <div className='slider' >
@@ -98,9 +102,9 @@ const Cuisinetype = cuisinetnames.map((cuisinetName,i)=>{
  
    </div>
    <button className='arrow'  disabled={skipnumber+limitnumber >= cisuinNumber}onClick={()=>{
-        setskipnumber(skipnumber+10)
+        setskipnumber(skipnumber+limitnumber)
       }}  ><SlArrowRight size={60}/></button>
-   </>
+   </div>
     )
 }
 

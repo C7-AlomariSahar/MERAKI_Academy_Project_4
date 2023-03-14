@@ -56,7 +56,10 @@ useEffect(() => {
         return( 
       
             <div key={meal._id} className="menu"style={{
-              background:`linear-gradient(to bottom ,rgba(0,255,255,0),rgba(0,0,0,0.8)) ,url(${meal.image} ) no-repeat bottom` ,backgroundSize:"cover" 
+              // background:`linear-gradient(to bottom ,rgba(0,255,255,0),rgba(0,0,0,0.8)) ,url(${meal.image} ) no-repeat bottom` ,backgroundSize:"cover" 
+              background:`url(${meal.image} ) no-repeat bottom` ,backgroundSize:"cover" 
+
+           
             }} onClick={()=>{
                 console.log("_navigate _____",meal._id)
               setselectedmeal(meal._id)

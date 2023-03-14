@@ -52,7 +52,7 @@ console.log("final Data_______________" ,{userId:loggedInUserID ,totalPrice:fina
 
 
   return (
-    <div>
+    <div className="cart-container">
   
          <div className="parint">
            <table>
@@ -98,14 +98,17 @@ console.log("final Data_______________" ,{userId:loggedInUserID ,totalPrice:fina
               
              
 
-             <div> Number Of Items in Your Cart :{ totalquntiti
-      } </div>
-               <div> Total Amount to pay :{ finalPrice  } AED</div>
-              <div>
-                   <div>Payment Method : </div>
-              <br/>
-                <input type="radio"  onChange={(e)=>{setpaymentMethod(e.target.value) }} id="label1" name="label1" value="Cash On Delivery"/>
+             <div className="check-out-final-data-divs"> Number Of Items in Your Cart  :  <span className="finaldata">{ totalquntiti
+      }  items </span></div>
+               <div className="check-out-final-data-divs"> Total Amount to pay : <span className="finaldata">{ finalPrice  } AED</span></div>
+              <div className="check-out-final-data-divs2">
+                   <div>Payment Method : 
+                   <input type="radio"  onChange={(e)=>{setpaymentMethod(e.target.value) }} id="label1" name="label1" value="Cash On Delivery"/>
                  <label for="label1"> Cash On Delivery</label>
+
+                   </div>
+                 
+               
                  <br/>
                  <button on onClick={()=>{
                          CheckOutFun();
@@ -116,7 +119,7 @@ console.log("final Data_______________" ,{userId:loggedInUserID ,totalPrice:fina
     </div>
           </div>
            </div>
-           <button onClick={()=>{   navigate(-1)}}>Back to the Menu</button>
+           <button className="backbut" onClick={()=>{   navigate(-1)}}>Back to the Menu</button>
            {Popuptrigger && <Popup/>}
     </div>
   )
