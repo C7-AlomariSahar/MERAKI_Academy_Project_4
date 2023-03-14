@@ -228,10 +228,43 @@ const  getAllResturantforFillData =( req,res)=>{
 
 }
 
+const getTop5 =(req,res)=>{
+  
+
+ 
+  resturantModel.find({}).sort({rate:-1}).populate("cuisine","cuisineName -_id").limit(4).exec()
+     .then((data) => {
+       if (!data.length) {
+         return res.status(404).json({
+           success: false,
+           message: `this Resturant: ${ResturantId} not found`,
+         });
+       }
+       res.status(200).json({
+         success: true,
+         message: `found`,
+         resturant: data,
+       });
+     })
+     .catch((err) => {
+       res.status(500).json({
+         success: false,
+         message: `Server Error`,
+         err: err.message,
+       });
+     });
+
+ 
+
+}
+
+
 module.exports = {
   createNewResturant,
   updateResturant,
   getOneResturant,
   getAllResturant,
- getAllResturantByCuisineType,getAllResturantforFillData
+ getAllResturantByCuisineType,
+ getAllResturantforFillData,
+ getTop5
 };

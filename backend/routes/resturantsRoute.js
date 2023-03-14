@@ -7,7 +7,7 @@ const {
   updateResturant,
   getOneResturant,
   getAllResturant,
-  getAllResturantByCuisineType,getAllResturantforFillData
+  getAllResturantByCuisineType,getAllResturantforFillData ,getTop5
 } = require("../controllers/resturants");
 
 const authentication = require("../middleware/authentication");
@@ -20,5 +20,8 @@ resturantsRouter.get("/:id", getOneResturant);
 resturantsRouter.get("/allResturant/Resturants", getAllResturant);
 resturantsRouter.get("/ResturantbyCuisine/:cuisineType", getAllResturantByCuisineType);
 resturantsRouter.get("/data/filldata", getAllResturantforFillData);
+resturantsRouter.get("/topRated/top", getTop5);
+
+
 
 module.exports = resturantsRouter;
