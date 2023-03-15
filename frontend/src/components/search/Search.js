@@ -21,7 +21,10 @@ const Search = () => {
     keysearch,
     setkeysearch,
     setselectedResturant,
-    setfilterFunparam
+    setfilterFunparam ,
+    comefromSearch,
+    setcomefromSearch,
+    setmealcomefromsearch
   } = useContext(AppContext);
 
   const navigate = useNavigate();
@@ -36,30 +39,36 @@ const Search = () => {
 
   if (searchresult.length != 0) {
     if (radioValue == "meal") {
-      //   theresult =  searchresult.map((meal)=>{
-      //         return(
-      //             <div key={meal._id} className="menu"style={{
-      //                 // background:`linear-gradient(to bottom ,rgba(0,255,255,0),rgba(0,0,0,0.8)) ,url(${meal.image} ) no-repeat bottom` ,backgroundSize:"cover"
-      //                 // background:`url(${meal.image} ) no-repeat bottom` ,backgroundSize:"cover"
-      //             }} onClick={()=>{
-      //                   console.log("_navigate _____",meal._id)
-      //                 setselectedmeal(meal._id)
-      //               setPopuptrigger(true)
+        theresult =  searchresult.map((meal)=>{
+              return(
+                  <div key={meal._id} className="restauranttonediv"style={{
+                      // background:`linear-gradient(to bottom ,rgba(0,255,255,0),rgba(0,0,0,0.8)) ,url(${meal.image} ) no-repeat bottom` ,backgroundSize:"cover"
+                    
+                    //   background: `url(${meal.image}} ) no-repeat bottom`,
+                    //   backgroundSize: "cover",
+          background:`url(${meal.image} ) no-repeat center` ,backgroundSize:"contain cover"
+                  }} onClick={()=>{
+                        console.log("_navigate _____",meal._id)
+                        setcomefromSearch(true)
+                        setfilterFunparam("")
+                        setmealcomefromsearch(meal._id)
+                        setselectedResturant(meal.resturantId._id);
+                        console.log("======================",meal.resturantId._id)
+                        navigate("/menu");
+                    }}>
 
-      //               }}>
+                      {/* <div className="mealimg"><img src={`${meal.image}`} /></div> */}
 
-      //                 <div className="mealimg"><img src={`${meal.image}`} /></div>
+                      <div className="infotopresult">
 
-      //                 <div className="mealinfo">
+                      <h3>{meal.mealName}</h3>
+                      <p> <span>{meal.price}</span>  </p>
 
-      //                 <h3>{meal.mealName}</h3>
-      //                 <p> <span>{meal.price}</span>  </p>
+                      </div>
 
-      //                 </div>
-
-      //               </div>
-      //         )
-      //     })
+                    </div>
+              )
+          })
 
       console.log("^^^^^^^^^^^^^^meal", searchresult);
     } else {
@@ -67,18 +76,20 @@ const Search = () => {
         return (
           <div
             key={restaurant._id}
-            className="restaurant"
+            className="restauranttonediv"
             style={{
-              background: `linear-gradient(to bottom ,rgba(0,255,255,0),rgba(0,0,0,0.8)) ,url(${restaurant.image} ) no-repeat bottom`,
+              background: `url(${restaurant.image} ) no-repeat bottom`,
               backgroundSize: "cover",
+
             }}
             onClick={() => {
                 setfilterFunparam("")
               setselectedResturant(restaurant._id);
               navigate("/menu");
+             
             }}
           >
-            <div className="info">
+            <div className="infotopresult">
               <h3>{restaurant.resturantName}</h3>
               <p>
                 {restaurant.cuisine.cuisineName} <span>{restaurant.rate}</span>{" "}
@@ -94,19 +105,25 @@ const Search = () => {
 
   return (
     <div className="search-main">
-      {searchresult.length == 0 ? (
-        <p>Your choice is not found you can try our suggestion </p>
-      ) : (
+      {searchresult.length == 0 ? 
+        <p>Your choice is not found you can try our suggestion <MdOutlineFastfood /></p>
+      : 
         <div>
-          <div>{theresult}</div>
+          <div  className="result-div">{theresult}</div>
           <div>
             <h1>
-              We suggeste the best for you Try this <MdOutlineFastfood />{" "}
+              We suggeste the best for you Try this <MdOutlineFastfood />
             </h1>
-          </div>{" "}
+            <div>
+                
+                
+           </div>
+          </div>
         </div>
-      )}
-    </div>
+        
+        }
+   </div>
+    
   );
 };
 

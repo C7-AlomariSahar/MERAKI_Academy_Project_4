@@ -83,7 +83,7 @@ width: 90vw;
 
 }
 
-@media screen and (max-width:940px) {
+@media screen and (max-width:600px) {
     .rated{
         width: 96vw;
       display: grid;  

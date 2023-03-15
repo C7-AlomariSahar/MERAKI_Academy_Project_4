@@ -40,7 +40,9 @@ function App() {
   const [radioValue, setradioValue] = useState("restaurant")
   const [searchresult, setsearchresult] = useState([])
   const [keysearch ,setkeysearch] = useState("")
-  
+  const [comefromSearch, setcomefromSearch] = useState(false)
+   const [mealcomefromsearch, setmealcomefromsearch] = useState("")           
+                            
   const add = (i, x) => {
     setorderitems(
       orderitems.map((order, index) => {
@@ -105,7 +107,9 @@ function App() {
           setfilterFunparam,
           radioValue, setradioValue,
           searchresult, setsearchresult,
-          keysearch ,setkeysearch
+          keysearch ,setkeysearch,
+          comefromSearch, setcomefromSearch,
+          mealcomefromsearch, setmealcomefromsearch
         }}
       >
 <Container />

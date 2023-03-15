@@ -15,9 +15,15 @@ const Menu = () => {
   const [menuDivs, setmenuDivs] = useState([])
 
     const navigate =useNavigate();
-    const {token , settoken ,isLoggedIn, setisLoggedIn ,loggedInUserName, setloggedInUserName ,selectedResturant, setselectedResturant ,selectedmeal, setselectedmeal ,setPopuptrigger ,Popuptrigger ,orderitems, setorderitems ,allmenutypesID ,filterFunparam, setfilterFunparam} =useContext(AppContext)
+    const {token , settoken ,isLoggedIn, setisLoggedIn ,loggedInUserName, setloggedInUserName ,selectedResturant, setselectedResturant ,selectedmeal, setselectedmeal ,setPopuptrigger ,Popuptrigger ,orderitems, setorderitems ,allmenutypesID ,filterFunparam, setfilterFunparam ,comefromSearch ,setcomefromSearch,mealcomefromsearch, setmealcomefromsearch} =useContext(AppContext)
 
 useEffect(() => {
+  if(comefromSearch){
+
+    setselectedmeal(mealcomefromsearch)
+    setPopuptrigger(true)
+
+  }
     console.log("menu-----selectedResturant-------------",selectedResturant)
     console.log("___________________$$$$$$$$$$$$$$________",filterFunparam)
    if( filterFunparam == "" ){
