@@ -8,15 +8,18 @@ import Cuisine from "../cuisines/Cuisine";
 import "./menu.css"
 import Popup from "../popup/Popup";
 import MenuType from "../menuType/MenuType";
+import { BsStarHalf } from "react-icons/bs";
+import {GiKnifeFork} from "react-icons/gi"
+import { BsStar } from "react-icons/bs";
 
-
+import { BsStarFill } from "react-icons/bs"
 const Menu = () => {
    const [menu, setmenu] = useState([])
   const [menuDivs, setmenuDivs] = useState([])
   const [restaurantinfo, setrestaurantinfo] = useState([])
 
     const navigate =useNavigate();
-    const {token , settoken ,isLoggedIn, setisLoggedIn ,loggedInUserName, setloggedInUserName ,selectedResturant, setselectedResturant ,selectedmeal, setselectedmeal ,setPopuptrigger ,Popuptrigger ,orderitems, setorderitems ,allmenutypesID ,filterFunparam, setfilterFunparam ,comefromSearch ,setcomefromSearch,mealcomefromsearch, setmealcomefromsearch} =useContext(AppContext)
+    const {token , settoken ,isLoggedIn, setisLoggedIn ,loggedInUserName, setloggedInUserName ,selectedResturant, setselectedResturant ,selectedmeal, setselectedmeal ,setPopuptrigger ,Popuptrigger ,orderitems, setorderitems ,allmenutypesID ,filterFunparam, setfilterFunparam ,comefromSearch ,setcomefromSearch,mealcomefromsearch, setmealcomefromsearch } =useContext(AppContext)
 
 useEffect(() => {
   if(comefromSearch){
@@ -114,18 +117,19 @@ axios.get(`http://localhost:5000/restaurant/${selectedResturant}`).then((respons
        <div className="restaurant-all-info">
 
          <div className="restaurant-all-info-1" > 
-           <h1> {restaurantinfo.resturantName} </h1>
-           <h3>Rate : {restaurantinfo.rate}</h3>  
-                     
-        </div>
-
+           <h1> <span className="details2"> <GiKnifeFork /> </span>{restaurantinfo.resturantName} </h1>
+           <h3 className="details">
+         <BsStarFill/> <BsStarFill/>  <BsStarFill/>  <BsStarFill/>  <BsStarHalf/> : { restaurantinfo.rate}</h3>  
+             </div>
+<div className="line"></div>
          <div className="restaurant-all-info-2">   
-           <div>location : {restaurantinfo.city}</div> 
-           <div>Delivery Fees : <span> 7 AED </span> </div>  
-             <div>Delivery Time : 30 min</div> 
-              <div> Min Order : 50 AED </div>  </div>
+           <div>location :  <span className="details"> {restaurantinfo.city} </span></div> 
+           <div>Delivery Fees : <span className="details"> 7 AED </span> </div>  
+             <div>Delivery Time :<span className="details"> 30 min </span></div> 
+              <div> Min Order :  <span className="details"> 50 AED </span> </div>  </div>
        </div>
       </div>
+     
     {/* <div className="cuisine-div-inrestaurants"> */}
       <MenuType />
      {/* </div> */}

@@ -11,12 +11,10 @@ import Home from "./components/home/Home";
 import Menu from "./components/menu/Menu";
 import Meal from "./components/Meal/Meal";
 import Cart from "./components/cart/Cart";
-import { BsWhatsapp } from "react-icons/bs";
-import { BsFacebook } from "react-icons/bs";
-import { BsYoutube } from "react-icons/bs";
-import { BsTwitter } from "react-icons/bs";
-import { BsInstagram } from "react-icons/bs";
-import { BsPinterest } from "react-icons/bs";
+
+import { BsStar } from "react-icons/bs";
+import { BsStarHalf } from "react-icons/bs";
+import { BsStarFill } from "react-icons/bs";
 import Container from "./components/Contanier/Container";
 
 export const AppContext = createContext();
@@ -69,7 +67,12 @@ function App() {
       );
     }
   };
+
+
+
+
   useEffect(() => {
+
     navigate("/home");
   }, []);
 
@@ -110,6 +113,7 @@ function App() {
           keysearch ,setkeysearch,
           comefromSearch, setcomefromSearch,
           mealcomefromsearch, setmealcomefromsearch
+          ,
         }}
       >
 <Container />

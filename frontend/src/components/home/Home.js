@@ -20,6 +20,7 @@ import axios from "axios";
 
 useEffect(() => {
 
+
   axios.get(`http://localhost:5000/restaurant/topRated/top`).then((response)=>{
   
   console.log("mealsfor one Resturant ******************",response.data.meals)
