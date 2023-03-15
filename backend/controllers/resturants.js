@@ -258,6 +258,31 @@ const getTop5 =(req,res)=>{
 
 }
 
+const  getLikeRestaurant =( req,res)=>{
+const keysearch =req.params.keysearch
+   console.log("Keyyyyyyy",keysearch)
+  resturantModel.find({resturantName:{ $regex: `${keysearch}`, $options:'i' }}).populate("cuisine","cuisineName -_id").exec()
+     .then((data) => {
+      console.log("Keyyyyyyydata",data)
+       res.status(200).json({
+         success: true,
+         message: `found`,
+         resturant: data,
+       });
+     })
+     .catch((err) => {
+       res.status(500).json({
+         success: false,
+         message: `Server Error`,
+         err: err.message,
+       });
+     });
+
+ 
+
+
+}
+
 
 module.exports = {
   createNewResturant,
@@ -266,5 +291,6 @@ module.exports = {
   getAllResturant,
  getAllResturantByCuisineType,
  getAllResturantforFillData,
- getTop5
+ getTop5,
+ getLikeRestaurant
 };
