@@ -37,7 +37,10 @@ function App() {
   const [filtername, setfiltername] = useState("all");
   const [allmenutypesID, setallmenutypesID] = useState([]);
   const [filterFunparam, setfilterFunparam] = useState("");
-
+  const [radioValue, setradioValue] = useState("restaurant")
+  const [searchresult, setsearchresult] = useState([])
+  const [keysearch ,setkeysearch] = useState("")
+  
   const add = (i, x) => {
     setorderitems(
       orderitems.map((order, index) => {
@@ -100,6 +103,9 @@ function App() {
           setallmenutypesID,
           filterFunparam,
           setfilterFunparam,
+          radioValue, setradioValue,
+          searchresult, setsearchresult,
+          keysearch ,setkeysearch
         }}
       >
 <Container />

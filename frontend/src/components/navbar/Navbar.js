@@ -1,6 +1,6 @@
 
 import React ,{useState,useEffect,useContext} from 'react'
-import {Routes,Route,Link,NavLink} from "react-router-dom"
+import {Routes,Route,Link,NavLink , useNavigate}  from "react-router-dom"
 import {BsFillCartFill} from "react-icons/bs"
 import {VscAccount} from "react-icons/vsc"
 import {BiHomeSmile} from "react-icons/bi"
@@ -18,36 +18,46 @@ import axios from 'axios'
 
 const Navbar = () => {
 
-  const [radioValue, setradioValue] = useState("restaurant")
+
  const [click, setclick] = useState(false)
- const [searchresult, setsearchresult] = useState([])
+const [validation, setvalidation] = useState(false)
+
+ const navigate = useNavigate();
  const clickfun =()=>setclick(!click)
-  const {token , settoken ,isLoggedIn, setisLoggedIn ,loggedInUserName, setloggedInUserName} =useContext(AppContext)
+  const {token , settoken ,isLoggedIn, setisLoggedIn ,loggedInUserName,
+     setloggedInUserName , radioValue, setradioValue ,searchresult, setsearchresult
+   , keysearch ,setkeysearch} =useContext(AppContext)
   
   const searchFun = ()=>{
 
 
     console.log("setradioValue+++++++++++++++++++++++++++++++",radioValue)
       if(radioValue == "meal"){
-        axios.get(`http://localhost:5000/meal/search/${radioValue}`)
+        axios.get(`http://localhost:5000/meal/search/${keysearch}`)
         .then(( result )=>{ 
            setsearchresult(result.data.meal)
            console.log("+++++++++++++++meal++++++++++++++++",result.data.meal);
-          }).catch((err)=>{
+           navigate("/search")
+          }).then(()=>{
+            navigate("/search")}).catch((err)=>{
               console.log("error", err.response.data.message);
           })
 
         }else{
-          axios.get(`http://localhost:5000/restaurant/search/${radioValue}`)
+          axios.get(`http://localhost:5000/restaurant/search/${keysearch}`)
           .then(( result )=>{ 
              setsearchresult(result.data.resturant)
              console.log("++++++++++++++++++ resturant +++++++++++++",result.data.resturant);
+             
+            }).then(()=>{
+              navigate("/search")
             }).catch((err)=>{
                 console.log("error", err.response.data.message);
             })
   
           }
 
+    
   }
   
   
@@ -61,14 +71,17 @@ const Navbar = () => {
  <span ><GiKnifeFork className='forklogo'/></span><span  className='fork'>Speedy</span><span>Fork</span>
 </div>
 
-<div className='search'>
-  <div className='inputsearch'>
-    <input type={"text"} placeholder="Enter Keyword..."/>
+<div className= { validation ?'inputsearcherror search' :'search'}>
+  <div className='inputsearch' >
+    <input type={"text"} onChange={(e)=>{
+      setkeysearch(e.target.value)
+      
+    }} placeholder="Enter Keyword..."/>
 
   </div>
 <div className='radiosearch'>
   <input type="radio"  onClick={()=>{
-    setradioValue("restaurant")
+   setradioValue("restaurant")
   }} name='search' defaultChecked value={"restaurant"}/>
   <label>Restaurant</label>
   <input type="radio" name='search'  onClick={()=>{
@@ -76,7 +89,13 @@ const Navbar = () => {
   }}   value={"meal"} />
   <label>Meal</label>
 <button onClick={()=>{
-searchFun()
+   if(keysearch != ""){
+    setvalidation(false)
+    searchFun()
+  }else{
+    setvalidation(true)
+  }
+
 
 
 }}><BiSearchAlt/></button>
@@ -86,16 +105,16 @@ searchFun()
 <div  className={click ?' navbar_links active':'navbar_links'}>
   
 
-<NavLink to="/Home" className={"navlink"}  onClick= {clickfun}  style={({ isActive }) => ({ color: isActive ? "green" : "white" })}><BiHomeSmile className='icons' /> </NavLink>  
+<NavLink to="/Home" className={"navlink"}  onClick= {()=>{setclick(false)}}  style={({ isActive }) => ({ color: isActive ? "green" : "white" })}><BiHomeSmile className='icons' /> </NavLink>  
 
-{ <NavLink className={"navlink"} to="/cart" onClick= {clickfun} style={({ isActive }) => ({ color: isActive ? "green" : "white" })}>
+{ <NavLink className={"navlink"} to="/cart" onClick= {()=>{setclick(false)}} style={({ isActive }) => ({ color: isActive ? "green" : "white" })}>
     <BsFillCartFill  className='icons' />
     </NavLink>  }
-{isLoggedIn ? "":<NavLink to="/login" className={"navlink"}  onClick= {clickfun}  style={({ isActive }) => ({ color: isActive ? "green" : "white" })} >
+{isLoggedIn ? "":<NavLink to="/login" className={"navlink"}  onClick= {()=>{setclick(false)}}   style={({ isActive }) => ({ color: isActive ? "green" : "white" })} >
  <VscAccount  className='icons' />
  </NavLink> }
 
- {isLoggedIn ? <button onClick= {clickfun}  > Welcom {loggedInUserName} </button> :""}
+ {isLoggedIn ? <button onClick= {()=>{setclick(false)}}  > Welcom {loggedInUserName} </button> :""}
 
 
 

@@ -28,6 +28,7 @@ grid-template-areas: "navbar"
 .footer{
     grid-area:footer ;
     position: absolute;
+    
     bottom: 0;
 }
 .social-icon{

@@ -22,13 +22,13 @@
     padding-left: 1rem;
 }
 .fork{
- color:darkgreen;
+ color:green;
  font-size: 2.2rem;
 }
 .forklogo{
-    color:darkgreen;
-    width: 30px;
-    height: 30px;
+    color:green;
+    width: 2.5rem;
+    height: 2.5rem;
 }
 .navbar_links{
 
@@ -105,7 +105,7 @@ padding-right: 1rem;
     border: 1px solid #ccc;
     padding: 4px;
     border-radius: 8px;
-
+    height: 2rem;
 }
 
 .search input[type=text]{
@@ -116,6 +116,16 @@ font-size:1.6rem;
 
 
 
+}
+
+.inputsearcherror{
+
+
+ 
+    border: 1px solid red;
+   
+    
+    
 }
 .search input[type=radio]{
 width: 1.2rem;
@@ -133,7 +143,7 @@ accent-color:green;
     font-size: .7rem;
     color: green;
     display: flex;
-    align-items: flex-end;
+    align-items: center;
     justify-content:left;
 
   
