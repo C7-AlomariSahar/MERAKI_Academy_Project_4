@@ -78,16 +78,7 @@ background:rgba(47, 45, 45, 0.98);
     border: none;
 
 }
-/* .try{
-    width: 50px;
-    height: 50px;
-    background: none;
-    border: none;
-    transition: transform .5s;
-}
-.try{
-    transform: scale(1.1,1.1); 
-} */
+
 
 .navbar-one-link{
     transition: transform .5s;
@@ -95,7 +86,7 @@ background:rgba(47, 45, 45, 0.98);
 .navbar-one-link  :hover {
     transform: scale(1.1,1.1);
 }
-/* <div className='navbar-one-link'> */
+
 .navbar_links-outer{
     display: flex;
 justify-content: center;
@@ -129,7 +120,9 @@ font-size:1.6rem;
 .search input[type=radio]{
 width: 1.2rem;
 height: 1.2rem;
+accent-color:green;
  }
+
 
 .search input[type=text]:focus{
     outline: none;

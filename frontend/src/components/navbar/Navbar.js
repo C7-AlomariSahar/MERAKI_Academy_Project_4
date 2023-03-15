@@ -13,11 +13,47 @@ import {BiSearchAlt} from "react-icons/bi"
 import "./navbar.css"
 
  import { AppContext } from "../../App";
+import axios from 'axios'
+
 
 const Navbar = () => {
+
+  const [radioValue, setradioValue] = useState("restaurant")
  const [click, setclick] = useState(false)
+ const [searchresult, setsearchresult] = useState([])
  const clickfun =()=>setclick(!click)
   const {token , settoken ,isLoggedIn, setisLoggedIn ,loggedInUserName, setloggedInUserName} =useContext(AppContext)
+  
+  const searchFun = ()=>{
+
+
+    console.log("setradioValue+++++++++++++++++++++++++++++++",radioValue)
+      if(radioValue == "meal"){
+        axios.get(`http://localhost:5000/meal/search/${radioValue}`)
+        .then(( result )=>{ 
+           setsearchresult(result.data.meal)
+           console.log("+++++++++++++++meal++++++++++++++++",result.data.meal);
+          }).catch((err)=>{
+              console.log("error", err.response.data.message);
+          })
+
+        }else{
+          axios.get(`http://localhost:5000/restaurant/search/${radioValue}`)
+          .then(( result )=>{ 
+             setsearchresult(result.data.resturant)
+             console.log("++++++++++++++++++ resturant +++++++++++++",result.data.resturant);
+            }).catch((err)=>{
+                console.log("error", err.response.data.message);
+            })
+  
+          }
+
+  }
+  
+  
+  
+  
+  
   return (
   <div className='navbar'>
 <div className='applogo'>
@@ -31,11 +67,19 @@ const Navbar = () => {
 
   </div>
 <div className='radiosearch'>
-  <input type="radio" name='search' checked value={"restaurant"}/>
+  <input type="radio"  onClick={()=>{
+    setradioValue("restaurant")
+  }} name='search' defaultChecked value={"restaurant"}/>
   <label>Restaurant</label>
-  <input type="radio" name='search'  value={"meal"} />
+  <input type="radio" name='search'  onClick={()=>{
+    setradioValue("meal")
+  }}   value={"meal"} />
   <label>Meal</label>
-<button><BiSearchAlt/></button>
+<button onClick={()=>{
+searchFun()
+
+
+}}><BiSearchAlt/></button>
 </div>
 </div>
 <div className='navbar_links-outer' > 
