@@ -55,8 +55,7 @@ const Menutype = menuTypes.map((menuType,i)=>{
     return (   <div key={menuType._id}  className=  {`menu-same `}  onClick={()=>{
        
         setfilterFunparam(menuType._id)
-// const element = document.getElementById(`${menuType._id}`);
-// element.scrollIntoView({ behavior: "smooth", block: "end", inline: "nearest" });
+
     }
     
     }>
@@ -105,3 +104,5 @@ export default MenuType
 
 
 
+// const element = document.getElementById(`${menuType._id}`);
+// element.scrollIntoView({ behavior: "smooth", block: "end", inline: "nearest" });
