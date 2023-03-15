@@ -57,18 +57,15 @@ useEffect(() => {
       
             <div key={meal._id} className="menu"style={{
               // background:`linear-gradient(to bottom ,rgba(0,255,255,0),rgba(0,0,0,0.8)) ,url(${meal.image} ) no-repeat bottom` ,backgroundSize:"cover" 
-              background:`url(${meal.image} ) no-repeat bottom` ,backgroundSize:"cover" 
-
-           
-            }} onClick={()=>{
+              // background:`url(${meal.image} ) no-repeat bottom` ,backgroundSize:"cover" 
+          }} onClick={()=>{
                 console.log("_navigate _____",meal._id)
               setselectedmeal(meal._id)
-            //    navigate("/meal") 
             setPopuptrigger(true)
                 
             }}>
               
-              
+              <div className="mealimg"><img src={`${meal.image}`} /></div>
               
               <div className="mealinfo">
                 
@@ -83,27 +80,23 @@ useEffect(() => {
         )
       })
   
-// </div>
-// )
 
-// })
-
-// console.log("+++++++++++++++++++", outerrDiv)
   return (
     <>
     <div className="meals-main-div">
   
-    <div className="cuisine-div-inrestaurants">
+    {/* <div className="cuisine-div-inrestaurants"> */}
       <MenuType />
-     </div>
- 
+     {/* </div> */}
+   
     
-    {/* <div className="meal-div-for-all"> */}
-      <div className="divContaner">
+    <div className="meal-div-for-all">
+      {/* <div className="divContaner"> */}
    { outerrDiv }
+   {/* </div> */}
       </div>
  
- <div></div>
+
    
     
      </div>

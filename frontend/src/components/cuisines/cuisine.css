@@ -1,7 +1,7 @@
-.slider{
-    border: 2px solid black;
+/* .slider{
+    border: none;
     
-}
+} */
 .cuisine-same{
     background-position: center;
     background-size: cover;
@@ -28,17 +28,12 @@
     justify-content: center;
 }
 .slider{
-    /* display: flex;
-
   
-    width: 100vw;
-
-    border:none;
-    border-radius: 10px;*/
     height: 100px;
       width: 100vw; 
     display: grid;
     grid-template-columns: repeat(11,1fr);
+    border: none;
   
 }
 

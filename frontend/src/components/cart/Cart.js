@@ -24,7 +24,7 @@ const Cart = () => {
 const [cart, setcart] = useState([orderitems])
 const [totalquntity, settotalquntity] = useState(0)
 const [totalpricetopay, settotalpricetopay] = useState(0)
-const [paymentMethod, setpaymentMethod] = useState("")
+const [paymentMethod, setpaymentMethod] = useState("Cash On Delivery")
 
    
 let totalquntiti =  orderitems.reduce((acc,orderitem,i)=>{
@@ -103,7 +103,7 @@ console.log("final Data_______________" ,{userId:loggedInUserID ,totalPrice:fina
                <div className="check-out-final-data-divs"> Total Amount to pay : <span className="finaldata">{ finalPrice  } AED</span></div>
               <div className="check-out-final-data-divs2">
                    <div>Payment Method : 
-                   <input type="radio"  onChange={(e)=>{setpaymentMethod(e.target.value) }} id="label1" name="label1" value="Cash On Delivery"/>
+                   <input type="radio" checked onChange={(e)=>{setpaymentMethod(e.target.value) }} id="label1" name="label1" value="Cash On Delivery"/>
                  <label for="label1"> Cash On Delivery</label>
 
                    </div>

@@ -28,20 +28,20 @@ const Cuisine = () => {
     })
 
 useEffect(() => {
-console.log("@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@",windowSize)
-//     if(start == 0){
-//     axios.get(`http://localhost:5000/cuisine/cuisines/all`).then((result)=>{
+console.log("@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@",windowSize ,"@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@" , limitnumber,"@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@" ,skipnumber)
+    if(start == 0){
+    axios.get(`http://localhost:5000/cuisine/cuisines/all`).then((result)=>{
 
-// console.log("%%%%%%",result)
-// const resltArray = result.data.cuisine
-// setcisuinNumber(resltArray.length) 
-// setstart(1)
-// }).catch((err) => {
-//     console.log("error", err.response.data.message);
-//     setresult(err.response.data.message)
-// })
+console.log("%%%%%%",result)
+const resltArray = result.data.cuisine
+setcisuinNumber(resltArray.length) 
+setstart(1)
+}).catch((err) => {
+    console.log("error", err.response.data.message);
+    setresult(err.response.data.message)
+})
   
-//     }
+    }
 
 
 axios.get(`http://localhost:5000/cuisine/cuisines?skipnumber=${skipnumber}&&limitnumber=${limitnumber}`).then((result)=>{
@@ -95,7 +95,7 @@ const Cuisinetype = cuisinetnames.map((cuisinetName,i)=>{
    
    }>
    <br/>
-   <span>All Restaurants</span>
+   <span>All</span>
    
    </div>
     { Cuisinetype }

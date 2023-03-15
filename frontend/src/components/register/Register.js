@@ -83,7 +83,7 @@ const [password, setpassword] = useState("")
    <input  type="text" placeholder='Last Name' onChange={(e)=>{setLastName(e.target.value)}}/><br/><br/>
    <input  type="text" placeholder='User Name' onChange={(e)=>{setUserName(e.target.value)}}/><br/><br/>
    
-   <input type="number" placeholder='PhoneNumber' onChange={(e)=>{setphoneNumber(e.target.value)}}/><br/>
+   <input type="number" placeholder='PhoneNumber' min={0}  onChange={(e)=>{setphoneNumber(e.target.value)}}/><br/>
    <br/>
     <input  type="email" placeholder='Email'onChange={(e)=>{ setemail(e.target.value)}} /><br/><br/>
     <input type="password" placeholder='password'onChange={(e)=>{setpassword(e.target.value)}} /><br/><br/>
@@ -91,7 +91,7 @@ const [password, setpassword] = useState("")
     <input type="text" placeholder='City' onChange={(e)=>{setcity(e.target.value)}}/><br/><br/>
     <input  type="text" placeholder='building' onChange={(e)=>{setbuilding(e.target.value)}}/><br/><br/>
    <input  type="text" placeholder='Street' onChange={(e)=>{setstreet(e.target.value)}}/><br/><br/>
-   <input type="number" placeholder='flat Number' onChange={(e)=>{setflatNumber(e.target.value)}}/><br/>
+   <input type="number" placeholder='flat Number' min={0} onChange={(e)=>{setflatNumber(e.target.value)}}/><br/>
    
    <br/>
 <button className='register-button' onClick={RegisterFun}>Register</button><br/>

@@ -28,3 +28,19 @@ button:hover{
 }
 
 
+   input[type=text]:focus{
+    outline: none;
+    
+    }
+    input[type=email]:focus{
+    outline: none;
+        
+    }
+    input[type=password]:focus{
+            outline: none;
+           
+            }
+    input[type=number]:focus{
+    outline: none;
+               
+    }

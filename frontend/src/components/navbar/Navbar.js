@@ -7,6 +7,9 @@ import {BiHomeSmile} from "react-icons/bi"
 import {GiKnifeFork} from "react-icons/gi"
 import {AiOutlineMenu} from "react-icons/ai"
 import{FaRegWindowClose} from "react-icons/fa"
+import {BiSearchAlt} from "react-icons/bi"
+
+
 import "./navbar.css"
 
  import { AppContext } from "../../App";
@@ -20,6 +23,20 @@ const Navbar = () => {
 <div className='applogo'>
 
  <span ><GiKnifeFork className='forklogo'/></span><span  className='fork'>Speedy</span><span>Fork</span>
+</div>
+
+<div className='search'>
+  <div className='inputsearch'>
+    <input type={"text"} placeholder="Enter Keyword..."/>
+
+  </div>
+<div className='radiosearch'>
+  <input type="radio" name='search' checked value={"restaurant"}/>
+  <label>Restaurant</label>
+  <input type="radio" name='search'  value={"meal"} />
+  <label>Meal</label>
+<button><BiSearchAlt/></button>
+</div>
 </div>
 <div className='navbar_links-outer' > 
 <div  className={click ?' navbar_links active':'navbar_links'}>

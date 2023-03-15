@@ -45,13 +45,13 @@ const Meal = () => {
     <div className="outer-meal-container">
      <div className="inner-meal-container">
 
-        <div className="meal"style={{
+        <div className="mealpopup"style={{
         // background:`linear-gradient(to bottom ,rgba(0,255,255,0),rgba(0,0,0,0.8)) ,url(${theMeal.image} ) no-repeat bottom` ,backgroundSize:"cover" 
-        background:`url(${theMeal.image} ) no-repeat center  ` 
+        // background:`url(${theMeal.image} ) no-repeat center  ` 
 
          }}>
-        
-         <div className="mealinfo"> 
+         <div className="mealimginsidepopup"><img src={`${theMeal.image}`} /></div>
+         <div className="mealinfoinsidepopup"> 
         <h2>{theMeal.mealName}</h2>
        
           </div>
