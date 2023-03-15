@@ -271,6 +271,33 @@ const   getAllMealsWithSameeMenueTypeforOneResturant = ( req,res)=>{
 
 
 }
+
+
+const  getLikeMeal =( req,res)=>{
+  const keysearch =req.params.keysearch
+     console.log("Keyyyyyyy",keysearch)
+     mealModel.find({mealName:{ $regex: `${keysearch}`, $options:'i' }}).populate("mealType","meunTypeName -_id").populate("resturantId","resturantName -_id").exec()
+       .then((data) => {
+        console.log("Keyyyyyyydata",data)
+         res.status(200).json({
+           success: true,
+           message: `found`,
+           meal: data,
+         });
+       })
+       .catch((err) => {
+         res.status(500).json({
+           success: false,
+           message: `Server Error`,
+           err: err.message,
+         });
+       });
+  
+   
+  
+  
+  }
+  
 module.exports = {
   createNewMeal,
   updateMeal,
@@ -278,5 +305,5 @@ module.exports = {
   getAllMeals,
   getAllMealsForOneResturant,
   getAllMealsWithSameeMenueTypeforOneResturant,getAllmenuTypeMealsForOneResturant
-  ,getOneMealbymealType
+  ,getOneMealbymealType,getLikeMeal
 };
