@@ -1,7 +1,7 @@
 .meals-main-div{
 
-    display: flex;
-    flex-direction: column; 
+display: flex;
+flex-direction: column; 
 justify-content: center;
 align-self: flex-start;
 padding: 0;
@@ -82,17 +82,118 @@ background-color:rgba(0,0,0,0.9) ;
    margin:50px;
    
 }
+
+/* .resturant-info-menu{
+
+   
+    display: flex;
+    justify-content: center;
+   
+
+} */
+.resturant-info-menu{
+    display: grid;
+    /* gap:10px; */
+ 
+   margin:20px 50px;
+
+   grid-template-columns: 1fr 9fr;
+
+}
+.restaurantimg{
+    width: 17rem;
+    height: 12rem;
+    display: flex;
+  
+    justify-content: flex-end;
+    border: 1px solid red;
+    grid-column-start: 1;
+    grid-column-end: 2;
+
+}
+.restaurantimg img {
+    width: 17rem;
+    height: 12rem;
+
+}
+.restaurant-all-info{
+   display: flex;
+   flex-direction: column;
+   text-align: left;
+   /* justify-content:flex-start; */
+   border: 1px solid rgb(106, 0, 255);
+   grid-column-start: 2;
+   grid-column-end: 3;
+   padding-left:1rem ;
+}
+
+
+.restaurant-all-info-1 {
+    padding:1rem ;
+    display: flex;
+    justify-content: space-between;
+}
+
+
+
+.restaurant-all-info-2{
+    padding:1rem ;
+    display: flex;
+    justify-content: space-between;
+}
+
+
+
+
+
 @media screen and (max-width : 600px) {
     .divContaner{
         display: grid;
         grid-template-columns: repeat(1,1fr);
        
     }
+
+    .restaurantimg{
+        width: 20rem;
+        height: 12rem;
+        display: flex;
+      
+        justify-content: flex-end;
+       
+      
+    
+    }
+    .restaurantimg img {
+        width:20rem;
+        height: 12rem;
+    
+    }
+    .restaurant-all-info{
+       display: flex;
+       flex-direction: column;
+       text-align: left;
+       /* justify-content:flex-start; */
+       border: 1px solid rgb(106, 0, 255);
+      
+     
+
+
+
 }
-@media screen and (max-width : 900px) and (min-width :600px){
+}
+/*  */
+@media screen and (max-width : 940px)  and (min-width :600px) {
     .divContaner{
         display: grid;
         grid-template-columns: repeat(2,1fr);
        
     }
+    .resturant-info-menu{
+        display: flex;
+        flex-direction: column;
+      
+    }
+
+  
+
 }

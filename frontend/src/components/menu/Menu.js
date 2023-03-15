@@ -13,6 +13,7 @@ import MenuType from "../menuType/MenuType";
 const Menu = () => {
    const [menu, setmenu] = useState([])
   const [menuDivs, setmenuDivs] = useState([])
+  const [restaurantinfo, setrestaurantinfo] = useState([])
 
     const navigate =useNavigate();
     const {token , settoken ,isLoggedIn, setisLoggedIn ,loggedInUserName, setloggedInUserName ,selectedResturant, setselectedResturant ,selectedmeal, setselectedmeal ,setPopuptrigger ,Popuptrigger ,orderitems, setorderitems ,allmenutypesID ,filterFunparam, setfilterFunparam ,comefromSearch ,setcomefromSearch,mealcomefromsearch, setmealcomefromsearch} =useContext(AppContext)
@@ -24,6 +25,23 @@ useEffect(() => {
     setPopuptrigger(true)
 
   }
+
+//=======get resturant info by id==========================================
+
+axios.get(`http://localhost:5000/restaurant/${selectedResturant}`).then((response)=>{
+  console.log("dataResturantsAll******************",response.data.resturant)
+  setrestaurantinfo(response.data.resturant[0])
+  console.log("````````````````````````````````````````````````````",response.data.resturant)
+  console.log("````````````````````````image````````````````````````",response.data.resturant.image)
+
+
+ }).catch((err)=>{
+  console.log("dataResturantsAllerrXXXXXXX",err.response.data.message)
+  setrestaurantinfo([])
+ })
+
+//==========================================================================
+
     console.log("menu-----selectedResturant-------------",selectedResturant)
     console.log("___________________$$$$$$$$$$$$$$________",filterFunparam)
    if( filterFunparam == "" ){
@@ -90,7 +108,24 @@ useEffect(() => {
   return (
     <>
     <div className="meals-main-div">
-  
+      <div className="resturant-info-menu">
+ 
+       <div className="restaurantimg"><img src={restaurantinfo.image} /></div>
+       <div className="restaurant-all-info">
+
+         <div className="restaurant-all-info-1" > 
+           <h1> {restaurantinfo.resturantName} </h1>
+           <h3>Rate : {restaurantinfo.rate}</h3>  
+                     
+        </div>
+
+         <div className="restaurant-all-info-2">   
+           <div>location : {restaurantinfo.city}</div> 
+           <div>Delivery Fees : <span> 7 AED </span> </div>  
+             <div>Delivery Time : 30 min</div> 
+              <div> Min Order : 50 AED </div>  </div>
+       </div>
+      </div>
     {/* <div className="cuisine-div-inrestaurants"> */}
       <MenuType />
      {/* </div> */}
