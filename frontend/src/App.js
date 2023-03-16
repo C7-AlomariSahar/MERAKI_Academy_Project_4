@@ -39,7 +39,10 @@ function App() {
   const [searchresult, setsearchresult] = useState([])
   const [keysearch ,setkeysearch] = useState("")
   const [comefromSearch, setcomefromSearch] = useState(false)
-   const [mealcomefromsearch, setmealcomefromsearch] = useState("")           
+  const [mealcomefromsearch, setmealcomefromsearch] = useState("")        
+  const [loggedInUserAllData, setloggedInUserAllData] = useState({})
+  const [userData, setuserData] = useState(false)
+
                             
   const add = (i, x) => {
     setorderitems(
@@ -113,7 +116,8 @@ function App() {
           keysearch ,setkeysearch,
           comefromSearch, setcomefromSearch,
           mealcomefromsearch, setmealcomefromsearch
-          ,
+          ,loggedInUserAllData, setloggedInUserAllData
+          , userData, setuserData
         }}
       >
 <Container />

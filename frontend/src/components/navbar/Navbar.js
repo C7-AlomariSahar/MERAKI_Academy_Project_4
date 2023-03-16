@@ -8,25 +8,28 @@ import {GiKnifeFork} from "react-icons/gi"
 import {AiOutlineMenu} from "react-icons/ai"
 import{FaRegWindowClose} from "react-icons/fa"
 import {BiSearchAlt} from "react-icons/bi"
-
+import {TbUserCheck}from "react-icons/tb"
 
 import "./navbar.css"
 
  import { AppContext } from "../../App";
 import axios from 'axios'
+import UserPanel from '../userloggedinpanel/UserPanel'
 
 
 const Navbar = () => {
-
+  const navigate = useNavigate();
 
  const [click, setclick] = useState(false)
 const [validation, setvalidation] = useState(false)
 
- const navigate = useNavigate();
+
  const clickfun =()=>setclick(!click)
+ const userDatafun =()=>setuserData(!userData)
+
   const {token , settoken ,isLoggedIn, setisLoggedIn ,loggedInUserName,
      setloggedInUserName , radioValue, setradioValue ,searchresult, setsearchresult
-   , keysearch ,setkeysearch} =useContext(AppContext)
+   , keysearch ,setkeysearch ,userData, setuserData} =useContext(AppContext)
   
   const searchFun = ()=>{
    
@@ -114,9 +117,20 @@ const [validation, setvalidation] = useState(false)
  <VscAccount  className='icons' />
  </NavLink> }
 
- {isLoggedIn ? <button onClick= {()=>{setclick(false)}}  > Welcom {loggedInUserName} </button> :""}
+ {isLoggedIn ? <button className='afterlogin-but' onClick= {()=>{
+  
+  setclick(false)
+  userDatafun() //to show user panel
+  
+  
+  }}  >< TbUserCheck className='after-login-icon'/> {loggedInUserName} </button> :""}
+
+<div   className=  {userData ?'userData activeuserData':'userData'}>
+
+<UserPanel/>
 
 
+</div>
 
 </div>
 <div onClick= {clickfun}  className='nav-bar-small-screen'>{ !click ?<  AiOutlineMenu  /> :< FaRegWindowClose/>} </div>
