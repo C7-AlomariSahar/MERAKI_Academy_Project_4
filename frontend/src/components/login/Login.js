@@ -7,10 +7,12 @@ import axios from "axios";
 
 const Login = () => {
     const navigate =useNavigate();
-    const {token , settoken ,isLoggedIn, setisLoggedIn ,loggedInUserName, setloggedInUserName  ,loggedInUserID ,setloggedInUserID ,setloggedInUserAllData} =useContext(AppContext)
+    const {token , settoken ,isLoggedIn, setisLoggedIn ,loggedInUserName, setloggedInUserName  ,loggedInUserID ,setloggedInUserID ,setloggedInUserAllData ,emailRegex} =useContext(AppContext)
     const [password, setpassword] = useState("");
     const [email, setemail] = useState("");
     const [result, setresult] = useState("");
+    const [isValidemail, setisValidemail] = useState(true);
+  const [isValidpass, setisValidpass] = useState(true)
 
     const loginFun = () => {
         axios
@@ -62,6 +64,7 @@ const Login = () => {
                     setemail(e.target.value);
                 }}
             />
+            {!isValidemail && <span className="error">Please enter a valid email</span>}
             <br />
             <br />
             <input
@@ -71,11 +74,25 @@ const Login = () => {
                     setpassword(e.target.value);
                 }}
             ></input>
+              {!isValidpass && <span className="error"> password shoud be at least 8 characters</span>}
             <br />
             <br />
             <button
                 onClick={() => {
-                    loginFun();
+
+                   if( emailRegex.test(email)){
+                      setisValidemail(true)}
+                    else{setisValidemail(false) }; 
+
+                    if(password.length >= 8){
+                        setisValidpass(true)
+                        }
+                        else{
+                            setisValidpass(false)
+                        }
+
+                        isValidpass && isValidemail && loginFun() ;
+                   console.log("regex------------------",emailRegex.test(email))
                 }}
             >
                 Login

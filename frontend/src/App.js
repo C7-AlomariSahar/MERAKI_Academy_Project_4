@@ -50,6 +50,11 @@ function App() {
 
   const [userData, setuserData] = useState(false)
 
+ 
+
+  const emailRegex =  /^\S+@\S+\.\S+$/;
+
+
                             
   const add = (i, x) => {
     setorderitems(
@@ -124,7 +129,7 @@ function App() {
           comefromSearch, setcomefromSearch,
           mealcomefromsearch, setmealcomefromsearch
           ,loggedInUserAllData, setloggedInUserAllData
-          , userData, setuserData
+          , userData, setuserData ,emailRegex
         }}
       >
 <Container />
