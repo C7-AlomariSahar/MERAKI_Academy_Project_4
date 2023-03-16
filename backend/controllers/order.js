@@ -91,7 +91,7 @@ const getAllOrders=(req,res)=>{
 const getAllOrdersForOneUser=(req,res)=>{
  let userId = req.params.id;
 
- orderModel.find({ userId: userId }).populate("deleviredTo","resturantName -_id").exec()
+ orderModel.find({ userId: userId }).populate("orderfrom","resturantName -_id").exec()
     .then((orders) => {
       if (!orders.length) {
         return res.status(404).json({

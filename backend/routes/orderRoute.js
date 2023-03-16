@@ -10,7 +10,7 @@ const{createNewOrder,updateOrder,getAllOrdersForOneUser ,getAllOrders}=require("
 
 orderRouter.post("/",createNewOrder)
 orderRouter.put("/update/:id",updateOrder)
-orderRouter.get("/allorders/:id",getAllOrdersForOneUser)
+orderRouter.get("/allorders/user/:id",getAllOrdersForOneUser)
 orderRouter.get("/allorders",getAllOrders)
 
 module.exports =orderRouter
