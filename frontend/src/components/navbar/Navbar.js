@@ -29,7 +29,7 @@ const [validation, setvalidation] = useState(false)
 
   const {token , settoken ,isLoggedIn, setisLoggedIn ,loggedInUserName,
      setloggedInUserName , radioValue, setradioValue ,searchresult, setsearchresult
-   , keysearch ,setkeysearch ,userData, setuserData} =useContext(AppContext)
+   , keysearch ,setkeysearch ,userData, setuserData,orderitems} =useContext(AppContext)
   
   const searchFun = ()=>{
    
@@ -110,10 +110,18 @@ const [validation, setvalidation] = useState(false)
 
 <NavLink to="/Home" className={"navlink"}  onClick= {()=>{setclick(false)}}  style={({ isActive }) => ({ color: isActive ? "green" : "white" })}><BiHomeSmile className='icons' /> </NavLink>  
 
-{ <NavLink className={"navlink"} to="/cart" onClick= {()=>{setclick(false)}} style={({ isActive }) => ({ color: isActive ? "green" : "white" })}>
+{ <NavLink className={"navlink"} to="/cart"  onClick= {()=>{
+  setclick(false)
+
+}} style={({ isActive }) => ({ color: isActive ? "green" : "white" })}>
     <BsFillCartFill  className='icons' />
     </NavLink>  }
-{isLoggedIn ? "":<NavLink to="/login" className={"navlink"}  onClick= {()=>{setclick(false)}}   style={({ isActive }) => ({ color: isActive ? "green" : "white" })} >
+{isLoggedIn ? "":<NavLink   to="/login" className={"navlink"}  onClick= {(e)=>{
+  
+
+    setclick(false)
+  
+  }}   style={({ isActive }) => ({ color: isActive ? "green" : "white" })} >
  <VscAccount  className='icons' />
  </NavLink> }
 

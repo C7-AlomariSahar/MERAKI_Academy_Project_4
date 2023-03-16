@@ -22,15 +22,22 @@ export const AppContext = createContext();
 function App() {
   const navigate = useNavigate();
 
-  const [token, settoken] = useState("");
-  const [loggedInUserName, setloggedInUserName] = useState("");
-  const [isLoggedIn, setisLoggedIn] = useState(false);
+  const [token, settoken] = useState( JSON.parse(localStorage.getItem("token")) || "");
+  const [isLoggedIn, setisLoggedIn] = useState(JSON.parse(localStorage.getItem("isLoggedIn") )|| false);
+  
+  const [loggedInUserName, setloggedInUserName] = useState( JSON.parse(localStorage.getItem("loggedInUserName") ) || "");
+
+  const [orderitems, setorderitems] = useState( JSON.parse(localStorage.getItem("orderitems") )||  []);
+  const [loggedInUserAllData, setloggedInUserAllData] = useState(JSON.parse(localStorage.getItem("loggedInUserAllData") )||{})
+
+  const [loggedInUserID, setloggedInUserID] = useState(JSON.parse(localStorage.getItem("loggedInUserID") )||  "");
+
   const [selectedResturant, setselectedResturant] = useState("");
   const [selectedmeal, setselectedmeal] = useState([]);
   const [Popuptrigger, setPopuptrigger] = useState(false);
-  const [orderitems, setorderitems] = useState([]);
+
   const [isCheckOut, setisCheckOut] = useState(false);
-  const [loggedInUserID, setloggedInUserID] = useState("");
+
   const [finalOrdarData, setfinalOrdarData] = useState({});
   const [filtername, setfiltername] = useState("all");
   const [allmenutypesID, setallmenutypesID] = useState([]);
@@ -40,7 +47,7 @@ function App() {
   const [keysearch ,setkeysearch] = useState("")
   const [comefromSearch, setcomefromSearch] = useState(false)
   const [mealcomefromsearch, setmealcomefromsearch] = useState("")        
-  const [loggedInUserAllData, setloggedInUserAllData] = useState({})
+
   const [userData, setuserData] = useState(false)
 
                             

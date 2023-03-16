@@ -56,6 +56,7 @@ console.log("dataResturantsAllerrXXXXXXX",err.response.data.message)
        <h4>Your Favourite Restaurant At Your Home</h4>
 
           <button onClick={()=>{
+            console.log("????????????????????????????????????????????", isLoggedIn)
            if( isLoggedIn ){ 
             setfiltername("All Restaurants")
             navigate("/restaurants")
@@ -88,9 +89,15 @@ console.log("dataResturantsAllerrXXXXXXX",err.response.data.message)
          <div key={topone._id} className="restauranttop"style={{
         background:`url(${topone.image} ) no-repeat bottom` ,backgroundSize:"cover" 
       }} onClick={()=>{
-        settop(topone._id)
-        setfiltername("All Restaurants")
-         navigate("/restaurants") 
+
+        if( isLoggedIn ){ 
+          settop(topone._id)
+          setfiltername("All Restaurants")
+           navigate("/restaurants") 
+        }else{
+          navigate("/login") 
+        }
+        
           
       }}>
         
@@ -127,6 +134,8 @@ console.log("dataResturantsAllerrXXXXXXX",err.response.data.message)
          <div key={toponemeal._id} className="restauranttop"style={{
         background:`url(${toponemeal.image} ) no-repeat bottom` ,backgroundSize:"cover" 
       }} onClick={()=>{
+
+        
         // settop(toponemeal._id)
         // setfiltername("All Restaurants")
         //  navigate("/restaurants") 

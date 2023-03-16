@@ -10,13 +10,13 @@ import Popup from "../popup/Popup";
 import {MdOutlineDeleteForever} from "react-icons/md"
 import {IoMdArrowDropdown} from "react-icons/io"
 import {IoMdArrowDropup} from "react-icons/io"
-
+ 
 
 const Cart = () => {
     
     const navigate =useNavigate();
    
-    const {token , settoken ,isLoggedIn, setisLoggedIn ,loggedInUserName, setloggedInUserName ,selectedResturant, setselectedResturant ,selectedmeal, setselectedmeal ,setPopuptrigger ,Popuptrigger ,orderitems, setorderitems, add ,sub , isCheckOut, setisCheckOut ,loggedInUserID  } =useContext(AppContext)
+    const {token , settoken ,isLoggedIn, setisLoggedIn ,loggedInUserName, setloggedInUserName ,selectedResturant, setselectedResturant ,selectedmeal, setselectedmeal ,setPopuptrigger ,Popuptrigger ,orderitems, setorderitems, add ,sub , isCheckOut, setisCheckOut ,loggedInUserID ,setfiltername } =useContext(AppContext)
 
  const [totalPrice, settotalPrice] = useState(0)
  const [Quintitynew, setQuintitynew] = useState(0)
@@ -52,9 +52,12 @@ console.log("final Data_______________" ,{userId:loggedInUserID ,totalPrice:fina
 
 
   return (
+    <>
+    { orderitems.length !=0 ? 
     <div className="cart-container">
   
-         <div className="parint">
+      
+        <div className="parint">
            <table>
             <thead>
               <tr>
@@ -121,7 +124,25 @@ console.log("final Data_______________" ,{userId:loggedInUserID ,totalPrice:fina
            </div>
            <button className="backbut" onClick={()=>{   navigate(-1)}}>Back to the Menu</button>
            {Popuptrigger && <Popup/>}
+
+         
     </div>
+    :  
+    <div className="cart-container-empty">
+
+<div className="img"><img src="./images/cart.jpg" /> </div>
+   <p className=" empty-cart">Your Cart Is Empty </p>
+   <button className=" empty-cart" onClick={()=>{
+ if( isLoggedIn ){ 
+  setfiltername("All Restaurants")
+  navigate("/restaurants")
+}else{
+  navigate("/login") }
+
+   }} > Start Shopping </button>
+    </div>
+    }
+    </>
   )
 }
 

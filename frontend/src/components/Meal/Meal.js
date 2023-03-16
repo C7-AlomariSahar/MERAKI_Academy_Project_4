@@ -100,7 +100,13 @@ const Meal = () => {
              }])
            }
            setPopuptrigger(false)
-          
+        
+          localStorage.setItem("orderitems", JSON.stringify([...orderitems ,{
+            itemName:theMeal.mealName,            
+            itemId :theMeal._id,
+            quntiti:orderQuntiti,
+            price :theMeal.price
+            }]) );
      
          }} >ADD TO CART</button> 
          

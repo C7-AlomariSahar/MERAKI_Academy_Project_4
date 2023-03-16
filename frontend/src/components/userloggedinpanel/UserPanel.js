@@ -22,7 +22,8 @@ const [userorders, setuserorders] = useState([])
 
     const navigate =useNavigate();
     const {token , settoken ,isLoggedIn, setisLoggedIn ,loggedInUserName,
-      loggedInUserAllData, setloggedInUserAllData, setloggedInUserName ,selectedResturant, setselectedResturant ,filtername, setfiltername,loggedInUserID ,userData, setuserData} =useContext(AppContext)
+      loggedInUserAllData, setloggedInUserAllData,setorderitems,
+      setloggedInUserID, setloggedInUserName ,selectedResturant, setselectedResturant ,filtername, setfiltername,loggedInUserID ,userData, setuserData} =useContext(AppContext)
   
 
       useEffect(() => {
@@ -100,7 +101,21 @@ userorders.map((oneorder)=>{
 
    setuserData(false)
    setisLoggedIn(false)
+   setorderitems([])
+localStorage.removeItem("loggedInUserAllData" );
+
+localStorage.removeItem("token" );
+
+localStorage.removeItem("loggedInUserName" );
+
+localStorage.removeItem("loggedInUserID" );
+
+localStorage.removeItem("isLoggedIn");
+localStorage.removeItem("orderitems")
+
 navigate("/home")
+
+window.scrollTo(0, 0);
 
 }} >Log out </button></div>
 </div>

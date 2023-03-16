@@ -47,3 +47,32 @@ display: flex;
 border-bottom: 1px solid black;
 
 }
+
+.empty-cart{
+
+  font-size: 2rem;
+
+}
+.cart-container-empty{
+  width: 70vw;
+
+  height: 100%;
+}
+
+.cart-container-empty p{
+  font-size: 2.4rem;
+
+}
+.img{
+
+ margin: auto;
+ height: 300px;
+ width: 600px;
+  
+  border-bottom: 1px solid black;
+}
+ img{
+
+ width: 100%;
+ height: 100%;
+}

@@ -20,6 +20,7 @@ import { BsInstagram } from "react-icons/bs";
 import { BsPinterest } from "react-icons/bs";
 import Search from "../search/Search";
 import ScrollToTop from "../scroll/Scroll"
+import UserPanel from "../userloggedinpanel/UserPanel";
 const Container = () => {
   return (
 
@@ -43,7 +44,7 @@ const Container = () => {
               <Route path="/menu" element={<Menu />}></Route>
               <Route path="/cart" element={<Cart />}></Route>
               <Route path="/search" element={<Search />}></Route>
-              
+             
             </Routes>
           </div>
 
