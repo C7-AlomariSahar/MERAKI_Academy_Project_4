@@ -23,7 +23,7 @@ const Cuisine = () => {
     const {  filtername, setfiltername  } =useContext(AppContext)
 
     window.addEventListener("resize",(e)=>{
-        setlimitnumber( window.innerWidth <= 600 ? 2: 10 )
+        setlimitnumber( window.innerWidth > 600 ?  window.innerWidth > 940 ? 10:5:2 )
         
     })
 

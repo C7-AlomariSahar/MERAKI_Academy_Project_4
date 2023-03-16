@@ -19,7 +19,7 @@ import { BsTwitter } from "react-icons/bs";
 import { BsInstagram } from "react-icons/bs";
 import { BsPinterest } from "react-icons/bs";
 import Search from "../search/Search";
-
+import ScrollToTop from "../scroll/Scroll"
 const Container = () => {
   return (
 
@@ -34,7 +34,8 @@ const Container = () => {
 
           <div className="main">
             <Routes>
-              <Route path="/home" element={<Home />}></Route>
+        
+              <Route path="/home" element={ <Home />}></Route>
               <Route path="/restaurants" element={<Restaurants />}></Route>
               <Route path="/login" element={<Login />}></Route>
               <Route path="/register" element={<Register />}></Route>

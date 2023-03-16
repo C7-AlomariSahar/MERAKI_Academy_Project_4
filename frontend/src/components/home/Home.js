@@ -16,14 +16,14 @@ import axios from "axios";
 
   const navigate =useNavigate();
    const [top, settop] = useState([])
-
+ const [topmeal, settopmeal] = useState([])
 
 useEffect(() => {
 
 
   axios.get(`http://localhost:5000/restaurant/topRated/top`).then((response)=>{
   
-  console.log("mealsfor one Resturant ******************",response.data.meals)
+
   settop(response.data.resturant )
 
  }).catch((err)=>{
@@ -31,7 +31,17 @@ useEffect(() => {
 
  })
 
- 
+
+axios.get(`http://localhost:5000/meal/topRated/top`).then((response)=>{
+  
+console.log("::::::::::::::::::::::::::::::::::::;",response.data.meals)
+settopmeal(response.data.meals)
+
+}).catch((err)=>{
+console.log("dataResturantsAllerrXXXXXXX",err.response.data.message)
+
+})
+
 
 
  
@@ -98,8 +108,48 @@ useEffect(() => {
   </div>
           )
          })
-
          }
+
+
+
+  
+
+      </div>
+
+
+      <h1>Top Meals</h1>
+      <div className='rated' >  
+      {
+         topmeal.map((toponemeal,i)=>{
+
+          return(
+         
+         <div key={toponemeal._id} className="restauranttop"style={{
+        background:`url(${toponemeal.image} ) no-repeat bottom` ,backgroundSize:"cover" 
+      }} onClick={()=>{
+        // settop(toponemeal._id)
+        // setfiltername("All Restaurants")
+        //  navigate("/restaurants") 
+          
+      }}>
+        
+        
+        
+        <div className="infotop">
+          
+        <h3> {toponemeal.mealName}</h3>
+        <p>{toponemeal.resturantId.resturantName}  <span>{toponemeal.price}</span>  </p>
+        
+          
+        </div>
+        
+      
+  </div>
+          )
+         })
+         }
+
+
       </div>
      </div>
    )
