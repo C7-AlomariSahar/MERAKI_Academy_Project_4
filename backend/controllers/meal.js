@@ -276,7 +276,7 @@ const   getAllMealsWithSameeMenueTypeforOneResturant = ( req,res)=>{
 const  getLikeMeal =( req,res)=>{
   const keysearch =req.params.keysearch
      console.log("Keyyyyyyy",keysearch)
-     mealModel.find({mealName:{ $regex: `${keysearch}`, $options:'i' }}).populate("mealType","meunTypeName -_id").populate("resturantId","resturantName -_id").exec()
+     mealModel.find({mealName:{ $regex: `${keysearch}`, $options:'i' }}).populate("mealType","meunTypeName -_id").populate("resturantId","resturantName").exec()
        .then((data) => {
         console.log("Keyyyyyyydata",data)
          res.status(200).json({
@@ -297,7 +297,35 @@ const  getLikeMeal =( req,res)=>{
   
   
   }
+  const getTop5meals =(req,res)=>{
   
+
+ 
+    mealModel.find({}).populate("mealType","meunTypeName -_id").populate("resturantId","resturantName").limit(4).exec()
+       .then((data) => {
+         if (!data.length) {
+           return res.status(404).json({
+             success: false,
+             message: `this meal not found`,
+           });
+         }
+         res.status(200).json({
+           success: true,
+           message: `found`,
+           meals: data,
+         });
+       })
+       .catch((err) => {
+         res.status(500).json({
+           success: false,
+           message: `Server Error`,
+           err: err.message,
+         });
+       });
+  
+   
+  
+  }
 module.exports = {
   createNewMeal,
   updateMeal,
@@ -305,5 +333,6 @@ module.exports = {
   getAllMeals,
   getAllMealsForOneResturant,
   getAllMealsWithSameeMenueTypeforOneResturant,getAllmenuTypeMealsForOneResturant
-  ,getOneMealbymealType,getLikeMeal
+  ,getOneMealbymealType,getLikeMeal,
+  getTop5meals
 };

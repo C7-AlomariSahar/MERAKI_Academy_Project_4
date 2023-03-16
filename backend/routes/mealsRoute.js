@@ -11,6 +11,7 @@ const {
   getAllmenuTypeMealsForOneResturant,
   getOneMealbymealType,
   getLikeMeal,
+  getTop5meals,
 } = require("../controllers/meal");
 
 const authentication = require("../middleware/authentication");
@@ -36,4 +37,5 @@ mealRouter.get(
 
 mealRouter.get("/search/:keysearch", getLikeMeal);
 
+mealRouter.get("/topRated/top", getTop5meals);
 module.exports = mealRouter;
