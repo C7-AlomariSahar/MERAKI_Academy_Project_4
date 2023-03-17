@@ -16,7 +16,8 @@ const Cart = () => {
     
     const navigate =useNavigate();
    
-    const {token , settoken ,isLoggedIn, setisLoggedIn ,loggedInUserName, setloggedInUserName ,selectedResturant, setselectedResturant ,selectedmeal, setselectedmeal ,setPopuptrigger ,Popuptrigger ,orderitems, setorderitems, add ,sub , isCheckOut, setisCheckOut ,loggedInUserID ,setfiltername } =useContext(AppContext)
+    const {token , settoken ,isLoggedIn, setisLoggedIn ,loggedInUserName, setloggedInUserName ,selectedResturant, setselectedResturant ,selectedmeal, setselectedmeal ,setPopuptrigger ,Popuptrigger ,orderitems, setorderitems, add ,sub , isCheckOut, setisCheckOut ,loggedInUserID ,setfiltername,
+      cartitemsNum, setcartitemsNum } =useContext(AppContext)
 
  const [totalPrice, settotalPrice] = useState(0)
  const [Quintitynew, setQuintitynew] = useState(0)
@@ -32,6 +33,12 @@ let totalquntiti =  orderitems.reduce((acc,orderitem,i)=>{
 let finalPrice =orderitems.reduce((acc,orderitem,i)=>{
     return acc+(Number(orderitem.quntiti) * Number(orderitem.price) )
 },0) 
+
+useEffect(() => {
+  
+  setcartitemsNum(totalquntiti)
+  localStorage.setItem("cartitemsNum",totalquntiti);
+}, [totalquntiti])
 
 
 const CheckOutFun =()=>{

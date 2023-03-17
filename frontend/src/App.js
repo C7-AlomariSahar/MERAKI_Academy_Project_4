@@ -32,6 +32,8 @@ function App() {
 
   const [loggedInUserID, setloggedInUserID] = useState(JSON.parse(localStorage.getItem("loggedInUserID") )||  "");
 
+  const [cartitemsNum, setcartitemsNum] =useState(JSON.parse(localStorage.getItem("cartitemsNum") )||  0);
+
   const [selectedResturant, setselectedResturant] = useState("");
   const [selectedmeal, setselectedmeal] = useState([]);
   const [Popuptrigger, setPopuptrigger] = useState(false);
@@ -129,7 +131,7 @@ function App() {
           comefromSearch, setcomefromSearch,
           mealcomefromsearch, setmealcomefromsearch
           ,loggedInUserAllData, setloggedInUserAllData
-          , userData, setuserData ,emailRegex
+          , userData, setuserData ,emailRegex ,cartitemsNum, setcartitemsNum
         }}
       >
 <Container />

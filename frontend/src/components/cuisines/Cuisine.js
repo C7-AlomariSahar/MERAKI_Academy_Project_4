@@ -12,6 +12,8 @@ import { Routes, Route, Link, useParams, useNavigate } from "react-router-dom";
  
 
 const Cuisine = () => {
+
+    
     const windowSize = useRef([window.innerWidth, window.innerHeight]);
     const [cuisinetnames, setcuisinetnames] = useState([])
     const [result, setresult] = useState("")
@@ -20,7 +22,7 @@ const Cuisine = () => {
     const [cisuinNumber, setcisuinNumber] = useState(0)
     const [start, setstart] = useState(0)
     const navigate =useNavigate();
-    const {  filtername, setfiltername  } =useContext(AppContext)
+    const {  filtername, setfiltername ,isLoggedIn } =useContext(AppContext)
 
     window.addEventListener("resize",(e)=>{
         setlimitnumber( window.innerWidth > 600 ?  window.innerWidth > 940 ? 10:5:2 )
@@ -59,9 +61,18 @@ setcuisinetnames(result.data.cuisine)
 const Cuisinetype = cuisinetnames.map((cuisinetName,i)=>{
     return (   <div key={cuisinetName._id}  className=  {`cuisine-same ${cuisinetName.cuisineName}`}  onClick={()=>{
        
-        navigate("/restaurants")
+
+
+        if( isLoggedIn ){ 
+            navigate("/restaurants")
      
-        setfiltername(`${cuisinetName._id}`)
+            setfiltername(`${cuisinetName._id}`)
+          }else{
+            navigate("/login") 
+      
+         
+        }
+       
         
     }
     

@@ -23,7 +23,7 @@ const [userorders, setuserorders] = useState([])
     const navigate =useNavigate();
     const {token , settoken ,isLoggedIn, setisLoggedIn ,loggedInUserName,
       loggedInUserAllData, setloggedInUserAllData,setorderitems,
-      setloggedInUserID, setloggedInUserName ,selectedResturant, setselectedResturant ,filtername, setfiltername,loggedInUserID ,userData, setuserData} =useContext(AppContext)
+      setloggedInUserID, setloggedInUserName ,selectedResturant, setselectedResturant ,filtername, setfiltername,loggedInUserID ,userData, setuserData ,setcartitemsNum} =useContext(AppContext)
   
 
       useEffect(() => {
@@ -112,7 +112,9 @@ localStorage.removeItem("loggedInUserID" );
 
 localStorage.removeItem("isLoggedIn");
 localStorage.removeItem("orderitems")
+setcartitemsNum(0)
 
+localStorage.removeItem("cartitemsNum")
 navigate("/home")
 
 window.scrollTo(0, 0);

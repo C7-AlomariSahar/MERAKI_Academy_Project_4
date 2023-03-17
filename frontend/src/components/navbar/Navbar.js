@@ -28,7 +28,7 @@ const [validation, setvalidation] = useState(false)
  const userDatafun =()=>setuserData(!userData)
 
   const {token , settoken ,isLoggedIn, setisLoggedIn ,loggedInUserName,
-     setloggedInUserName , radioValue, setradioValue ,searchresult, setsearchresult
+     setloggedInUserName , radioValue, setradioValue ,searchresult, setsearchresult ,cartitemsNum, setcartitemsNum
    , keysearch ,setkeysearch ,userData, setuserData,orderitems} =useContext(AppContext)
   
   const searchFun = ()=>{
@@ -110,12 +110,18 @@ const [validation, setvalidation] = useState(false)
 
 <NavLink to="/Home" className={"navlink"}  onClick= {()=>{setclick(false)}}  style={({ isActive }) => ({ color: isActive ? "green" : "white" })}><BiHomeSmile className='icons' /> </NavLink>  
 
+
+<span className='cart-icon'>
+
 { <NavLink className={"navlink"} to="/cart"  onClick= {()=>{
   setclick(false)
 
 }} style={({ isActive }) => ({ color: isActive ? "green" : "white" })}>
-    <BsFillCartFill  className='icons' />
+ <BsFillCartFill  className='icons ' /> 
     </NavLink>  }
+    <span className='cart-icon-count' >{cartitemsNum}</span>
+    </span>
+
 {isLoggedIn ? "":<NavLink   to="/login" className={"navlink"}  onClick= {(e)=>{
   
 

@@ -86,7 +86,9 @@ background:rgba(47, 45, 45, 0.98);
 .navbar-one-link  :hover {
     transform: scale(1.1,1.1);
 }
-
+.cart-icon-count:hover{
+    transform: scale(.8,.8);
+}
 .navbar_links-outer{
     display: flex;
 justify-content: center;
@@ -184,9 +186,26 @@ height: 100vh;
 
 }
 
+.cart-icon{
+position: relative;
+display: flex;
+justify-content: center;
+background: none;
 
 
+}
 
+.cart-icon-count{
+position: absolute;
+top: 12%;
+right: 12%;
+color: white;
+
+font-size: 1rem;
+/* display: flex;
+justify-content: center; */
+text-align: center;
+}
 
 
 
