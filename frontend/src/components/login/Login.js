@@ -10,7 +10,7 @@ const Login = () => {
     const {token , settoken ,isLoggedIn, setisLoggedIn ,loggedInUserName, setloggedInUserName  ,loggedInUserID ,setloggedInUserID ,setloggedInUserAllData ,emailRegex} =useContext(AppContext)
     const [password, setpassword] = useState("");
     const [email, setemail] = useState("");
-    const [result, setresult] = useState("");
+    const [result, setresult] = useState(false);
     const [isValidemail, setisValidemail] = useState(true);
   const [isValidpass, setisValidpass] = useState(true)
 
@@ -43,11 +43,11 @@ const Login = () => {
 
                 console.log(".user.UserName_________________",resultdata.data.user[0].UserName);
                
-                setresult(resultdata.data.message)
+                setresult(false)
             }).then(()=>{navigate("/home")})
             .catch((err) => {
                 console.log("error", err.response.data.message);
-                 setresult(err.response.data)
+                 setresult(true)
             });
     };
 
@@ -97,6 +97,8 @@ const Login = () => {
             >
                 Login
             </button> <br />
+           { result && <span className="error" > Your details are not correct </span>}
+            <br />
             <br />
             <div>Forgot your password?</div>
          
