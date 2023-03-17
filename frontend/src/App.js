@@ -16,10 +16,13 @@ import { BsStar } from "react-icons/bs";
 import { BsStarHalf } from "react-icons/bs";
 import { BsStarFill } from "react-icons/bs";
 import Container from "./components/Contanier/Container";
+import Scroll from "./components/scroll/Scroll";
 
 export const AppContext = createContext();
 
 function App() {
+  window.onbeforeunload=()=> window.scrollTo(0, 0);
+ 
   const navigate = useNavigate();
 
   const [token, settoken] = useState( JSON.parse(localStorage.getItem("token")) || "");

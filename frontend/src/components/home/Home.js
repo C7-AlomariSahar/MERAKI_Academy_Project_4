@@ -53,7 +53,7 @@ console.log("dataResturantsAllerrXXXXXXX",err.response.data.message)
       
       <div   className='start-home-img'> 
    
-       <h4>Your Favourite Restaurant At Your Home</h4>
+       <h4><span className="h1">Your</span><span className="h2"> Favourite</span><span className="h3"> Restaurant</span><span className="h4"> At</span><span className="h5"> Your</span> <span className="h6"> Home </span></h4>
 
           <button onClick={()=>{
             console.log("????????????????????????????????????????????", isLoggedIn)
@@ -66,17 +66,26 @@ console.log("dataResturantsAllerrXXXXXXX",err.response.data.message)
          
         }
           }}>Order Now</button>
+        <div className="pizza">   </div>
+        <div className="burger">   </div>
+        <div className="sushi">   </div>
+        <div className="salad">   </div>
+        <div className="lamb">   </div>
+        <div className="sandwish">   </div>
+        <div className="pie">   </div>
+        <div className="doughnut">   </div>
+
+        
+
+
       </div>
-
-
-      {/* <div className='cuisine-div-inhome'>  */}
+    
  
        <Cuisine />
 
-      {/* </div> */}
 
-{/* .limit( 5 )
- */}
+
+
         <h1>Top Rated</h1>
       <div className='rated'>
         
