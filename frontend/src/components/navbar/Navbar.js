@@ -22,7 +22,7 @@ const Navbar = () => {
 
  const [click, setclick] = useState(false)
 const [validation, setvalidation] = useState(false)
-
+const [searsch, setsearsch] = useState(true)
 
  const clickfun =()=>setclick(!click)
  const userDatafun =()=>setuserData(!userData)
@@ -31,8 +31,9 @@ const [validation, setvalidation] = useState(false)
      setloggedInUserName , radioValue, setradioValue ,searchresult, setsearchresult ,cartitemsNum, setcartitemsNum
    , keysearch ,setkeysearch ,userData, setuserData,orderitems} =useContext(AppContext)
   
-  const searchFun = ()=>{
+  // const searchFun = ()=>{
    
+useEffect(() => {
 
     console.log("setradioValue+++++++++++++++++++++++++++++++",radioValue)
       if(radioValue == "meal"){
@@ -61,7 +62,9 @@ const [validation, setvalidation] = useState(false)
           }
 
     
-  }
+}, [searsch ,radioValue])
+
+  // }
   
   
   
@@ -84,17 +87,44 @@ const [validation, setvalidation] = useState(false)
   </div>
 <div className='radiosearch'>
   <input type="radio"  onClick={()=>{
-   setradioValue("restaurant")
+  if(keysearch != ""){
+    setvalidation(false)
+    // searchFun()
+    setsearchresult("")
+    setsearsch(!searsch)
+    setradioValue("restaurant")
+  }else{
+    setvalidation(true)
+
+  }
+  
+ 
+   
+  
   }} name='search' defaultChecked value={"restaurant"}/>
   <label>Restaurant</label>
   <input type="radio" name='search'  onClick={()=>{
-    setradioValue("meal")
+    
+    if(keysearch != ""){
+      setvalidation(false)
+      // searchFun()
+      setsearchresult("")
+      setsearsch(!searsch)
+      setradioValue("meal")
+    }else{
+      setvalidation(true)
+    
+    }
+   
+  
+   
   }}   value={"meal"} />
   <label>Meal</label>
 <button onClick={()=>{
    if(keysearch != ""){
     setvalidation(false)
-    searchFun()
+    // searchFun()
+    setsearsch(!searsch)
   }else{
     setvalidation(true)
   }

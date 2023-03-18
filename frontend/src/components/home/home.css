@@ -1,5 +1,4 @@
 
-
 @keyframes slide {
     0%{
         opacity: 0;
@@ -81,7 +80,7 @@
     }
     100% {
        opacity: 1;
-       transform: translatey(0%) rotate(360deg);
+       transform: translatey(1%) rotate(360deg);
     }  
  }
   
