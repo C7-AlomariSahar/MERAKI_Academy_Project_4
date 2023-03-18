@@ -305,7 +305,7 @@ const  getLikeMeal =( req,res)=>{
   
 
  
-    mealModel.find({}).populate("mealType","meunTypeName -_id").populate("resturantId","resturantName").limit(4).exec()
+    mealModel.find({}).sort({price:-1}).populate("mealType","meunTypeName -_id").populate("resturantId","resturantName").limit(4).exec()
        .then((data) => {
          if (!data.length) {
            return res.status(404).json({

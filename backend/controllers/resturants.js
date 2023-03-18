@@ -230,9 +230,9 @@ const  getAllResturantforFillData =( req,res)=>{
 
 const getTop5 =(req,res)=>{
   
-
+  const skipnumber =req.query.skipnumber
  
-  resturantModel.find({}).sort({rate:-1}).populate("cuisine","cuisineName -_id").limit(4).exec()
+  resturantModel.find({}).sort({rate:-1}).populate("cuisine","cuisineName -_id").limit(4).skip(skipnumber).exec()
      .then((data) => {
        if (!data.length) {
          return res.status(404).json({
