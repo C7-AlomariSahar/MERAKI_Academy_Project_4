@@ -138,7 +138,7 @@ useEffect(() => {
 <div  className={click ?' navbar_links active':'navbar_links'}>
   
 
-<NavLink to="/Home" className={"navlink"}  onClick= {()=>{setclick(false)}}  style={({ isActive }) => ({ color: isActive ? "green" : "white" })}><BiHomeSmile className='icons' /> </NavLink>  
+<NavLink to="/Home" className={"navlink"}  onClick= {()=>{setclick(false)}}  style={({ isActive }) => ({ color: isActive ? "rgb(87, 188, 56)" : "white" })}><BiHomeSmile className='icons' /> </NavLink>  
 
 
 <span className='cart-icon'>
@@ -146,7 +146,7 @@ useEffect(() => {
 { <NavLink className={"navlink"} to="/cart"  onClick= {()=>{
   setclick(false)
 
-}} style={({ isActive }) => ({ color: isActive ? "green" : "white" })}>
+}} style={({ isActive }) => ({ color: isActive ? "rgb(87, 188, 56)" : "white" })}>
  <BsFillCartFill  className='icons ' /> 
     </NavLink>  }
     <span className='cart-icon-count' >{cartitemsNum}</span>
@@ -157,7 +157,7 @@ useEffect(() => {
 
     setclick(false)
   
-  }}   style={({ isActive }) => ({ color: isActive ? "green" : "white" })} >
+  }}   style={({ isActive }) => ({ color: isActive ? "rgb(87, 188, 56)" : "white" })} >
  <VscAccount  className='icons' />
  </NavLink> }
 

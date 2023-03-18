@@ -96,7 +96,7 @@ const [isValidemail, setisValidemail] = useState(true);
 const [isValidpass, setisValidpass] = useState(true)
 const [requierdvalid, setrequierdvalid] = useState(true)
   return (
-    <div className="loginregister">
+    <div className="loginregister2">
     <div className='register'>
     <h1>Register</h1>
    <input  type="text" placeholder='First Name' onChange={(e)=>{setfirstName(e.target.value)}}/><br/><br/>

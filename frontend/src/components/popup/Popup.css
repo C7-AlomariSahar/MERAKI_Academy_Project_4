@@ -15,6 +15,25 @@ justify-content: center;
 align-content: center;
 
 }
+@keyframes come-in {
+  0%{
+opacity: 0;
+transform: translateY(-20%);
+
+  }
+70%{
+  opacity: .9;
+  transform: translateY(30%);
+  
+}
+100%{
+  opacity: 1;
+  transform: translateY(0%);
+  
+}
+
+}
+
 .inner-popup{
 
     background-color: #fff;
@@ -25,7 +44,10 @@ align-content: center;
    margin: 20px auto;
     padding: 20px;
 /* overflow: auto; */
+animation:  come-in 3s ease-in-out forwards;
 }
+
+
 .close{
 
  height: 20px;

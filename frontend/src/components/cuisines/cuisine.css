@@ -3,6 +3,7 @@
     
 } */
 .cuisine-same{
+    margin-top: 1rem;
     background-position: center;
     background-size: cover;
     width: 100px;
@@ -16,14 +17,35 @@
  color: green;
 
 }
+
+/* @keyframes wave {
+    0% {
+      transform: translateX(0) scaleY(1);
+    }
+    50% {
+      transform: translateX(50%) scaleY(0.8);
+    }
+    100% {
+      transform: translateX(100%) scaleY(1);
+    }
+  }
+
+  
+   */
 .cuisine-same:hover{
+    
     background-color: rgb(212, 237, 249);
+    text-decoration-color: green;
+    text-decoration-thickness: .1rem;
+    text-underline-offset: .5em;
+    text-decoration-line:  underline;
+    text-decoration-style:double;
 transform: scale(1.2);
 }
 .arrow{
     border:none;
     background: none;
-
+  animation: puls 5s ease-in-out infinite;
  
 }
 .asda{

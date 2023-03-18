@@ -212,7 +212,7 @@ right: 0;
 top: 80px;
 width: 30vw;
 height: 100vh;
-
+animation: come-right 3s ease-in-out forwards;
 }
 
 .cart-icon{
@@ -237,7 +237,24 @@ text-align: center;
 }
 
 
-
+@keyframes come-right {
+    0%{
+  opacity: 0;
+  transform: translateX(0%);
+  
+    }
+  70%{
+    opacity: .9;
+    transform: translateX(+10%);
+    
+  }
+  100%{
+    opacity: 1;
+    transform: translateX(0%);
+    
+  }
+  
+  }
 
 
 

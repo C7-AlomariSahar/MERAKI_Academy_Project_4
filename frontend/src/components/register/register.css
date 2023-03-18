@@ -1,9 +1,14 @@
-.loginregister{
+.loginregister2{
     width: 100vw;
         display : flex ;
        justify-content: center;
        align-items: center;
-     /* background-image: url("../../images/background.jpg"); */
+     
+   
+       height: 90vh;
+
+
+
     }
     .register{
    
@@ -35,7 +40,14 @@
         border-bottom: 1px solid black;
         width :300px;
         height: 25px;
+        font-size: 1rem;
     }
+    .register input:focus {
+ 
+        border-bottom: 2px dashed green;
+     
+    }
+
     .register button {
      font-size: large;
         width:250px;

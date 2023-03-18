@@ -17,11 +17,11 @@ import axios from "axios";
   const navigate =useNavigate();
    const [top, settop] = useState([])
  const [topmeal, settopmeal] = useState([])
-
+ const [populer, setpopuler] = useState([])
 useEffect(() => {
 
 
-  axios.get(`http://localhost:5000/restaurant/topRated/top`).then((response)=>{
+  axios.get(`http://localhost:5000/restaurant/topRated/top?skipnumber=0`).then((response)=>{
   
 
   settop(response.data.resturant )
@@ -30,6 +30,15 @@ useEffect(() => {
   console.log("dataResturantsAllerrXXXXXXX",err.response.data.message)
 
  })
+ axios.get(`http://localhost:5000/restaurant/topRated/top?skipnumber=4`).then((response)=>{
+  
+
+ setpopuler(response.data.resturant )
+
+}).catch((err)=>{
+ console.log("dataResturantsAllerrXXXXXXX",err.response.data.message)
+
+})
 
 
 axios.get(`http://localhost:5000/meal/topRated/top`).then((response)=>{
@@ -86,7 +95,7 @@ console.log("dataResturantsAllerrXXXXXXX",err.response.data.message)
 
 
 
-        <h1>Top Rated</h1>
+        <h1>Top Restaurants</h1>
       <div className='rated'>
         
      
@@ -169,6 +178,19 @@ console.log("dataResturantsAllerrXXXXXXX",err.response.data.message)
 
 
       </div>
+      
+   <div className="video">
+  
+   {/* <div>
+    <img src=""></img>
+   </div> */}
+   <iframe width="97%" height="315" src="https://www.youtube.com/embed/X-EX6SzV3D0?controls=0&loop=1&showinfo=0&autoplay=1&mute=1&&playlist=X-EX6SzV3D0" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen ></iframe>
+      </div>
+      {/* <iframe src="https://www.youtube.com/watch?v=X-EX6SzV3D0" width="100% "height="400"  allow="accelerometer" autoplay >
+
+
+     </iframe> */}
+      
      </div>
    )
  }

@@ -117,6 +117,11 @@ Terms & conditions.</span>
 Your privacy and security are important to us. For more information on how we use your data read ourprivacy policy</p>
       </div>     
     </div>
+
+    <div className="imgcorner"> <img src="https://images.unsplash.com/photo-1546069901-ba9599a7e63c?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8Zm9vZHxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=500&q=60"></img></div>
+    {/* <div className="imgcorner2"> <img src="https://media.istockphoto.com/id/937016542/photo/quinoa-salad-with-beet-root-and-spinach.jpg?s=612x612&w=0&k=20&c=hI7X9AzPWGtiusK8NZs7qF1rmJTjHrsmKilFkQgkZs8="></img></div> */}
+    {/* <div className="imgcorner3"> <img src="https://media.istockphoto.com/id/673909238/photo/grilled-beef-steak.jpg?s=612x612&w=0&k=20&c=QpQzHAbx7jaUUl9WzSrWpmgcwwF9aC-2kkE5tEunUp8="></img></div> */}
+
         </div>
     );
 };
