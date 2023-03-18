@@ -1,6 +1,7 @@
 
 .container{
 position: relative;
+
 width: 100%;
 height: 100%;
 display: grid;
@@ -20,15 +21,18 @@ grid-template-areas: "navbar"
 .main{
     padding-top: 50px;
     grid-area:main ;
-
+    min-height: calc(100vh);
     display: flex;
     justify-content: center;
     padding-bottom: 60px;
+    overflow-y: auto;
+    overflow-x: hidden;
+
 }
 .footer{
     grid-area:footer ;
     position: absolute;
-    
+    height: 60px;
     bottom: 0%;
 }
 .social-icon{

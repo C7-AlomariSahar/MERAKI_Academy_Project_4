@@ -47,6 +47,10 @@ console.log("final Data_______________" ,{userId:loggedInUserID ,totalPrice:fina
     axios.post("http://localhost:5000/order/",{userId:loggedInUserID ,totalPrice:finalPrice ,paymentMethod  :  paymentMethod   ,  orderfrom: selectedResturant , orderItems:   orderitems ,     orderStatus:"Pending" ,deleviredTo:"JVC "  }).then((result)=>{
         console.log("OK Order Saved")
         setisCheckOut(true)
+        localStorage.removeItem("orderitems")
+        setcartitemsNum(0)
+        
+        localStorage.removeItem("cartitemsNum")
         setPopuptrigger(true)
     }).catch((err)=>{ throw err})
     

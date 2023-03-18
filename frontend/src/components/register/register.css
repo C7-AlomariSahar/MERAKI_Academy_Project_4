@@ -13,7 +13,7 @@
     .register{
    
     padding-right: 10px;
-    border-right: 1px solid black;
+    /* border-right: 1px solid black; */
     width:340px;
     height: 600px;
     }
@@ -21,7 +21,7 @@
     .changeLoginRegister{
         width:300px;
         height: 300px;
-      
+        border-left: 1px solid black;
         padding-left: 5px;
         display : flex ;
         flex-direction: column;

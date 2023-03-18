@@ -1,0 +1,38 @@
+.driver{
+    background-color: transparent;
+    width: 6rem;
+    height: 6rem;
+position: absolute;
+bottom: 0%;
+left: 0%;
+animation: move 4s 2s linear infinite;
+}
+.driver img{
+    background-color: transparent;
+    width: 6rem;
+    height:6rem;
+}
+.maincheckout{
+    position: relative;
+    height: 100%;
+    width: 100%;
+}
+.cartfull{
+    color: green;
+    width: 1.6rem;
+    height:1.6rem;
+}
+@keyframes move {
+    
+
+        0% {
+           opacity: 1;
+           transform: translateX(0%) translateY(0%);
+        }
+        100% {
+           opacity: 1;
+           transform: translateX(31vw) translateY(-80%) ;
+        }  
+    
+    
+}

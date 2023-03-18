@@ -3,7 +3,7 @@ import "./container.css";
 
 import { Routes, Route, Link, useParams, useNavigate } from "react-router-dom";
 
-import React, { useState, useEffect, createContext } from "react";
+import React, { useState, useEffect, createContext ,useContext} from "react";
 import Login from "../login/Login";
 import Restaurants from "../restaurants/Restaurants";
 import Register from "../register/Register";
@@ -21,19 +21,23 @@ import { BsPinterest } from "react-icons/bs";
 import Search from "../search/Search";
 import ScrollToTop from "../scroll/Scroll"
 import UserPanel from "../userloggedinpanel/UserPanel";
+
+import { AppContext } from "../../App";
+
 const Container = () => {
+         
+  const navigate =useNavigate();
+  const { setuserData } =useContext(AppContext)
   return (
 
-        
+ 
 
-
-
-        <div className="container">
+        <div className="container" >
           <div className="navbar">
             <Navbar />
           </div>
 
-          <div className="main">
+          <div className="main" >
             <Routes>
         
               <Route path="/home" element={ <Home />}></Route>

@@ -51,6 +51,7 @@ height: 80vh;
  
 }
 .activeuserinfopanel{
+    position: relative;
 right: 0;
 top: 80px;
 width: 30vw;
@@ -76,6 +77,14 @@ font-size: small;
     font-size: 1rem;
     display: flex;
     justify-content: space-around;
+   
+
+}
+.close{
+    position: absolute;
+right:6%;
+top:0%;
+color: red;
 
 }
 .orderdivinfo2{

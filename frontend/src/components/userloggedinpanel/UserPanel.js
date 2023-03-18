@@ -6,7 +6,7 @@ import { Routes, Route, Link, useParams, useNavigate } from "react-router-dom";
 import axios from "axios";
 import Cuisine from "../cuisines/Cuisine";
 import "./userpanel.css"
-
+import {CgCloseR} from "react-icons/cg"
 
 
 
@@ -46,7 +46,7 @@ const [userorders, setuserorders] = useState([])
   return (
      <div className="panelcontainer">
         <div className="panel1">
-        
+        <button className="close" onClick={()=>setuserData(false)} ><CgCloseR/> </button>
  <button className="userinfopanelshow but1" onClick={()=>{
     setshoworder(false)
     setshow(true)
@@ -74,12 +74,14 @@ const [userorders, setuserorders] = useState([])
 
 
 <div className={ showorder ? "userinfopanel activeuserinfopanel":"userinfopanel"}>
+
     {
 
 userorders.map((oneorder)=>{
 
     return(
 <div key={oneorder._id} className="orderdiv">
+
  <div className="orderdivinfo">{oneorder.orderfrom.resturantName}</div>
 <div className="orderdivinfo">{oneorder.totalPrice}</div>
 {/* <div>{oneorder.deleviredTo}</div>

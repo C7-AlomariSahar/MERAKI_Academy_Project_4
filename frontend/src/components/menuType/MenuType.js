@@ -61,7 +61,9 @@ setmenuTypeNumber(resltArray.length)
 }, [skipnumber,limitnumber])
 
 const Menutype = menuTypes.map((menuType,i)=>{
-    return (   <div key={menuType._id}  className=  {`menu-same `}  onClick={()=>{
+    return ( 
+        
+        <div key={menuType._id}  className=  {`menu-same `}  onClick={()=>{
        
         setfilterFunparam(menuType._id)
 

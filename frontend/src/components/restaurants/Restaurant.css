@@ -32,6 +32,7 @@ color: green;
  width: 350px;
 height: 90px;
 
+
 background-color:rgba(0,0,0,0.8) ;
 }
 .cuisine-div-inrestaurants{
@@ -49,3 +50,4 @@ background-color:rgba(0,0,0,0.8) ;
     grid-template-columns: repeat(auto-fit ,minmax(350px,1fr)) ;
     padding:2rem 5rem;
    }
+

@@ -97,7 +97,7 @@ axios.get(`http://localhost:5000/restaurant/${selectedResturant}`).then((respons
               <div className="mealinfo">
                 
               <h3>{meal.mealName}</h3>
-              <p> <span>{meal.price}</span>  </p>
+              <p>Price <span>{meal.price}</span> AED  </p>
               
                 
               </div>

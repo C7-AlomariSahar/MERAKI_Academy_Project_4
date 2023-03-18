@@ -6,7 +6,7 @@ import { Routes, Route, Link, useParams, useNavigate } from "react-router-dom";
 import axios from "axios";
 import Cuisine from "../cuisines/Cuisine";
 import "./Restaurant.css"
-
+import {BsStarFill} from "react-icons/bs"
 
 const Restaurants = () => {
 
@@ -65,8 +65,8 @@ const allrestaurants = allRestaurants.map((restaurant,i)=>{
         <div className="info">
           
         <h3>{restaurant.resturantName}</h3>
-        <p>{restaurant.cuisine.cuisineName} <span>{restaurant.rate}</span>  </p>
-        
+        <p>{restaurant.cuisine.cuisineName} <span><BsStarFill/> : {restaurant.rate}</span>  </p>
+     
           
         </div>
         
