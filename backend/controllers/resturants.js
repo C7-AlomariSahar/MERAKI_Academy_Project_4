@@ -259,9 +259,12 @@ const getTop5 =(req,res)=>{
 }
 
 const  getLikeRestaurant =( req,res)=>{
-const keysearch =req.params.keysearch
+const keysearchString =req.params.keysearch
+
+const keysearch = keysearchString.split(/\s+/);
+ const keysearchr = keysearch.join("|");
    console.log("Keyyyyyyy",keysearch)
-  resturantModel.find({resturantName:{ $regex: `${keysearch}`, $options:'i' }}).populate("cuisine","cuisineName -_id").exec()
+  resturantModel.find({resturantName:{ $regex: `${keysearchr}` , $options:'i' }}).populate("cuisine","cuisineName -_id").exec()
      .then((data) => {
       console.log("Keyyyyyyydata",data)
        res.status(200).json({

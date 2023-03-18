@@ -15,9 +15,9 @@ const {
 
 const authentication = require("../middleware/authentication");
 const authorization = require("../middleware/authorization");
-
-resturantsRouter.post("/", authentication,
-authorization("CREATE"),createNewResturant);
+// , authentication,
+// authorization("CREATE")
+resturantsRouter.post("/",createNewResturant);
 resturantsRouter.put("/update/:id", updateResturant);
 resturantsRouter.get("/:id", getOneResturant);
 resturantsRouter.get("/allResturant/Resturants", getAllResturant);
