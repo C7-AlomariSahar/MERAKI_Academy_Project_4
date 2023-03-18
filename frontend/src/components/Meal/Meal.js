@@ -14,7 +14,7 @@ const Meal = () => {
     const navigate =useNavigate();
    
     const {token , settoken ,isLoggedIn, setisLoggedIn ,loggedInUserName, setloggedInUserName ,selectedResturant, setselectedResturant ,selectedmeal, setselectedmeal ,setPopuptrigger ,Popuptrigger ,orderitems, setorderitems
-    ,setcartitemsNum,cartitemsNum} =useContext(AppContext)
+    ,setcartitemsNum,cartitemsNum ,setcomefromSearch} =useContext(AppContext)
 
 
  const [theMeal, settheMeal] = useState("")
@@ -110,7 +110,7 @@ const Meal = () => {
             }]) );
             localStorage.setItem("cartitemsNum",cartitemsNum+1 );
             setcartitemsNum(cartitemsNum+1)
-            
+            setcomefromSearch(false)
            
          }} >ADD TO CART</button> 
          

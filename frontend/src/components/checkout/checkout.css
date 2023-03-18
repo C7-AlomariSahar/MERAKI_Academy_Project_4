@@ -1,16 +1,17 @@
 .driver{
     background-color: transparent;
-    width: 6rem;
-    height: 6rem;
+    width: 8rem;
+    height: 8rem;
 position: absolute;
 bottom: 0%;
-left: 0%;
+left:-1%;
+z-index: -1;
 animation: move 4s 2s linear infinite;
 }
 .driver img{
     background-color: transparent;
-    width: 6rem;
-    height:6rem;
+    width: 100%;
+    height:100%;
 }
 .maincheckout{
     position: relative;
@@ -27,11 +28,13 @@ animation: move 4s 2s linear infinite;
 
         0% {
            opacity: 1;
-           transform: translateX(0%) translateY(0%);
+           transform: translateX(-1%) translateY(0%) scale(1);
+        
         }
         100% {
            opacity: 1;
-           transform: translateX(31vw) translateY(-80%) ;
+           transform: translateX(31vw) translateY(-80%) scale(.5);
+        
         }  
     
     

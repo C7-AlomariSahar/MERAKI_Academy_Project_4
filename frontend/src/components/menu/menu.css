@@ -31,6 +31,11 @@ font-family: Cursive;
 color: green;
 
 }
+
+.menu:hover{
+    transform:rotate(2deg);
+  opacity: .9;
+    }
 .mealinfo{
  width: 350px;
 height: 90px;

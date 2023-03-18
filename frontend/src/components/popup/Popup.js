@@ -6,7 +6,7 @@ import { useNavigate } from 'react-router-dom'
 import {BsFillCartCheckFill} from "react-icons/bs"
 import CheckOut from '../checkout/CheckOut'
 const Popup = () => {
- const{setPopuptrigger , isCheckOut, setisCheckOut ,setloggedInUserName,  setorderitems } =useContext(AppContext)
+ const{setPopuptrigger , isCheckOut, setisCheckOut ,setloggedInUserName,  setcomefromSearch, setorderitems } =useContext(AppContext)
     const navigate  = useNavigate();
   return (
     <div className='outer-popup'>
@@ -18,6 +18,7 @@ const Popup = () => {
         setorderitems([])
        } else{
         setPopuptrigger(false)
+        setcomefromSearch(false)
        }
 
       }}>X</button></div>

@@ -79,7 +79,7 @@ useEffect(() => {
 
 <div className= { validation ?'inputsearcherror search' :'search'}>
   <div className='inputsearch' >
-    <input type={"text"} onChange={(e)=>{
+    <input type={"text"}  onChange={(e)=>{
       setkeysearch(e.target.value)
       
     }} placeholder="Enter Keyword..."/>
