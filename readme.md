@@ -27,9 +27,9 @@
 
 ## 🧐 About <a name = "about"></a>
 
-Write about 1-2 paragraphs describing the purpose of your project.
+Speedy Fork is the quickest and most efficient way to get your favorite food delivered straight to your door. With our vast selection of restaurants, you can always find something to satisfy your cravings.
+Our easy to use website allows you to quickly and easily place your order. You can even customize your order to make sure you get exactly what you want. We guarantee fast and reliable delivery, so you can get your food quickly and without any hassle.
 
-Ex. Are you looking for a quick and easy way to action, action, and action? The **(name of application)** is the greatest and most accurate application to do this for you. It helps you to **(list of activities)**. The **(name of application)** provides a simple design to ensure having the best user experience.
 
 ## 🏁 Getting Started <a name = "getting_started"></a>
 
@@ -72,14 +72,12 @@ Now app ready to use
 
 ## 🎈 Usage <a name="usage"></a>
 
-Use this space to show useful examples of how a project can be used. Additional screenshots, code examples and demos work well in this space. You may also link to more resources.
-
-Ex.
+<img src="![Alt text](demo.png)">
 
 - You don't have to register to navigate our web app
-- You can click on the **Home** tab provided in the navigation bar to view the home section
-- You can click on the **Add to cart** button to add this product to your cart but you have to be one of our users, so you should create an account
+- You can search by Restuarent or by meal 
 
+image.png
 ## ⛏️ Built Using <a name = "built_using"></a>
 
 - [MongoDB](https://www.mongodb.com/) - Database
@@ -90,11 +88,14 @@ Ex.
 ## User Story <a name = "#user_story"></a>
 
 Your trello board link
-<a href=''>Trello</a>
+<a href='https://trello.com/b/GsjKnaIp/talabat'>Trello</a>
 
 ## Data Flow <a name = "#data_flow"></a>
 
 <img width=200px height=200px src="https://cacoo.com/assets/site/img/templates/screenshots/er-database-diagram.png" alt="Diagram"></a>
+
+
+
 
 ## ⚠️ Guided By <a name = "guided_by"></a>
 
