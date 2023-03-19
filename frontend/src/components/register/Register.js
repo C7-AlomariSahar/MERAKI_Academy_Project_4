@@ -120,11 +120,14 @@ const [requierdvalid, setrequierdvalid] = useState(true)
 <button className='register-button' onClick={()=>{
     
     if( emailRegex.test(email)){
-        setisValidemail(true)}
+        setisValidemail(true)
+        requierdvalid &&   isValidpass &&  RegisterFun()
+      }
       else{setisValidemail(false) }; 
 
       if(password.length >= 8){
           setisValidpass(true)
+          requierdvalid &&   isValidemail && RegisterFun()
           }
           else{
               setisValidpass(false)
@@ -137,6 +140,7 @@ phoneNumber.length !=0 &&
 street.length !=0 &&
   flatNumber.length !=0 ){
     setrequierdvalid(true)
+    isValidpass && isValidemail && RegisterFun()
   }else{
      setrequierdvalid( false)
    }

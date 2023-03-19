@@ -91,6 +91,25 @@ console.log("final Data_______________" ,{userId:loggedInUserID ,totalPrice:fina
                   <td>
                    <span> < button   disabled={orderitem.quntiti == 10 } onClick={()=>{
                      add(i, orderitem);
+
+                    //----
+
+                    let newitem = JSON.parse(localStorage.getItem("orderitems")) 
+                    let newitemupdate = (newitem.map((order,index)=>{
+                    return order.itemId == orderitem.itemId ?{...order , quntiti:(Number(order.quntiti)+1 )} : order
+                    }))
+                    localStorage.setItem("orderitems", JSON.stringify([...newitemupdate ]))
+                    
+                    // let totalquntiti =  newitemupdate.reduce((acc,orderitem,i)=>{
+                    //  return acc+ Number(orderitem.quntiti) },0)
+       
+               
+                  localStorage.setItem("cartitemsNum",cartitemsNum+1 );
+                   setcartitemsNum(cartitemsNum+1 )
+
+                    //---
+
+
                    }}><IoMdArrowDropup /> </button></span> 
                    <span> { orderitem.quntiti}</span> 
                    <span>  <button onClick={()=>{

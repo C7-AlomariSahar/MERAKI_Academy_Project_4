@@ -69,6 +69,10 @@ function App() {
           : order;
       })
     );
+
+  
+
+
   };
   const sub = (i, x) => {
     if (orderitems[i].quntiti == 1) {
@@ -100,6 +104,7 @@ function App() {
     <div className="App">
       <AppContext.Provider
         value={{
+         
           token,
           settoken,
           isLoggedIn,
