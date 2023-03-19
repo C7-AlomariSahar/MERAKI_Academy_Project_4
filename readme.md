@@ -72,7 +72,7 @@ Now app ready to use
 
 ## 🎈 Usage <a name="usage"></a>
 
-<img src="![Alt text](demo.png)">
+<img src="./demo.png">
 
 - You don't have to register to navigate our web app
 - You can search by Restuarent or by meal 
