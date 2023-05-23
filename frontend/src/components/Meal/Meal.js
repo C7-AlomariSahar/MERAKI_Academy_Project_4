@@ -5,7 +5,7 @@ import { Routes, Route, Link, useParams, useNavigate } from "react-router-dom";
 
 import axios from "axios";
 
-import "./meal.css"
+import "./Meal.css"
 
 
 
