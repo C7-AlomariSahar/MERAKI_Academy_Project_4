@@ -32,7 +32,7 @@ const Cuisine = () => {
 useEffect(() => {
 console.log("@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@",windowSize ,"@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@" , limitnumber,"@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@" ,skipnumber)
     if(start == 0){
-    axios.get(`http://localhost:5000/cuisine/cuisines/all`).then((result)=>{
+    axios.get(`https://resturantswebsite.onrender.com/cuisine/cuisines/all`).then((result)=>{
 
 console.log("%%%%%%",result)
 const resltArray = result.data.cuisine
@@ -46,7 +46,7 @@ setstart(1)
     }
 
 
-axios.get(`http://localhost:5000/cuisine/cuisines?skipnumber=${skipnumber}&&limitnumber=${limitnumber}`).then((result)=>{
+axios.get(`https://resturantswebsite.onrender.com/cuisine/cuisines?skipnumber=${skipnumber}&&limitnumber=${limitnumber}`).then((result)=>{
 
 console.log("%%%%%%",result)
 setcuisinetnames(result.data.cuisine)

@@ -20,7 +20,7 @@ const role ="6404c1347a1a16e002d52192"
 
          
 
-        axios.post("http://localhost:5000/user/register",{firstName,
+        axios.post("https://resturantswebsite.onrender.com/user/register",{firstName,
         LastName,
         UserName,
         email,
@@ -37,7 +37,7 @@ const role ="6404c1347a1a16e002d52192"
             setcolor("blue")
             
             axios
-            .post("http://localhost:5000/user/login", { email ,password  })
+            .post("https://resturantswebsite.onrender.com/user/login", { email ,password  })
             .then((resultdata) => {
                 console.log("login_________________", resultdata.data.message);
                 // settoken( resultdata.data.token)

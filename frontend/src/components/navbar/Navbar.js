@@ -37,7 +37,7 @@ useEffect(() => {
 
     console.log("setradioValue+++++++++++++++++++++++++++++++",radioValue)
       if(radioValue == "meal"){
-        axios.get(`http://localhost:5000/meal/search/${keysearch}`)
+        axios.get(`https://resturantswebsite.onrender.com/meal/search/${keysearch}`)
         .then(( result )=>{ 
            setsearchresult(result.data.meal)
            console.log("+++++++++++++++meal++++++++++++++++",result.data.meal);
@@ -48,7 +48,7 @@ useEffect(() => {
           })
 
         }else{
-          axios.get(`http://localhost:5000/restaurant/search/${keysearch}`)
+          axios.get(`https://resturantswebsite.onrender.com/restaurant/search/${keysearch}`)
           .then(( result )=>{ 
              setsearchresult(result.data.resturant)
              console.log("++++++++++++++++++ resturant +++++++++++++",result.data.resturant);

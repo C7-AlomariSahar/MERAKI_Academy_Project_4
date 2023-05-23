@@ -21,7 +21,7 @@ import axios from "axios";
 useEffect(() => {
 
 
-  axios.get(`http://localhost:5000/restaurant/topRated/top?skipnumber=0`).then((response)=>{
+  axios.get(`https://resturantswebsite.onrender.com/restaurant/topRated/top?skipnumber=0`).then((response)=>{
   
 
   settop(response.data.resturant )
@@ -30,7 +30,7 @@ useEffect(() => {
   console.log("dataResturantsAllerrXXXXXXX",err.response.data.message)
 
  })
- axios.get(`http://localhost:5000/restaurant/topRated/top?skipnumber=4`).then((response)=>{
+ axios.get(`https://resturantswebsite.onrender.com/restaurant/topRated/top?skipnumber=4`).then((response)=>{
   
 
  setpopuler(response.data.resturant )
@@ -41,7 +41,7 @@ useEffect(() => {
 })
 
 
-axios.get(`http://localhost:5000/meal/topRated/top`).then((response)=>{
+axios.get(`https://resturantswebsite.onrender.com/meal/topRated/top`).then((response)=>{
   
 console.log("::::::::::::::::::::::::::::::::::::;",response.data.meals)
 settopmeal(response.data.meals)

@@ -27,7 +27,7 @@ const Meal = () => {
        
         console.log("one meal-------------",selectedmeal)
     
-      axios.get(`http://localhost:5000/meal/${selectedmeal}`).then((response)=>{
+      axios.get(`https://resturantswebsite.onrender.com/meal/${selectedmeal}`).then((response)=>{
         console.log("one meal ******************",response.data.meal[0])
         
         settheMeal(response.data.meal[0])

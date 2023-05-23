@@ -31,7 +31,7 @@ useEffect(() => {
 
 //=======get resturant info by id==========================================
 
-axios.get(`http://localhost:5000/restaurant/${selectedResturant}`).then((response)=>{
+axios.get(`https://resturantswebsite.onrender.com/restaurant/${selectedResturant}`).then((response)=>{
   console.log("dataResturantsAll******************",response.data.resturant)
   setrestaurantinfo(response.data.resturant[0])
   console.log("````````````````````````````````````````````````````",response.data.resturant)
@@ -48,7 +48,7 @@ axios.get(`http://localhost:5000/restaurant/${selectedResturant}`).then((respons
     console.log("menu-----selectedResturant-------------",selectedResturant)
     console.log("___________________$$$$$$$$$$$$$$________",filterFunparam)
    if( filterFunparam == "" ){
-  axios.get(`http://localhost:5000/meal/Resturant/${selectedResturant}`).then((response)=>{
+  axios.get(`https://resturantswebsite.onrender.com/meal/Resturant/${selectedResturant}`).then((response)=>{
 //axios.get(`https://www.themealdb.com/api/json/v1/1/filter.php?c=Breakfast`).then((response)=>{
     console.log("mealsfor one Resturant ******************",response.data)
     setmenu(response.data.meals)
@@ -62,7 +62,7 @@ axios.get(`http://localhost:5000/restaurant/${selectedResturant}`).then((respons
   }else{
     ///__________________________
     console.log("___________________$$$$$$$$$$$$$$________",filterFunparam)
-    axios.get(`http://localhost:5000/meal/Resturant/${selectedResturant}/menu/${filterFunparam}`).then((response)=>{
+    axios.get(`https://resturantswebsite.onrender.com/meal/Resturant/${selectedResturant}/menu/${filterFunparam}`).then((response)=>{
   
         console.log("mealsfor one Resturant ******************",response.data.meals)
         setmenu(response.data.meals )

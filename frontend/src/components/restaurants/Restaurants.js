@@ -21,7 +21,7 @@ const Restaurants = () => {
 useEffect(() => {
 console.log("************************************************",filtername)
   if(filtername == "All Restaurants"){
-   axios.get("http://localhost:5000/restaurant/allResturant/Resturants").then((response)=>{
+   axios.get("https://resturantswebsite.onrender.com/restaurant/allResturant/Resturants").then((response)=>{
     console.log("dataResturantsAll******************",response.data.resturant)
     setallRestaurants(response.data.resturant)
 
@@ -31,7 +31,7 @@ console.log("************************************************",filtername)
 
    })
   }else{
-    axios.get(`http://localhost:5000/restaurant/ResturantbyCuisine/${filtername}`).then((response)=>{
+    axios.get(`https://resturantswebsite.onrender.com/restaurant/ResturantbyCuisine/${filtername}`).then((response)=>{
       console.log("dataResturantsAll******************",response.data.resturant)
       setallRestaurants(response.data.resturant)
   

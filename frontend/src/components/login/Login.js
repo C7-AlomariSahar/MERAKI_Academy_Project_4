@@ -8,15 +8,15 @@ import axios from "axios";
 const Login = () => {
     const navigate =useNavigate();
     const {token , settoken ,isLoggedIn, setisLoggedIn ,loggedInUserName, setloggedInUserName  ,loggedInUserID ,setloggedInUserID ,setloggedInUserAllData ,emailRegex} =useContext(AppContext)
-    const [password, setpassword] = useState("");
-    const [email, setemail] = useState("");
+    const [password, setpassword] = useState("123456789");
+    const [email, setemail] = useState("guestuser@gmail.com");
     const [result, setresult] = useState(false);
     const [isValidemail, setisValidemail] = useState(true);
   const [isValidpass, setisValidpass] = useState(true)
 
     const loginFun = () => {
         axios
-            .post("http://localhost:5000/user/login", { email, password })
+            .post("https://resturantswebsite.onrender.com/user/login", { email , password })
             .then((resultdata) => {
                 console.log("login_________________", resultdata.data);
 
@@ -58,6 +58,7 @@ const Login = () => {
             <h2> login your detail</h2>
             <br />
             <input
+            // value={"guestuser@gmail.com"}
                 type="email"
                 placeholder="email"
                 onChange={(e) => {
@@ -68,6 +69,7 @@ const Login = () => {
             <br />
             <br />
             <input
+            // value={"123456789"}
                 type="password"
                 placeholder="enter your email"
                 onChange={(e) => {
@@ -96,6 +98,16 @@ const Login = () => {
                 }}
             >
                 Login
+            </button> <br /> <br />
+
+            <button
+                onClick={() => {
+                 
+                    loginFun() ;
+                
+                }}
+            >
+                Login as a GUEST
             </button> <br />
            { result && <span className="error" > Your details are not correct </span>}
             <br />

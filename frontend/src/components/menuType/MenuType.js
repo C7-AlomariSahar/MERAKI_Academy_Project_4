@@ -31,7 +31,7 @@ const MenuType = () => {
 useEffect(() => {
 
     if(start == 0){
-    axios.get(`http://localhost:5000/menuType/MeunType/all`).then((result)=>{
+    axios.get(`https://resturantswebsite.onrender.com/menuType/MeunType/all`).then((result)=>{
 
 console.log("!!!!!!!!!!!!!!!!!!!!!___________!!!",result.data.meunType)
 
@@ -46,7 +46,7 @@ setstart(1)
     }
 
    
-axios.get(`http://localhost:5000/meal/Resturant/${selectedResturant}/allMenuType?skipnumber=${skipnumber}&&limitnumber=${limitnumber}`).then((result)=>{
+axios.get(`https://resturantswebsite.onrender.com/meal/Resturant/${selectedResturant}/allMenuType?skipnumber=${skipnumber}&&limitnumber=${limitnumber}`).then((result)=>{
 
 console.log("^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^",result.data)
 const resltArray = result.data.meunType
